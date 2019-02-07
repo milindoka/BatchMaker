@@ -35,7 +35,7 @@ int maxstrength=5000;
     ArrayList<Boolean> checkmark = new ArrayList<Boolean>();
     ArrayList<ListViewItemDTO> initItemList = new ArrayList<ListViewItemDTO>();
     String froll="M058151",lroll="M058200",FileNameWithPath="",tempstr;
-
+    ListViewItemCheckboxBaseAdapter listViewDataAdapter;
 
 
 
@@ -86,7 +86,7 @@ int maxstrength=5000;
         // Create a custom list view adapter with checkbox control.
         // In the foloowing line Original ApplicationContext() gave white color to listview
         // Changed to getBaseContex()
-        final ListViewItemCheckboxBaseAdapter listViewDataAdapter = new ListViewItemCheckboxBaseAdapter(getBaseContext(), initItemList);
+        listViewDataAdapter = new ListViewItemCheckboxBaseAdapter(getBaseContext(), initItemList);
 
         listViewDataAdapter.notifyDataSetChanged();
 
@@ -265,6 +265,20 @@ int maxstrength=5000;
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            return true;
+        }
+
+
+        if (id == R.id.action_select_all)
+        {
+            int size = initItemList.size();
+            for(int i=0;i<size;i++)
+            {
+                ListViewItemDTO dto = initItemList.get(i);
+                dto.setChecked(true);
+            }
+
+            listViewDataAdapter.notifyDataSetChanged();
             return true;
         }
 
