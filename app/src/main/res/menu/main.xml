@@ -4,6 +4,12 @@
 
 
     <item
+        android:id="@+id/action_new"
+        android:orderInCategory="90"
+        android:title="New Batch"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_load"
         android:orderInCategory="100"
         android:title="Load"

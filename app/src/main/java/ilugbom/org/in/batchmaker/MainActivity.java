@@ -222,7 +222,7 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
 
    switch(id)
-    {
+    {case R.id.action_new : LO.GetNewRoll(); return true;
       case R.id.action_settings : return true;
       case R.id.action_select_all : LO.SelectAll(); return true;
       case R.id.action_select_none : LO.SelectNone();; return true;
@@ -233,7 +233,6 @@ public class MainActivity extends AppCompatActivity
       case R.id.action_reverse : LO.SelectReverse();return true;
      }
         return super.onOptionsItemSelected(item);
-
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -260,6 +259,5 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 }
