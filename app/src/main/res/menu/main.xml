@@ -35,6 +35,12 @@
         android:title="Select None"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_reverse"
+        android:orderInCategory="600"
+        android:title="Reverse Selection"
+        app:showAsAction="never" />
+
 
     <item
         android:id="@+id/action_pick_unpick"

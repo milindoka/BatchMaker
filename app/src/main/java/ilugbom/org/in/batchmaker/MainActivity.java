@@ -27,7 +27,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-int maxstrength=5000;
+
 
     private boolean AlreadyPicked=false;
     ArrayList<String> Roll = new ArrayList<String>();
@@ -37,7 +37,7 @@ int maxstrength=5000;
     String froll="M058151",lroll="M058200",FileNameWithPath="",tempstr;
     ListViewItemCheckboxBaseAdapter listViewDataAdapter;
 
-
+    ListOperations LO=new ListOperations();
 
 
     /////////////Show Msg Functions /////////////////////////////////////
@@ -52,8 +52,6 @@ int maxstrength=5000;
     }
 
 //////////////////////////////////////////////////////////////////
-
-
 
 
     @Override
@@ -72,8 +70,9 @@ int maxstrength=5000;
             }
         });
 
+        LO.SetMA(this);
 
-        /////////////////////////////////////////////////////----///////////
+        /////////////////////////////////////Custom List Initialization///////////
 
         // Get listview checkbox.
         final ListView listViewWithCheckbox = (ListView)findViewById(R.id.list_view_with_checkbox);
@@ -81,7 +80,7 @@ int maxstrength=5000;
         // Initiate listview data.
       //  final List<ListViewItemDTO> initItemList = this.getInitViewItemDtoList();
 
-        FillList(froll,lroll);
+        LO.FillList(froll,lroll);
 
         // Create a custom list view adapter with checkbox control.
         // In the foloowing line Original ApplicationContext() gave white color to listview
@@ -126,14 +125,7 @@ int maxstrength=5000;
         selectAllButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int size = initItemList.size();
-                for(int i=0;i<size;i++)
-                {
-                    ListViewItemDTO dto = initItemList.get(i);
-                    dto.setChecked(true);
-                }
 
-                listViewDataAdapter.notifyDataSetChanged();
             }
         });
 
@@ -142,14 +134,6 @@ int maxstrength=5000;
         selectNoneButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int size = initItemList.size();
-                for(int i=0;i<size;i++)
-                {
-                    ListViewItemDTO dto = initItemList.get(i);
-                    dto.setChecked(false);
-                }
-
-                listViewDataAdapter.notifyDataSetChanged();
             }
         });
 
@@ -158,20 +142,7 @@ int maxstrength=5000;
         selectReverseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int size = initItemList.size();
-                for(int i=0;i<size;i++)
-                {
-                    ListViewItemDTO dto = initItemList.get(i);
 
-                    if(dto.isChecked())
-                    {
-                        dto.setChecked(false);
-                    }else {
-                        dto.setChecked(true);
-                    }
-                }
-
-                listViewDataAdapter.notifyDataSetChanged();
             }
         });
 
@@ -210,22 +181,7 @@ int maxstrength=5000;
 
 
 
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////
-
-
-
-
-
-
-
+//////////////////////////////End of Custom List InitializationList////////////////////////
 
 
 
@@ -264,25 +220,20 @@ int maxstrength=5000;
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
 
-
-        if (id == R.id.action_select_all)
-        {
-            int size = initItemList.size();
-            for(int i=0;i<size;i++)
-            {
-                ListViewItemDTO dto = initItemList.get(i);
-                dto.setChecked(true);
-            }
-
-            listViewDataAdapter.notifyDataSetChanged();
-            return true;
-        }
-
+   switch(id)
+    {
+      case R.id.action_settings : return true;
+      case R.id.action_select_all : LO.SelectAll(); return true;
+      case R.id.action_select_none : LO.SelectNone();; return true;
+      case R.id.action_load : return true;
+      case R.id.action_save : return true;
+      case R.id.action_save_as : return true;
+      case R.id.action_pick_unpick : return true;
+      case R.id.action_reverse : LO.SelectReverse();return true;
+     }
         return super.onOptionsItemSelected(item);
+
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -309,91 +260,6 @@ int maxstrength=5000;
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
-
-    public void FillList(String FirstSeat,String LastSeat)
-    {
-     //   intItemList.removeAll(planetList);
-        Roll.removeAll(Roll);
-        checkmark.removeAll(checkmark);
-
-        String temproll=FirstSeat;
-
-        int i=0;
-        for(i=0;i<maxstrength;i++)
-        {   Roll.add(temproll);
-            checkmark.add(Boolean.FALSE);
-            ListViewItemDTO dto=new ListViewItemDTO();
-            dto.setChecked(false);
-            dto.setItemText(temproll);
-
-            initItemList.add(dto);
-            if(temproll.contains(LastSeat)) break;
-            temproll=Increment(temproll);
-        }
-
-        //((BaseAdapter) mainListView.getAdapter()).notifyDataSetChanged();
-
-    }
-
-
-
-
-
-
-
-    // Return an initialize list of ListViewItemDTO.
-    private List<ListViewItemDTO> getInitViewItemDtoList()
-    {
-        String itemTextArr[] = {"Android", "iOS", "Java", "JavaScript", "JDBC", "JSP", "Linux", "Python", "Servlet", "Windows"};
-
-
-
-        List<ListViewItemDTO> ret = new ArrayList<ListViewItemDTO>();
-
-        int length = itemTextArr.length;
-
-        for(int i=0;i<length;i++)
-        {
-            String itemText = itemTextArr[i];
-
-            ListViewItemDTO dto = new ListViewItemDTO();
-            dto.setChecked(false);
-            dto.setItemText(itemText);
-
-            ret.add(dto);
-        }
-
-        return ret;
-    }
-
-
-
-    private String Increment(String alphaNumericString)
-    {  char[] an = alphaNumericString.toCharArray();
-        int i = an.length - 1;
-        while (true)
-        {   if(an[i]<'0' || an[i]>'9') return new String(an);
-            if (i <= 0)
-                try { throw new Exception("Maxed out number!!!"); }
-                catch (Exception e)
-                { e.printStackTrace(); }
-            an[i]++;
-
-            if (an[i] - 1 == '9')
-            {
-                an[i] = '0';
-                i--;
-                continue;
-            }
-
-
-            return new String(an);
-        }
-    }
-
-
-
 
 
 }
