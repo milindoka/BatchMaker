@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity
       case R.id.action_settings : return true;
       case R.id.action_select_all : LO.SelectAll(); return true;
       case R.id.action_select_none : LO.SelectNone();; return true;
-      case R.id.action_load : return true;
+      case R.id.action_load : FSL.LoadBatch("/sdcard/ztest.bch"); return true;
       case R.id.action_save : FSL.SaveList(); return true;
       case R.id.action_save_as : return true;
       case R.id.action_pick_unpick : return true;

@@ -2,16 +2,16 @@ package ilugbom.org.in.batchmaker;
 
 import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 /**
  * Created by milind on 8/2/19.
  */
-
-
-
 
 
 
@@ -110,4 +110,152 @@ public class FileSaveLoad
         }
 
     }
+
+
+
+    void LoadBatch(String fylenamewithpath)
+    {
+        try
+        {
+
+            File myFile = new File(fylenamewithpath);
+            FileInputStream fIn = new FileInputStream(myFile);
+            BufferedReader myReader = new BufferedReader(new InputStreamReader(fIn));
+            String aDataRow = "";
+
+
+            aDataRow=myReader.readLine(); /// blank line separator
+
+            String temp[],stemp;
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            School=temp[1].trim();
+
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            Index=temp[1].trim();
+
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            Strim=temp[1].trim();
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            Standard=temp[1].trim();
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            Subject=temp[1].trim();
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            SubjectCode=temp[1].trim();
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            Type=temp[1].trim();
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            BatchNo=temp[1].trim();
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            BatchCreator=temp[1].trim();
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            Email1=temp[1].trim();
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            Email2=temp[1].trim();
+
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            Date=temp[1].trim();
+
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            BatchTime=temp[1].trim();
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            BatchSession=temp[1].trim();
+
+            aDataRow=myReader.readLine(); /// blank line separator
+            aDataRow=myReader.readLine(); /// ==== Reserved line ===
+            aDataRow=myReader.readLine(); /// blank line separator
+            aDataRow=myReader.readLine(); /// Seat Nos: Tag
+            aDataRow=myReader.readLine(); /// blank line separator
+
+            MA.tempRoll.removeAll(MA.tempRoll);
+            while ((aDataRow = myReader.readLine()) != null)
+
+            {
+                MA.tempRoll.add(aDataRow);
+            }
+
+            myReader.close();
+
+            int tot=MA.tempRoll.size();
+//            PickCounter=tot;
+            MA.froll=MA.tempRoll.get(0);
+            MA.lroll=MA.tempRoll.get(tot-1);
+
+            //show(froll);show(lroll);
+
+            MA.LO.FillList(MA.froll,MA.lroll);   ///This removes all arrays and refill them
+
+
+            int totroll=MA.Roll.size();
+            int i,j;
+
+            for(i=0;i<totroll;i++)
+            { //Planet planet = listAdapter.getItem(i);
+                ListViewItemDTO dto = MA.initItemList.get(i);
+                for(j=0;j<tot;j++)
+                    if(MA.Roll.get(i).contains(MA.tempRoll.get(j)))
+                    {
+                        dto.setChecked(true); break;
+
+                    }
+            }
+            //AlreadyPicked=false;
+            MA.listViewDataAdapter.notifyDataSetChanged();
+
+       //     FileNameWithPath=fylenamewithpath;
+       //     int start=fylenamewithpath.lastIndexOf("/");
+
+           // FileName=fylenamewithpath.substring(start+1);
+
+            //	 PickRoutine();
+
+
+           // mainListView.setSelection(0);
+           // UpdateTitle(); ///To reset filename and counter display
+           // ((BaseAdapter) mainListView.getAdapter()).notifyDataSetChanged();
+            show("Loaded From SD Card");
+           // modified=false;
+        }
+        catch (Exception e)
+        {
+            Toast.makeText(MA,e.getMessage(),Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 }
