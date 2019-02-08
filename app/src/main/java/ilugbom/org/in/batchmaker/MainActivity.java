@@ -134,67 +134,6 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        // Click this button to select all listview items with checkbox checked.
-        Button selectAllButton = (Button)findViewById(R.id.list_select_all);
-        selectAllButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        // Click this button to disselect all listview items with checkbox unchecked.
-        Button selectNoneButton = (Button)findViewById(R.id.list_select_none);
-        selectNoneButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-
-        // Click this button to reverse select listview items.
-        Button selectReverseButton = (Button)findViewById(R.id.list_select_reverse);
-        selectReverseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        // Click this button to remove selected items from listview.
-        Button selectRemoveButton = (Button)findViewById(R.id.list_remove_selected_rows);
-        selectRemoveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                alertDialog.setMessage("Are you sure to remove selected listview items?");
-
-                alertDialog.setButton(Dialog.BUTTON_POSITIVE, "Confirm", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        int size = initItemList.size();
-                        for(int i=0;i<size;i++)
-                        {
-                            ListViewItemDTO dto = initItemList.get(i);
-
-                            if(dto.isChecked())
-                            {
-                                initItemList.remove(i);
-                                i--;
-                                size = initItemList.size();
-                            }
-                        }
-
-                        listViewDataAdapter.notifyDataSetChanged();
-                    }
-                });
-
-                alertDialog.show();
-            }
-        });
-
-
-
 //////////////////////////////End of Custom List InitializationList////////////////////////
 
 
