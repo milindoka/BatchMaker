@@ -1,10 +1,14 @@
 package ilugbom.org.in.batchmaker;
 
+import android.Manifest;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -38,7 +42,7 @@ public class MainActivity extends AppCompatActivity
     ListViewItemCheckboxBaseAdapter listViewDataAdapter;
 
     ListOperations LO=new ListOperations();
-
+    FileSaveLoad FSL=new FileSaveLoad();
 
     /////////////Show Msg Functions /////////////////////////////////////
     public void show(int tempnum)
@@ -70,7 +74,17 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+
+        if(!StoragePermissionGranted()) ;
+
+        if(!StoragePermissionGranted()) finish();
+
+
+
+
+
         LO.SetMA(this);
+        FSL.SetMA(this);
 
         /////////////////////////////////////Custom List Initialization///////////
 
@@ -227,7 +241,7 @@ public class MainActivity extends AppCompatActivity
       case R.id.action_select_all : LO.SelectAll(); return true;
       case R.id.action_select_none : LO.SelectNone();; return true;
       case R.id.action_load : return true;
-      case R.id.action_save : return true;
+      case R.id.action_save : FSL.SaveList(); return true;
       case R.id.action_save_as : return true;
       case R.id.action_pick_unpick : return true;
       case R.id.action_reverse : LO.SelectReverse();return true;
@@ -259,5 +273,43 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    /////////////////// Storage Permission //////////////////////////////////////
+
+    public  boolean StoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                //Log.v(TAG,"Permission is granted");
+                return true;
+            } else {
+
+                //Log.v(TAG,"Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+          //  Log.v(TAG,"Permission is granted");
+            return true;
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
+        //    Log.v(TAG,"Permission: "+permissions[0]+ "was "+grantResults[0]);
+            //resume tasks needing this permission
+        }
+    }
+
+
+
+
+
+
+
 
 }
