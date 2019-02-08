@@ -33,10 +33,6 @@ public class FileSaveLoad
 //////////////////////////////////////////////////////////////////
 
 
-
-
-
-
     private MainActivity MA;
     void SetMA(MainActivity MA){this.MA=MA;}
 
@@ -77,18 +73,18 @@ public class FileSaveLoad
         txtData+="\n";
         txtData+="Seat Nos :\n";
         txtData+="\n";
-      /*
 
-        for(i=0;i<Roll.size();i++)
-        { boolean temp=checkmark.get(i);
+
+        for(i=0;i<MA.initItemList.size();i++)
+        { boolean temp=MA.initItemList.get(i).isChecked();
             if(temp)
             { //show(Roll.get(i));
-                txtData+=Roll.get(i);
+                txtData+=MA.initItemList.get(i).getItemText();
                 txtData+='\n';
             }
         }
 
-*/
+
         //String fnem=Subject.toUpperCase().substring(0,3)+"-"+BatchNo+"-"+BatchCreator+".bch";
 
         ///  FileNameWithPath is already filled from SaveBatchList()
