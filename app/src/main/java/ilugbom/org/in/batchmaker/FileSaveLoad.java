@@ -1,5 +1,11 @@
 package ilugbom.org.in.batchmaker;
 
+import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
+import android.text.InputType;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -74,7 +80,6 @@ public class FileSaveLoad
         txtData+="Seat Nos :\n";
         txtData+="\n";
 
-
         for(i=0;i<MA.initItemList.size();i++)
         { boolean temp=MA.initItemList.get(i).isChecked();
             if(temp)
@@ -84,11 +89,10 @@ public class FileSaveLoad
             }
         }
 
-
-        //String fnem=Subject.toUpperCase().substring(0,3)+"-"+BatchNo+"-"+BatchCreator+".bch";
-
-        ///  FileNameWithPath is already filled from SaveBatchList()
-
+//        String ShortSubject="";
+//        if(Subject.length()>3) ShortSubject=Subject.toUpperCase().substring(0,3);
+//        String fnem=Subject.toUpperCase().substring(0,3)+"-"+BatchNo+"-"+BatchCreator+".bch";
+//        FileNameWithPath=FileNameWithPath+fnem;
         try {
             File myFile = new File(FileNameWithPath);
             myFile.createNewFile();
@@ -251,6 +255,69 @@ public class FileSaveLoad
 
 
 
+    void SaveListDialog()
+    {
+        // if (OpenNow) { OpenFileDialog(); return;}
+        // if(NewNow) { GetNewRoll();return; }
+
+        if(BatchNo.length()==0)  {show("Cannot Save. Fill Batch No. In Header");return;}
+
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(MA);
+        alert.setTitle("File Name To Save Batch :");
+        final EditText input = new EditText(MA);
+        input.setSingleLine();
+        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+        String ShortSubject="";
+        if(Subject.length()>3) ShortSubject=Subject.toUpperCase().substring(0,3);
+        else ShortSubject=Subject;
+        String fylenem=ShortSubject+"-"+BatchNo+"-"+BatchCreator.toUpperCase();
+        input.setText(fylenem);
+
+        alert.setView(input);
+        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int whichButton)
+            {
+                String fnem = input.getText().toString();
+                fnem+=".bch";
+             //   FileName=fnem;
+                FileNameWithPath="/sdcard/";
+                FileNameWithPath+=fnem;
+
+
+                InputMethodManager imm = (InputMethodManager) MA.getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(input.getWindowToken(),0);
+
+
+                if(fnem.length()==0) { show("Blank File Name"); return;}
+
+                show(fnem);
+                File file = new File(FileNameWithPath);
+                if(!file.exists()) { SaveList();
+                                    // modified=false;  FileName=fnem;  UpdateTitle(); return;
+                                     }
+
+               // else
+               // {  OverWriteCase(); }
+
+            }
+
+        });
+
+        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                InputMethodManager imm = (InputMethodManager) MA.getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(input.getWindowToken(),0);
+                //	if (OpenNow)OpenFile();
+                //	if(NewNow) GetNewRoll();
+                return;
+            }
+        });
+        alert.show();
+        InputMethodManager imm = (InputMethodManager) MA.getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+    }
 
 
 
