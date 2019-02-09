@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity
 
    switch(id)
     {case R.id.action_new : LO.GetNewRoll(); return true;
-      case R.id.action_settings : return true;
+      case R.id.action_settings : EditSettings(); return true;
       case R.id.action_select_all : LO.SelectAll(); return true;
       case R.id.action_select_none : LO.SelectNone();; return true;
       case R.id.action_load : FSL.LoadBatch("/sdcard/ztest.bch"); return true;
@@ -245,7 +245,11 @@ public class MainActivity extends AppCompatActivity
     }
 
 
+void EditSettings()
+{ PreferenceDialog pd = new PreferenceDialog();
+    pd.showPreferenceDialog(this);
 
+}
 
 
 
