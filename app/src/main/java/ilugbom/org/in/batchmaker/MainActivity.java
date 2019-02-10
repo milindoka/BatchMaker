@@ -23,6 +23,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.itextpdf.text.DocumentException;
@@ -47,6 +48,9 @@ public class MainActivity extends AppCompatActivity
     ListOperations LO=new ListOperations();
     FileSaveLoad FSL=new FileSaveLoad();
     PreferenceDialog pd = new PreferenceDialog();
+    private TextView FC;
+
+
     /////////////Show Msg Functions /////////////////////////////////////
     public void show(int tempnum)
     {
@@ -89,6 +93,7 @@ public class MainActivity extends AppCompatActivity
         LO.SetMA(this);
         FSL.SetMA(this);
 
+        FC=(TextView) findViewById(R.id.FabCounter);
         /////////////////////////////////////Custom List Initialization///////////
 
         // Get listview checkbox.
@@ -149,6 +154,9 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        FC.setText(String.format("%d",3));
+
     }
 
     @Override
