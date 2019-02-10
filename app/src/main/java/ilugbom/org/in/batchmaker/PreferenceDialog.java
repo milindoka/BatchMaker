@@ -9,12 +9,14 @@ import android.widget.EditText;
 import android.content.SharedPreferences;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-
-
+import android.widget.Toast;
 
 
 public class PreferenceDialog
 {
+
+
+
 
     boolean modified=false,NewNow=false,selectall=false,end=false,OpenNow=false;
     String  BatchNo="01",Date="",BatchTime="",School="SIWS College",Index="J-31.04.005",
@@ -175,7 +177,24 @@ public class PreferenceDialog
     }
 
 
+void LoadPreferrences(final Context context)
+{
+    ////load preferences
+    SharedPreferences settings = context.getSharedPreferences("BATCHMAKER-PREF", 0);
+    School=settings.getString("School",School);
+    Index=settings.getString("Index", Index);
+    Strim=settings.getString("Strim", Strim);
+    Standard=settings.getString("Standard", Standard);
+    Subject=settings.getString("Subject", Subject);
+    SubjectCode=settings.getString("SubjectCode", SubjectCode);
+    Type=settings.getString("Type", Type);
+    Email1=settings.getString("Email1", Email2);
+    Email2=settings.getString("Email2", Email2);
+    BatchCreator=settings.getString("BatchCreator", BatchCreator);
 
+
+
+}
 
 
 

@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity
 
     ListOperations LO=new ListOperations();
     FileSaveLoad FSL=new FileSaveLoad();
-
+    PreferenceDialog pd = new PreferenceDialog();
     /////////////Show Msg Functions /////////////////////////////////////
     public void show(int tempnum)
     {
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity
         });
 
 //////////////////////////////End of Custom List InitializationList////////////////////////
-
+         pd.LoadPreferrences(this);
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -246,7 +246,7 @@ public class MainActivity extends AppCompatActivity
 
 
 void EditSettings()
-{ PreferenceDialog pd = new PreferenceDialog();
+{ //PreferenceDialog pd = new PreferenceDialog();
    pd.SetPreferrenceDlg(this);
 
 }
