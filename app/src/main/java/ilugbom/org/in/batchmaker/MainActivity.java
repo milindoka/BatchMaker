@@ -194,17 +194,13 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        switch(id)
+        {   case R.id.nav_edit_header : FSL.ShowHeaderDlg(); break;
+            case R.id.nav_save_pdf : break;
+            case R.id.nav_save_combined_pdf : break;
+            case R.id.nav_set_preferences : break;
+            case R.id.nav_share : break;
+            case R.id.nav_send : break;
 
         }
 

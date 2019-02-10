@@ -5,21 +5,21 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_edit_header"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Edit Header" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_save_pdf"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Save as PDF" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_save_combined_pdf"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Create Combined PDF" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_set_preferences"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Set Preferences" />
     </group>
 
     <item android:title="Communicate">

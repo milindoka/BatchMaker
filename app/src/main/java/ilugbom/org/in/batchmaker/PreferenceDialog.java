@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.content.SharedPreferences;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.Toast;
+
 
 
 public class PreferenceDialog
