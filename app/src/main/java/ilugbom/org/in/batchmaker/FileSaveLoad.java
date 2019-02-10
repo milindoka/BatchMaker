@@ -18,6 +18,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.view.ViewGroup.LayoutParams;
 /**
  * Created by milind on 8/2/19.
@@ -394,5 +397,42 @@ public class FileSaveLoad
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
 
     }
+
+     void OpenFileDialog()
+    {	String tempstr;
+        //OpenNow=false;
+        String rootDir=Environment.getExternalStorageDirectory().getPath();
+        List<String> listItems = new ArrayList<String>();
+        File mfile=new File(rootDir);
+        File[] list=mfile.listFiles();
+        String tempupper;
+        for(int i=0;i<mfile.listFiles().length;i++)
+        {
+            tempstr=list[i].getAbsolutePath();
+            tempupper=tempstr.toUpperCase();
+            if(tempupper.endsWith(".BCH") )
+                listItems.add(list[i].getAbsolutePath());
+        }
+
+        final CharSequence[] items = listItems.toArray(new CharSequence[listItems.size()]);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(MA);
+        builder.setTitle("Select File To Open...");
+        builder.setItems(items, new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface dialog, int item)
+            {String ttt= (String) items[item];
+                LoadBatch(ttt);
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+
+
+
+
+
 
 }
