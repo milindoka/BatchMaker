@@ -25,6 +25,9 @@ import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.itextpdf.text.DocumentException;
+
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -196,7 +199,7 @@ public class MainActivity extends AppCompatActivity
 
         switch(id)
         {   case R.id.nav_edit_header : FSL.ShowHeaderDlg(); break;
-            case R.id.nav_save_pdf : break;
+            case R.id.nav_save_pdf : CreateSingleBatchPDF(); break;
             case R.id.nav_save_combined_pdf : break;
             case R.id.nav_set_preferences : break;
             case R.id.nav_share : break;
@@ -247,7 +250,20 @@ void EditSettings()
 
 }
 
+void CreateSingleBatchPDF()
+{
+  CreatePDF cp=new CreatePDF();
 
+        try {
+            cp.SingleBatchPdf();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        show("Single PDF Created");
+
+}
 
 
 
