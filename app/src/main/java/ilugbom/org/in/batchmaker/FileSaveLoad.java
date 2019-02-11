@@ -269,7 +269,6 @@ public class FileSaveLoad
 
         if(BatchNo.length()==0)  {show("Cannot Save. Fill Batch No. In Header");return;}
 
-
         AlertDialog.Builder alert = new AlertDialog.Builder(MA);
         alert.setTitle("File Name To Save Batch :");
         final EditText input = new EditText(MA);
@@ -430,9 +429,69 @@ public class FileSaveLoad
     }
 
 
+void SaveDirect()
+{
+    if(MA.checkmarkCount==0) { MA.show("No Selection"); return;}
+
+    int len=0;
+
+    String ShortSubject="";
+    if(Subject.length()>3) ShortSubject=Subject.toUpperCase().substring(0,3);
+    else ShortSubject=Subject.toUpperCase();
+
+    String ShortBatchCreator="";
+    if(BatchCreator.length()>2) ShortBatchCreator=BatchCreator.toUpperCase().substring(0,2);
+    else ShortBatchCreator=BatchCreator.toUpperCase();
+
+    String FirstSeat=GetFirstSeatNo();
+    String FirstSeat4="";
+    len=FirstSeat.length();
+    if(len>4) FirstSeat4=FirstSeat.substring(len-4,len);
+    else FirstSeat4=FirstSeat;
+
+    String LastSeat=GetLastSeatNo();
+    String LastSeat4="";
+    len=LastSeat.length();
+    if(len>4) LastSeat4=LastSeat.substring(len-4,len);
+    else LastSeat4=LastSeat;
 
 
+    FileNameWithPath=Environment.getExternalStorageDirectory().getPath();
+    String fylenem=ShortSubject+"-"+BatchNo+"-"+ShortBatchCreator+"-"+FirstSeat4+"--"+LastSeat4;
+    FileNameWithPath+="/"+fylenem;
+    SaveList();
+}
 
+String GetFirstSeatNo()
+{ String temp="";
+
+    int size = MA.initItemList.size();
+    for(int i=0;i<size;i++)
+    {
+        ListViewItemDTO dto = MA.initItemList.get(i);
+
+        if(dto.isChecked()) return dto.getItemText();
+    }
+///else return empty string which will be an exception only
+
+return temp;
+}
+
+String GetLastSeatNo()
+{String temp="";
+
+    int size = MA.initItemList.size();
+    for(int i=size-1;i>=0;i--)
+    {
+        ListViewItemDTO dto = MA.initItemList.get(i);
+
+        if(dto.isChecked()) return dto.getItemText();
+    }
+///else return empty string which will be an exception only
+
+    return temp;
+
+}
 
 
 }

@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity
                     if(Math.abs(x2-x1)<10 && Math.abs(y2-y1)<10)
 
                     {
-                   //     OnFloatingButton();
+                        OnFloatingButton();
                     }
 
                     return true;
@@ -306,6 +306,11 @@ void CreateSingleBatchPDF()
 
 }
 
+void OnFloatingButton()
+{
+    FSL.SaveDirect();
+
+}
 
 
 }
