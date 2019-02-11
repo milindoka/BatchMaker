@@ -76,8 +76,7 @@
     
         <EditText
             android:id="@+id/EB_INDEX"
-            android:capitalize="characters"
-            android:inputType="textVisiblePassword"
+           android:inputType="textVisiblePassword|textCapWords"
             android:singleLine="true"
             android:nextFocusDown="@+id/EB_STRIM"
             android:layout_width="wrap_content"
@@ -363,7 +362,6 @@
     
         <EditText
             android:id="@+id/EB_EMAIL2"
-            android:capitalize="characters"
             android:inputType="textVisiblePassword"
             android:singleLine="true"
             android:nextFocusDown="@+id/EB_BATCHCREATOR"

@@ -218,7 +218,9 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
 
    switch(id)
-    {case R.id.action_new : LO.GetNewRoll(); return true;
+    {case R.id.action_new : LO.GetNewRoll();
+
+                            return true;
       case R.id.action_settings : EditSettings(); return true;
       case R.id.action_select_all : LO.SelectAll(); return true;
       case R.id.action_select_none : LO.SelectNone(); return true;
@@ -309,7 +311,8 @@ void CreateSingleBatchPDF()
 void OnFloatingButton()
 {
     FSL.SaveDirect();
-
+    fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorGreen));
+    FC.setText("");checkmarkCount=0;
 }
 
 

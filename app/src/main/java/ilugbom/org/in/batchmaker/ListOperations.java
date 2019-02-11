@@ -21,7 +21,7 @@ public class ListOperations
 { private MainActivity MA;
   void SetMA(MainActivity MA){this.MA=MA;}
   int maxstrength=5000;
-  String froll,lroll;
+ // String froll,lroll;
     public void FillList(String FirstSeat,String LastSeat)
     {
         MA.initItemList.removeAll(MA.initItemList);
@@ -141,7 +141,7 @@ public void SelectAll()
         input1.setSingleLine();
         input1.setInputType(InputType.TYPE_CLASS_TEXT);
         //input1.setHint("First Seat No...");
-        input1.setText(froll);
+        input1.setText(MA.froll);
         input1.setFilters(FilterArray);
 
 
@@ -151,7 +151,7 @@ public void SelectAll()
         final EditText input2 = new EditText(MA);
         input2.setSingleLine();
         input2.setInputType(InputType.TYPE_CLASS_TEXT);
-        input2.setText(lroll);
+        input2.setText(MA.lroll);
         //input2.setHint("Enter Last Seat No...");
         input2.setFilters(FilterArray);
 
@@ -169,18 +169,19 @@ public void SelectAll()
             public void onClick(DialogInterface dialog, int whichButton)
             {
 
-                froll = input1.getText().toString();
-                lroll = input2.getText().toString();
+                MA.froll = input1.getText().toString();
+                MA.lroll = input2.getText().toString();
                 boolean found=false;
 
 
-                String temproll=froll;
-                FillList(froll,lroll);
+                String temproll=MA.froll;
+                FillList(MA.froll,MA.lroll);
              //   AlreadyPicked=false;
              //   FileNameWithPath=""; ///fresh file created
 
                 MA.listViewDataAdapter.notifyDataSetChanged();
 
+                MA.FSL.ShowHeaderDlg();
                 InputMethodManager imm = (InputMethodManager) MA.getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(input1.getWindowToken(),0);
               //  modified=false;
