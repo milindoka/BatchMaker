@@ -26,14 +26,14 @@ public class ListOperations
     {
         MA.initItemList.removeAll(MA.initItemList);
         MA.Roll.removeAll(MA.Roll);
-        MA.checkmark.removeAll(MA.checkmark);
+     //   MA.checkmark.removeAll(MA.checkmark);
 
         String temproll=FirstSeat;
 
         int i=0;
         for(i=0;i<maxstrength;i++)
         {   MA.Roll.add(temproll);
-            MA.checkmark.add(Boolean.FALSE);
+           // MA.checkmark.add(Boolean.FALSE);
             ListViewItemDTO dto=new ListViewItemDTO();
             dto.setChecked(false);
             dto.setItemText(temproll);

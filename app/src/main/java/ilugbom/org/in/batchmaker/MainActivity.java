@@ -1,15 +1,12 @@
 package ilugbom.org.in.batchmaker;
 
 import android.Manifest;
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AlertDialog;
+import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,36 +17,33 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.itextpdf.text.DocumentException;
-
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
 
-    private boolean AlreadyPicked=false;
+
     ArrayList<String> Roll = new ArrayList<String>();
-    ArrayList<String> tempRoll = new ArrayList<String>();
-    ArrayList<Boolean> checkmark = new ArrayList<Boolean>();
-    ArrayList<ListViewItemDTO> initItemList = new ArrayList<ListViewItemDTO>();
-    String froll="M058151",lroll="M058200",FileNameWithPath="",tempstr;
+    ArrayList<String> tempRoll = new ArrayList<>();
+    int checkmarkCount = 0;
+    ArrayList<ListViewItemDTO> initItemList = new ArrayList<>();
+    String froll="M058151",lroll="M058200",tempstr;
     ListViewItemCheckboxBaseAdapter listViewDataAdapter;
 
     ListOperations LO=new ListOperations();
     FileSaveLoad FSL=new FileSaveLoad();
     PreferenceDialog pd = new PreferenceDialog();
     private TextView FC;
-
+    FloatingActionButton fab;
 
     /////////////Show Msg Functions /////////////////////////////////////
     public void show(int tempnum)
@@ -69,17 +63,51 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab =  findViewById(R.id.fab);
+
+        fab.setOnTouchListener(new View.OnTouchListener() {
+
+
+            float x, y;
+            float x1,y1;
+            float x2,y2;
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction())
+                {   case MotionEvent.ACTION_UP :
+                    if(Math.abs(x2-x1)<10 && Math.abs(y2-y1)<10)
+
+                    {
+                   //     OnFloatingButton();
+                    }
+
+                    return true;
+                    case MotionEvent.ACTION_MOVE:
+
+                        x2=fab.getX()+event.getX()-x; y2=fab.getY()+event.getY()-y;
+
+                        fab.setX(x2);
+                        fab.setY(y2);
+                        return true;
+                    case MotionEvent.ACTION_DOWN:
+                        x = event.getX();
+                        y = event.getY();
+                        x1=fab.getX()+event.getX()-x; y1=fab.getY()+event.getY()-y;
+                        x2=fab.getX();y2=fab.getY();
+                        //   x1=x;
+                        //  y1=y;
+                        //   Msg.show(String.format("%d",event.getX()));
+                        return true;
+                }
+
+                return false;
             }
         });
+
+
 
 
         if(!StoragePermissionGranted()) ;
@@ -93,7 +121,7 @@ public class MainActivity extends AppCompatActivity
         LO.SetMA(this);
         FSL.SetMA(this);
 
-        FC=(TextView) findViewById(R.id.FabCounter);
+        FC= findViewById(R.id.FabCounter);
         /////////////////////////////////////Custom List Initialization///////////
 
         // Get listview checkbox.
@@ -125,20 +153,24 @@ public class MainActivity extends AppCompatActivity
                 ListViewItemDTO itemDto = (ListViewItemDTO)itemObject;
 
                 // Get the checkbox.
-                CheckBox itemCheckbox = (CheckBox) view.findViewById(R.id.list_view_item_checkbox);
+                CheckBox itemCheckbox =  view.findViewById(R.id.list_view_item_checkbox);
 
                 // Reverse the checkbox and clicked item check state.
                 if(itemDto.isChecked())
                 {
                     itemCheckbox.setChecked(false);
                     itemDto.setChecked(false);
+                     checkmarkCount--;
                 }else
                 {
                     itemCheckbox.setChecked(true);
                     itemDto.setChecked(true);
+                    checkmarkCount++;
                 }
 
-                //Toast.makeText(getApplicationContext(), "select item text : " + itemDto.getItemText(), Toast.LENGTH_SHORT).show();
+                fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorPink));
+                FC.setText(String.format("%d",checkmarkCount));
+
             }
         });
 
@@ -155,7 +187,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        FC.setText(String.format("%d",3));
+        fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorGreen));
 
     }
 
@@ -189,7 +221,7 @@ public class MainActivity extends AppCompatActivity
     {case R.id.action_new : LO.GetNewRoll(); return true;
       case R.id.action_settings : EditSettings(); return true;
       case R.id.action_select_all : LO.SelectAll(); return true;
-      case R.id.action_select_none : LO.SelectNone();; return true;
+      case R.id.action_select_none : LO.SelectNone(); return true;
       case R.id.action_load : FSL.OpenFileDialog(); return true;
       case R.id.action_save : FSL.SaveListDialog(); return true;
       case R.id.action_save_as : return true;
@@ -215,7 +247,7 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -245,7 +277,8 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
+        if(grantResults[0]== PackageManager.PERMISSION_GRANTED)
+        {
         //    Log.v(TAG,"Permission: "+permissions[0]+ "was "+grantResults[0]);
             //resume tasks needing this permission
         }
