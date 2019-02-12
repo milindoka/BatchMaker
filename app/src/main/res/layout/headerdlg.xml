@@ -42,7 +42,12 @@
             android:nextFocusDown="@+id/EB_DET"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" 
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:background="@drawable/edittext_background"
+            android:textColorHint="#aeaeae"
+
             />
     </TableRow>
         
@@ -74,7 +79,13 @@
             android:nextFocusDown="@+id/EB_TIME"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:background="@drawable/edittext_background"
+            android:textColorHint="#aeaeae"
+
+            />
     </TableRow>
     
     
@@ -106,7 +117,12 @@
             android:nextFocusDown="@+id/EB_SESSION"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:background="@drawable/edittext_background"
+            android:textColorHint="#aeaeae"
+            />
     </TableRow>
     
 
@@ -138,7 +154,12 @@
             android:nextFocusDown="@+id/BCreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:background="@drawable/edittext_background"
+            android:textColorHint="#aeaeae"
+            />
     </TableRow>
     
         

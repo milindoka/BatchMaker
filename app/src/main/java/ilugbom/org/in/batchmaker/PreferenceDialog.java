@@ -15,9 +15,6 @@ import android.view.ViewGroup.LayoutParams;
 public class PreferenceDialog
 {
 
-
-
-
     boolean modified=false,NewNow=false,selectall=false,end=false,OpenNow=false;
     String  BatchNo="01",Date="",BatchTime="",School="SIWS College",Index="J-31.04.005",
             Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",Type="Practical",

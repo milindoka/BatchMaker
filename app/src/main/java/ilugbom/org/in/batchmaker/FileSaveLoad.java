@@ -457,7 +457,7 @@ void SaveDirect()
 
 
     FileNameWithPath=Environment.getExternalStorageDirectory().getPath();
-    String fylenem=ShortSubject+"-"+BatchNo+"-"+ShortBatchCreator+"-"+FirstSeat4+"--"+LastSeat4;
+    String fylenem=ShortSubject+"-"+BatchNo+"-"+ShortBatchCreator+"-"+FirstSeat4+"--"+LastSeat4+".bch";
     FileNameWithPath+="/"+fylenem;
     SaveList();
 }

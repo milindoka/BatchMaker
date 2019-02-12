@@ -288,7 +288,7 @@ public class MainActivity extends AppCompatActivity
 
 
 void EditSettings()
-{ //PreferenceDialog pd = new PreferenceDialog();
+{
    pd.SetPreferrenceDlg(this);
 
 }
