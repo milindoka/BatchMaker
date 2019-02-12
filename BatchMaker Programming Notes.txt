@@ -1,0 +1,5 @@
+   ///// MAinActivity Create bundle
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view); // wizard code
+        navigationView.setNavigationItemSelectedListener(this);			      // wizard code
+        navigationView.setItemIconTintList(null);    // ADD THIS TO AVOIDING BLACK ICON DISPLAY in drawer
+
