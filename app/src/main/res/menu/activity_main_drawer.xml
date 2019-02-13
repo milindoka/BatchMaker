@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_edit_header"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_header"
             android:title="Edit Header" />
         <item
             android:id="@+id/nav_save_pdf"
@@ -14,7 +14,7 @@
             android:title="Save as PDF" />
         <item
             android:id="@+id/nav_save_combined_pdf"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_combined_pdf"
             android:title="Create Combined PDF" />
         <item
             android:id="@+id/nav_set_preferences"
