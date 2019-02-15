@@ -42,8 +42,9 @@ public class MainActivity extends AppCompatActivity
     ListOperations LO=new ListOperations();
     FileSaveLoad FSL=new FileSaveLoad();
     PreferenceDialog pd = new PreferenceDialog();
-    private TextView FC;
+    TextView FC;
     FloatingActionButton fab;
+    boolean modified=false;
 
     /////////////Show Msg Functions /////////////////////////////////////
     public void show(int tempnum)
@@ -131,6 +132,7 @@ public class MainActivity extends AppCompatActivity
       //  final List<ListViewItemDTO> initItemList = this.getInitViewItemDtoList();
 
         LO.FillList(froll,lroll);
+        checkmarkCount=0;
 
         // Create a custom list view adapter with checkbox control.
         // In the foloowing line Original ApplicationContext() gave white color to listview
@@ -161,11 +163,13 @@ public class MainActivity extends AppCompatActivity
                     itemCheckbox.setChecked(false);
                     itemDto.setChecked(false);
                      checkmarkCount--;
+                     modified=true;
                 }else
                 {
                     itemCheckbox.setChecked(true);
                     itemDto.setChecked(true);
                     checkmarkCount++;
+                    modified=true;
                 }
 
                 fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorPink));
@@ -311,9 +315,14 @@ void CreateSingleBatchPDF()
 
 void OnFloatingButton()
 {
-    FSL.SaveDirect();
-    fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorGreen));
-    FC.setText("");checkmarkCount=0;
+    if(modified) {
+        FSL.SaveDirect();
+
+      //  checkmarkCount = 0;
+    }
+    else
+        LO.GetNewRoll();
+
 }
 
 

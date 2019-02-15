@@ -49,7 +49,7 @@ public class FileSaveLoad
     private MainActivity MA;
     void SetMA(MainActivity MA){this.MA=MA;}
 
-    boolean modified=false,NewNow=false,selectall=false,end=false,OpenNow=false;
+    boolean NewNow=false,selectall=false,end=false,OpenNow=false;
     String  BatchNo="01",Date="",BatchTime="",School="SIWS College",Index="J-31.04.005",
             Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",Type="Practical",
             Email1="",Email2="",BatchCreator="MO",BatchSession="";
@@ -108,9 +108,11 @@ public class FileSaveLoad
             myOutWriter.append(txtData);
             myOutWriter.close();
             fOut.close();
-            modified=false;
+            MA.modified=false;
             show("Saved on SD card");
 
+            MA.fab.setBackgroundTintList(MA.getResources().getColorStateList(R.color.colorGreen));
+            MA.FC.setText("");
       //      if(end) finish();
       //      end=false;OpenNow=false;
       //      if(NewNow) GetNewRoll();
@@ -382,7 +384,7 @@ public class FileSaveLoad
                 tempstr=FTime.getText().toString();  BatchTime=tempstr;
                 tempstr=FSession.getText().toString();  BatchSession=tempstr;
 
-                modified=true;
+                MA.modified=true;
 
 
                 InputMethodManager imm = (InputMethodManager) MA.getSystemService(Context.INPUT_METHOD_SERVICE);

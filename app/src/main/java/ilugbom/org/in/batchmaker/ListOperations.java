@@ -43,6 +43,7 @@ public class ListOperations
             temproll=Increment(temproll);
         }
 
+        MA.checkmarkCount=0;
         //((BaseAdapter) mainListView.getAdapter()).notifyDataSetChanged();
 
     }
@@ -58,6 +59,7 @@ public void SelectAll()
     }
 
     MA.listViewDataAdapter.notifyDataSetChanged();
+    UpdateFabCounter();
 
 }
 
@@ -72,7 +74,7 @@ public void SelectAll()
         }
 
         MA.listViewDataAdapter.notifyDataSetChanged();
-
+        UpdateFabCounter();
     }
 
   public void SelectReverse()
@@ -92,6 +94,7 @@ public void SelectAll()
 
       MA.listViewDataAdapter.notifyDataSetChanged();
 
+      UpdateFabCounter();
   }
 
 
@@ -213,6 +216,23 @@ public void SelectAll()
         InputMethodManager imm = (InputMethodManager) MA.getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
     }
+
+
+void UpdateFabCounter()
+{
+    MA.checkmarkCount = 0;
+    int size = MA.initItemList.size();
+    for (int i = 0; i < size; i++) {
+        ListViewItemDTO dto = MA.initItemList.get(i);
+
+        if (dto.isChecked()) {
+            MA.checkmarkCount++;
+        }
+    }
+    MA.listViewDataAdapter.notifyDataSetChanged();
+    MA.FC.setText(String.format("%d",MA.checkmarkCount));
+}
+
 
 
 
