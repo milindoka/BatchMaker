@@ -30,8 +30,6 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
 
-
-
     ArrayList<String> Roll = new ArrayList<String>();
     ArrayList<String> tempRoll = new ArrayList<>();
     int checkmarkCount = 0;
@@ -246,7 +244,7 @@ public class MainActivity extends AppCompatActivity
 
         switch(id)
         {   case R.id.nav_edit_header : FSL.ShowHeaderDlg(); break;
-            case R.id.nav_save_pdf : CreateSingleBatchPDF(); break;
+            case R.id.nav_save_pdf : break;
             case R.id.nav_save_combined_pdf : break;
             case R.id.nav_set_preferences : break;
             case R.id.nav_share : break;
@@ -297,9 +295,10 @@ void EditSettings()
    pd.SetPreferrenceDlg(this);
 
 }
-
+/*
 void CreateSingleBatchPDF()
 {
+
   CreatePDF cp=new CreatePDF();
 
         try {
@@ -312,7 +311,7 @@ void CreateSingleBatchPDF()
         show("Single PDF Created");
 
 }
-
+*/
 void OnFloatingButton()
 {
     if(modified) {

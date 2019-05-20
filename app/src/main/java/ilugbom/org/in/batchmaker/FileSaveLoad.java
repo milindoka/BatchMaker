@@ -15,6 +15,7 @@ import android.widget.Toast;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -22,6 +23,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.view.ViewGroup.LayoutParams;
+
+import com.itextpdf.text.DocumentException;
+
 /**
  * Created by milind on 8/2/19.
  */
@@ -55,6 +59,7 @@ public class FileSaveLoad
             Email1="",Email2="",BatchCreator="MO",BatchSession="";
 
    String FileNameWithPath="";
+   String PDFNameWithPath="";
 
 
     void SaveList()
@@ -121,6 +126,23 @@ public class FileSaveLoad
             Toast.makeText(MA, e.getMessage(),
                     Toast.LENGTH_SHORT).show();
         }
+
+        //////Create PDF now after bch file
+
+        CreatePDF cp=new CreatePDF();
+
+        try {
+            cp.SingleBatchPdf(PDFNameWithPath);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        }
+        show("Single PDF Created");
+
+
+
+
 
     }
 
@@ -288,12 +310,14 @@ public class FileSaveLoad
             public void onClick(DialogInterface dialog, int whichButton)
             {
                 String fnem = input.getText().toString();
+                String pnem = fnem;
                 fnem+=".bch";
+                pnem+=".pdf";
              //   FileName=fnem;
                 FileNameWithPath=Environment.getExternalStorageDirectory().getPath();
 
                 FileNameWithPath+="/"+fnem;
-
+                PDFNameWithPath+="/"+pnem;
 
                 InputMethodManager imm = (InputMethodManager) MA.getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(input.getWindowToken(),0);
