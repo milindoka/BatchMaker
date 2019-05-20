@@ -35,9 +35,7 @@ public class CreatePDF
             Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",Type="Practical",
             Email1="",Email2="",BatchCreator="MO",BatchSession="";
 
-
-
-
+   int size;
   public  void SetHeaderFileds(String school,String index,String strim,
                          String standard,String subject,String subjectcode,
                          String type,String batchno,String batchcreator,String email1,
@@ -73,7 +71,7 @@ public class CreatePDF
         document.setMargins(50, 30, 15, 2);
         PdfWriter.getInstance(document, output);
         document.open();
-
+        size=CheckedNumbers.size();
         AddBoxedText(document);
         AddHeader(document);
         AddBody(document);
@@ -124,7 +122,6 @@ public class CreatePDF
         cellfortable.setPadding(0);
         cellfortable.setBorder(PdfPCell.NO_BORDER);
         cellfortable.addElement(table);
-
 
         OuterTable5.addCell(cellfortable);
 
@@ -208,7 +205,8 @@ public class CreatePDF
 
 //////////table row
 
-        cell = new PdfPCell(new Phrase("Seat No's From : M0231151-M0231175",normal));
+        cell = new PdfPCell(new Phrase("Seat No's From : "+CheckedNumbers.get(0)+" - "+CheckedNumbers.get(size-1),
+                normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
@@ -218,7 +216,7 @@ public class CreatePDF
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
 
-        cell = new PdfPCell(new Phrase("Time : 1 PM To 2 PM",normal));
+        cell = new PdfPCell(new Phrase(BatchTime,normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
@@ -253,7 +251,7 @@ public class CreatePDF
 
     void AddBody(Document document) throws DocumentException
     {
-        int size=CheckedNumbers.size();
+
         float col[]={4,8,8,30};
 
         //////////   TITLE ROW
