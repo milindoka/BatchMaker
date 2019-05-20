@@ -129,7 +129,12 @@ public class FileSaveLoad
 
         //////Create PDF now after bch file
 
+
+
         CreatePDF cp=new CreatePDF();
+
+        cp.SetHeaderFileds(BatchNo,Date,BatchTime,School,Index,Strim,Standard,Subject,SubjectCode,Type,
+                Email1,Email2,BatchCreator,BatchSession);
 
         try {
             cp.SingleBatchPdf(PDFNameWithPath);
@@ -483,8 +488,11 @@ void SaveDirect()
 
 
     FileNameWithPath=Environment.getExternalStorageDirectory().getPath();
-    String fylenem=ShortSubject+"-"+BatchNo+"-"+ShortBatchCreator+"-"+FirstSeat4+"--"+LastSeat4+".bch";
-    FileNameWithPath+="/"+fylenem;
+    PDFNameWithPath=FileNameWithPath;
+    String fylenem=ShortSubject+"-"+BatchNo+"-"+ShortBatchCreator+"-"+FirstSeat4+"--"+LastSeat4;
+
+    FileNameWithPath+="/"+fylenem+".bch";
+    PDFNameWithPath+="/"+fylenem+".pdf";
     SaveList();
 }
 
