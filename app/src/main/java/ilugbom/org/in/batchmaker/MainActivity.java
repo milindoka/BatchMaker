@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity
 
     ListOperations LO=new ListOperations();
     FileSaveLoad FSL=new FileSaveLoad();
-    PreferenceDialog pd = new PreferenceDialog();
+    PreferenceDialog PD = new PreferenceDialog();
     CreatePDF CP=new CreatePDF();
     TextView FC;
     FloatingActionButton fab;
@@ -107,15 +107,9 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-
-
         if(!StoragePermissionGranted()) ;
 
         if(!StoragePermissionGranted()) finish();
-
-
-
-
 
         LO.SetMA(this);
         FSL.SetMA(this);
@@ -178,8 +172,7 @@ public class MainActivity extends AppCompatActivity
         });
 
 //////////////////////////////End of Custom List InitializationList////////////////////////
-         pd.LoadPreferrences(this);
-
+        PD.LoadPreferrences(this);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -293,7 +286,7 @@ public class MainActivity extends AppCompatActivity
 
 void EditSettings()
 {
-   pd.SetPreferrenceDlg(this);
+   PD.SetPreferrenceDlg(this);
 
 }
 

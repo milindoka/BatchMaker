@@ -99,7 +99,7 @@ public class CreatePDF
 
         OuterTable5.addCell(cell);
 
-        String indexno="31.04.005";
+        String indexno=Index;
         int len=indexno.length();
         PdfPTable table = new PdfPTable(len);
         float totalwidth=12 * len;
