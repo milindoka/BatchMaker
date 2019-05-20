@@ -24,6 +24,9 @@ import java.io.OutputStream;
 
 public class CreatePDF
 {
+    private MainActivity MA;
+    void SetMA(MainActivity MA){this.MA=MA;}
+
     Font normal = new Font(Font.FontFamily.TIMES_ROMAN, 10,
             Font.NORMAL);
 
@@ -71,9 +74,12 @@ public class CreatePDF
         document.open();
 
         AddBoxedText(document);
+        AddHeader(document);
+        AddBody(document);
 
         document.close();
     }
+
 
 
 
@@ -93,8 +99,6 @@ public class CreatePDF
 //		   cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
 
         OuterTable5.addCell(cell);
-
-
 
         String indexno="31.04.005";
         int len=indexno.length();
@@ -131,6 +135,250 @@ public class CreatePDF
 
 
     }
+
+
+
+    void AddHeader(Document document) throws DocumentException
+    {PdfPTable table = new PdfPTable(1);
+
+
+
+        PdfPCell cell = new PdfPCell(new Phrase("Maharashtra State Board of Secondary & Higher Secondary Education",normal));cell.setBorder(PdfPCell.NO_BORDER);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);cell.setBorder(PdfPCell.NO_BORDER);
+        table.addCell(cell);
+
+
+        cell = new PdfPCell(new Phrase("Mumbai Divisional Board, Vashi,Navi Mumbai - 400703",normal));cell.setBorder(PdfPCell.NO_BORDER);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        table.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("HSC - Practical - Feb-2018",normal));
+        cell.setBorder(PdfPCell.NO_BORDER);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        table.addCell(cell);
+
+
+        cell = new PdfPCell(new Phrase("Attendance Sheet",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);cell.setBorder(PdfPCell.NO_BORDER);
+        table.addCell(cell);
+/*
+  	cell = new PdfPCell(new Phrase("Date : 23/02/18"));cell.setBorder(PdfPCell.NO_BORDER);
+  	cell.setHorizontalAlignment(PdfPCell.ALIGN_RIGHT);
+  	table.addCell(cell);
+    */
+        // 	table.setSpacingAfter(10f);
+
+        //////////   table row
+        float col3[]= {12,12,7};
+        PdfPTable table2 = new PdfPTable(col3);
+        table2.setWidthPercentage(95);
+        cell = new PdfPCell(new Phrase("School/College/Center : SIWS College",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase(" ",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Batch No : 01",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+        //////////   table row
+
+        cell = new PdfPCell(new Phrase("Subject : MAthematics",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase(" ",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Date : 17-05-2019",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+
+//////////table row
+
+        cell = new PdfPCell(new Phrase("Seat No's From : M0231151-M0231175",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase(" ",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Time : 1 PM To 2 PM",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+//////////table row
+
+        cell = new PdfPCell(new Phrase("Extra Seat No's: ",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase(" ",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase(" ",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+        table2.setSpacingAfter(8f);
+
+
+        document.add(table);
+        document.add(table2);
+
+    }
+
+
+
+
+    void AddBody(Document document) throws DocumentException
+    {
+
+        float col[]={4,8,8,30};
+
+        //////////   TITLE ROW
+
+        PdfPTable table2 = new PdfPTable(col);
+        table2.setWidthPercentage(95);
+        PdfPCell cell = new PdfPCell(new Phrase("Sr No",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        cell.setPaddingBottom(5f);
+        table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Seat No",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        //cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Session",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        //cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+
+        cell = new PdfPCell(new Phrase("Student's Signature",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        //cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+
+//////////table rows
+      //  int size = MA.initItemList.size();
+int size=5;
+
+        String srno;
+        for(int i=0;i<size;i++)
+
+        { // boolean temp=MA.initItemList.get(i).isChecked();
+          //  if(!temp) continue;
+            srno=String.format("%d",i+1);
+            cell = new PdfPCell(new Phrase(srno,normal));
+            cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+            cell.setPaddingBottom(5f);
+            table2.addCell(cell);
+
+            cell = new PdfPCell(new Phrase("M0343434",normal));
+            cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+            //cell.setBorder(PdfPCell.NO_BORDER);
+            table2.addCell(cell);
+
+            cell = new PdfPCell(new Phrase("Afternoon",normal));
+            cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+            table2.addCell(cell);
+
+            cell = new PdfPCell(new Phrase(" ",normal));
+            cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+            table2.addCell(cell);
+        }
+
+
+
+        document.add(table2);
+
+    }
+
+
+    void AddFooter(Document document) throws DocumentException, IOException
+    {float footcolwid[]= {10,10,20};
+        PdfPTable table = new PdfPTable(footcolwid);
+        table.setWidthPercentage(95);
+        table.setSpacingBefore(40f);
+
+        PdfPCell cell = new PdfPCell(new Phrase("Internal Examiner",normal));
+        cell.setBorder(PdfPCell.NO_BORDER);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        table.addCell(cell);
+
+
+        cell = new PdfPCell(new Phrase("External Examiner",normal));
+        cell.setBorder(PdfPCell.NO_BORDER);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        table.addCell(cell);
+
+
+        cell = new PdfPCell(new Phrase("Signature of Head of Jr College",normal));
+        cell.setBorder(PdfPCell.NO_BORDER);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        table.addCell(cell);
+
+        ////////////////////////// TABLE ROW
+
+        cell = new PdfPCell(new Phrase("Name & Signature",normal));
+        cell.setBorder(PdfPCell.NO_BORDER);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        table.addCell(cell);
+
+
+        cell = new PdfPCell(new Phrase("Name & Signature",normal));
+        cell.setBorder(PdfPCell.NO_BORDER);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        table.addCell(cell);
+
+
+        cell = new PdfPCell(new Phrase("With Rubber Stamp",normal));
+        cell.setBorder(PdfPCell.NO_BORDER);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        table.addCell(cell);
+
+        PdfPTable table2 = new PdfPTable(1);
+        table2.setWidthPercentage(95);
+
+        cell = new PdfPCell(new Phrase("Note :",normal));cell.setBorder(PdfPCell.NO_BORDER);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        table2.addCell(cell);
+
+
+        cell = new PdfPCell(new Phrase("1. Submit to Board with Parctical Marksheet. 2. Mark ABSENT with Red Ink. 3. Write Extra No.s if any.",normal));cell.setBorder(PdfPCell.NO_BORDER);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+
+
+        document.add(table);
+        document.add(table2);
+
+    }
+
+
 
 
 }

@@ -135,6 +135,7 @@ public class FileSaveLoad
 
         cp.SetHeaderFileds(BatchNo,Date,BatchTime,School,Index,Strim,Standard,Subject,SubjectCode,Type,
                 Email1,Email2,BatchCreator,BatchSession);
+        show(Index);
 
         try {
             cp.SingleBatchPdf(PDFNameWithPath);

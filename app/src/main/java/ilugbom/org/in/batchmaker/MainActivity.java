@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity
     ListOperations LO=new ListOperations();
     FileSaveLoad FSL=new FileSaveLoad();
     PreferenceDialog pd = new PreferenceDialog();
+    CreatePDF CP=new CreatePDF();
     TextView FC;
     FloatingActionButton fab;
     boolean modified=false;
@@ -119,6 +120,7 @@ public class MainActivity extends AppCompatActivity
 
         LO.SetMA(this);
         FSL.SetMA(this);
+        CP.SetMA(this);
 
         FC= findViewById(R.id.FabCounter);
         /////////////////////////////////////Custom List Initialization///////////
