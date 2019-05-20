@@ -77,7 +77,7 @@ public class CreatePDF
         AddBoxedText(document);
         AddHeader(document);
         AddBody(document);
-
+        AddFooter(document);
         document.close();
     }
 
@@ -173,7 +173,7 @@ public class CreatePDF
         float col3[]= {12,12,7};
         PdfPTable table2 = new PdfPTable(col3);
         table2.setWidthPercentage(95);
-        cell = new PdfPCell(new Phrase("School/College/Center : SIWS College",normal));
+        cell = new PdfPCell(new Phrase("School/College/Center : "+School,normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
@@ -183,14 +183,14 @@ public class CreatePDF
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
 
-        cell = new PdfPCell(new Phrase("Batch No : 01",normal));
+        cell = new PdfPCell(new Phrase("Batch No : "+BatchNo,normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
 
         //////////   table row
 
-        cell = new PdfPCell(new Phrase("Subject : MAthematics",normal));
+        cell = new PdfPCell(new Phrase("Subject : "+Subject,normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
@@ -200,7 +200,7 @@ public class CreatePDF
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
 
-        cell = new PdfPCell(new Phrase("Date : 17-05-2019",normal));
+        cell = new PdfPCell(new Phrase("Date : "+Date,normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
@@ -329,7 +329,7 @@ public class CreatePDF
     }
 
 
-    void AddFooter(Document document) throws DocumentException, IOException
+    void AddFooter(Document document) throws DocumentException
     {float footcolwid[]= {10,10,20};
         PdfPTable table = new PdfPTable(footcolwid);
         table.setWidthPercentage(95);
@@ -383,14 +383,8 @@ public class CreatePDF
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
 
-
-
         document.add(table);
         document.add(table2);
-
-    }
-
-
-
+}
 
 }

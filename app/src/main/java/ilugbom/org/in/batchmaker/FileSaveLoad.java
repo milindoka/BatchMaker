@@ -135,8 +135,8 @@ public class FileSaveLoad
 
         //CreatePDF cp=new CreatePDF();
 
-        MA.CP.SetHeaderFileds(BatchNo,Date,BatchTime,School,Index,Strim,Standard,Subject,SubjectCode,Type,
-                Email1,Email2,BatchCreator,BatchSession);
+        MA.CP.SetHeaderFileds(School,Index,Strim,Standard,Subject,SubjectCode,Type,BatchNo,
+                BatchCreator,Email1,Email2,Date,BatchTime,BatchSession);
         show(Index);
 
         try {
