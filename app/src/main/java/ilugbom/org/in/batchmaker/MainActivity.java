@@ -109,7 +109,6 @@ public class MainActivity extends AppCompatActivity
 
 
 
-
         if(!StoragePermissionGranted()) ;
 
         if(!StoragePermissionGranted()) finish();
@@ -297,29 +296,11 @@ void EditSettings()
    pd.SetPreferrenceDlg(this);
 
 }
-/*
-void CreateSingleBatchPDF()
-{
 
-  CreatePDF cp=new CreatePDF();
-
-        try {
-            cp.SingleBatchPdf();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        }
-        show("Single PDF Created");
-
-}
-*/
 void OnFloatingButton()
 {
     if(modified) {
         FSL.SaveDirect();
-
-      //  checkmarkCount = 0;
     }
     else
         LO.GetNewRoll();

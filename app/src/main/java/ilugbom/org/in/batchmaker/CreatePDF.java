@@ -297,8 +297,9 @@ public class CreatePDF
               session=BatchSession;
             }
               else
-            { seatno="";
-              session="";
+            { seatno=" ";
+              session=" ";
+              srno=" ";
             }
 
             cell = new PdfPCell(new Phrase(srno,normal));
