@@ -17,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 
 /**
  * Created by milind on 10/2/19.
@@ -29,7 +30,7 @@ public class CreatePDF
 
     Font normal = new Font(Font.FontFamily.TIMES_ROMAN, 10,
             Font.NORMAL);
-
+    ArrayList<String> CheckedNumbers=new ArrayList<String>();//creating new generic arraylist
     String  BatchNo="01",Date="",BatchTime="",School="SIWS College",Index="J-31.04.005",
             Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",Type="Practical",
             Email1="",Email2="",BatchCreator="MO",BatchSession="";
@@ -252,7 +253,7 @@ public class CreatePDF
 
     void AddBody(Document document) throws DocumentException
     {
-
+        int size=CheckedNumbers.size();
         float col[]={4,8,8,30};
 
         //////////   TITLE ROW
@@ -283,29 +284,40 @@ public class CreatePDF
 
 //////////table rows
       //  int size = MA.initItemList.size();
-int size=5;
+
 
         String srno;
-        for(int i=0;i<size;i++)
+        String seatno;
+        String session;
+        for(int i=0;i<32;i++)
 
         { // boolean temp=MA.initItemList.get(i).isChecked();
           //  if(!temp) continue;
             srno=String.format("%d",i+1);
+            if(i<size)
+            { seatno=CheckedNumbers.get(i);
+              session=BatchSession;
+            }
+              else
+            { seatno="";
+              session="";
+            }
+
             cell = new PdfPCell(new Phrase(srno,normal));
             cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
             cell.setPaddingBottom(5f);
             table2.addCell(cell);
 
-            cell = new PdfPCell(new Phrase("M0343434",normal));
+            cell = new PdfPCell(new Phrase(seatno,normal));
             cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
             //cell.setBorder(PdfPCell.NO_BORDER);
             table2.addCell(cell);
 
-            cell = new PdfPCell(new Phrase("Afternoon",normal));
+            cell = new PdfPCell(new Phrase(session,normal));
             cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
             table2.addCell(cell);
 
-            cell = new PdfPCell(new Phrase(" ",normal));
+            cell = new PdfPCell(new Phrase("",normal));
             cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
             table2.addCell(cell);
         }

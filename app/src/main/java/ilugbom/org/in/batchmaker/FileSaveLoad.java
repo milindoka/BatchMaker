@@ -92,11 +92,13 @@ public class FileSaveLoad
         txtData+="Seat Nos :\n";
         txtData+="\n";
 
+        MA.CP.CheckedNumbers.removeAll(MA.CP.CheckedNumbers);
         for(i=0;i<MA.initItemList.size();i++)
         { boolean temp=MA.initItemList.get(i).isChecked();
             if(temp)
             { //show(Roll.get(i));
                 txtData+=MA.initItemList.get(i).getItemText();
+                MA.CP.CheckedNumbers.add(MA.initItemList.get(i).getItemText());
                 txtData+='\n';
             }
         }
@@ -131,14 +133,14 @@ public class FileSaveLoad
 
 
 
-        CreatePDF cp=new CreatePDF();
+        //CreatePDF cp=new CreatePDF();
 
-        cp.SetHeaderFileds(BatchNo,Date,BatchTime,School,Index,Strim,Standard,Subject,SubjectCode,Type,
+        MA.CP.SetHeaderFileds(BatchNo,Date,BatchTime,School,Index,Strim,Standard,Subject,SubjectCode,Type,
                 Email1,Email2,BatchCreator,BatchSession);
         show(Index);
 
         try {
-            cp.SingleBatchPdf(PDFNameWithPath);
+            MA.CP.SingleBatchPdf(PDFNameWithPath);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (DocumentException e) {
