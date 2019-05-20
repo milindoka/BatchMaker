@@ -158,11 +158,15 @@ public class MainActivity extends AppCompatActivity
                      checkmarkCount--;
                      modified=true;
                 }else
-                {
+                {   if(checkmarkCount<32)
+                    {
+                   // show("Batch Full");
                     itemCheckbox.setChecked(true);
                     itemDto.setChecked(true);
                     checkmarkCount++;
-                    modified=true;
+                    modified = true;
+                    }
+                    else show("Batch Full");
                 }
 
                 fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorPink));

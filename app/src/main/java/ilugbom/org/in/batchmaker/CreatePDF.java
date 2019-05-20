@@ -159,12 +159,6 @@ public class CreatePDF
         cell = new PdfPCell(new Phrase("Attendance Sheet",normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);cell.setBorder(PdfPCell.NO_BORDER);
         table.addCell(cell);
-/*
-  	cell = new PdfPCell(new Phrase("Date : 23/02/18"));cell.setBorder(PdfPCell.NO_BORDER);
-  	cell.setHorizontalAlignment(PdfPCell.ALIGN_RIGHT);
-  	table.addCell(cell);
-    */
-        // 	table.setSpacingAfter(10f);
 
         //////////   table row
         float col3[]= {12,12,7};
@@ -216,7 +210,7 @@ public class CreatePDF
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
 
-        cell = new PdfPCell(new Phrase(BatchTime,normal));
+        cell = new PdfPCell(new Phrase("Time : "+BatchTime,normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
