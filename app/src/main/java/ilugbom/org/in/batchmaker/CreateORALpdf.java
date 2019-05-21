@@ -166,7 +166,7 @@ public class CreateORALpdf
         table.addCell(cell);
 
         //////////   table row
-        float col3[]= {12,12,7};
+        float col3[]= {4,2,2};
         PdfPTable table2 = new PdfPTable(col3);
         table2.setWidthPercentage(95);
         cell = new PdfPCell(new Phrase("School/College/Center : "+School,normal));
@@ -191,12 +191,12 @@ public class CreateORALpdf
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
 
-        cell = new PdfPCell(new Phrase(" ",normal));
+        cell = new PdfPCell(new Phrase("Subject No : ",normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
 
-        cell = new PdfPCell(new Phrase("Date : "+Date,normal));
+        cell = new PdfPCell(new Phrase("Mediam : ",normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
@@ -210,7 +210,7 @@ public class CreateORALpdf
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
 
-        cell = new PdfPCell(new Phrase(" ",normal));
+        cell = new PdfPCell(new Phrase("Date :"+Date,normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
@@ -328,8 +328,8 @@ public class CreateORALpdf
 
 
     void AddFooter(Document document) throws DocumentException
-    { //float footcolwid[]= {30,50};
-        PdfPTable table = new PdfPTable(2);
+    {  float footcolwid[]= {8,6};
+        PdfPTable table = new PdfPTable(footcolwid);
         table.setWidthPercentage(95);
         table.setSpacingBefore(40f);
 
@@ -339,7 +339,7 @@ public class CreateORALpdf
         table.addCell(cell);
 
 
-        cell = new PdfPCell(new Phrase("Conuctor/Principal/Head Master Signature",normal));
+        cell = new PdfPCell(new Phrase("Conductor/Principal/Head Master Signature",normal));
         cell.setBorder(PdfPCell.NO_BORDER);
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         table.addCell(cell);
