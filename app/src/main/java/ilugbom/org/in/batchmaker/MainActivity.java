@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity
     FileSaveLoad FSL=new FileSaveLoad();
     PreferenceDialog PD = new PreferenceDialog();
     CreatePDF CP=new CreatePDF();
+    CreateORALpdf OPDF= new CreateORALpdf();
     TextView FC;
     FloatingActionButton fab;
     boolean modified=false;
@@ -114,6 +115,7 @@ public class MainActivity extends AppCompatActivity
         LO.SetMA(this);
         FSL.SetMA(this);
         CP.SetMA(this);
+        OPDF.SetMA(this);
 
         FC= findViewById(R.id.FabCounter);
         /////////////////////////////////////Custom List Initialization///////////

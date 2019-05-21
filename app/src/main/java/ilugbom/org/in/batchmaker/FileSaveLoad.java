@@ -103,6 +103,7 @@ public class FileSaveLoad
             }
         }
 
+
 //        String ShortSubject="";
 //        if(Subject.length()>3) ShortSubject=Subject.toUpperCase().substring(0,3);
 //        String fnem=Subject.toUpperCase().substring(0,3)+"-"+BatchNo+"-"+BatchCreator+".bch";
@@ -129,28 +130,38 @@ public class FileSaveLoad
                     Toast.LENGTH_SHORT).show();
         }
 
-        //////Create PDF now after bch file
 
+        //CreatePDF
 
+        if(MA.PD.Type.toUpperCase().contains("PRACT"))
+        {   MA.CP.SetHeaderFileds(MA.PD.Zone, MA.PD.School, MA.PD.Index, MA.PD.Strim, MA.PD.Standard, MA.PD.Subject, MA.PD.SubjectCode, MA.PD.Type, BatchNo,
+                MA.PD.BatchCreator, Email1, Email2, Date, BatchTime, BatchSession);
+            try {
+                MA.CP.SingleBatchPdf(PDFNameWithPath);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (DocumentException e) {
+                e.printStackTrace();
+            }
 
-        //CreatePDF cp=new CreatePDF();
-
-        MA.CP.SetHeaderFileds(MA.PD.Zone,MA.PD.School,MA.PD.Index,MA.PD.Strim,MA.PD.Standard,MA.PD.Subject,MA.PD.SubjectCode,MA.PD.Type,BatchNo,
-                MA.PD.BatchCreator,Email1,Email2,Date,BatchTime,BatchSession);
-        show(Index);
-
-        try {
-            MA.CP.SingleBatchPdf(PDFNameWithPath);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (DocumentException e) {
-            e.printStackTrace();
         }
-        show("Single PDF Created");
 
+        else
+        {
 
+            MA.OPDF.SetHeaderFileds(MA.PD.Zone, MA.PD.School, MA.PD.Index, MA.PD.Strim, MA.PD.Standard, MA.PD.Subject, MA.PD.SubjectCode, MA.PD.Type, BatchNo,
+                    MA.PD.BatchCreator, Email1, Email2, Date, BatchTime, BatchSession);
+            try {
+                MA.OPDF.SingleBatchPdf(PDFNameWithPath);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (DocumentException e) {
+                e.printStackTrace();
+            }
 
+        }
 
+        show("PDF Sheet Created");
 
     }
 
