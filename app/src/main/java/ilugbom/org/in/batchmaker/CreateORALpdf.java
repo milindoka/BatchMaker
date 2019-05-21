@@ -75,8 +75,8 @@ public class CreateORALpdf
         size=MA.CP.CheckedNumbers.size();
         AddBoxedText(document);
         AddHeader(document);
-       // AddBody(document);
-       // AddFooter(document);
+        AddBody(document);
+        AddFooter(document);
         document.close();
     }
 
@@ -251,7 +251,7 @@ public class CreateORALpdf
     void AddBody(Document document) throws DocumentException
     {
 
-        float col[]={4,8,8,30};
+        float col[]={4,8,25,13};
 
         //////////   TITLE ROW
 
@@ -267,7 +267,7 @@ public class CreateORALpdf
         //cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
 
-        cell = new PdfPCell(new Phrase("Session",normal));
+        cell = new PdfPCell(new Phrase("Name of the Candidate",normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
         //cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
@@ -328,56 +328,45 @@ public class CreateORALpdf
 
 
     void AddFooter(Document document) throws DocumentException
-    {float footcolwid[]= {10,10,20};
-        PdfPTable table = new PdfPTable(footcolwid);
+    { //float footcolwid[]= {30,50};
+        PdfPTable table = new PdfPTable(2);
         table.setWidthPercentage(95);
         table.setSpacingBefore(40f);
 
-        PdfPCell cell = new PdfPCell(new Phrase("Internal Examiner",normal));
+        PdfPCell cell = new PdfPCell(new Phrase("Supervisor's/Teacher's Name",normal));
         cell.setBorder(PdfPCell.NO_BORDER);
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         table.addCell(cell);
 
 
-        cell = new PdfPCell(new Phrase("External Examiner",normal));
+        cell = new PdfPCell(new Phrase("Conuctor/Principal/Head Master Signature",normal));
         cell.setBorder(PdfPCell.NO_BORDER);
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         table.addCell(cell);
 
 
-        cell = new PdfPCell(new Phrase("Signature of Head of Jr College",normal));
+        cell = new PdfPCell(new Phrase("Signature",normal));
         cell.setBorder(PdfPCell.NO_BORDER);
-        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         table.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("And Stamp",normal));
+        cell.setBorder(PdfPCell.NO_BORDER);
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
+        table.addCell(cell);
+
+        table.setSpacingAfter(8f);
 
         ////////////////////////// TABLE ROW
 
-        cell = new PdfPCell(new Phrase("Name & Signature",normal));
-        cell.setBorder(PdfPCell.NO_BORDER);
-        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
-        table.addCell(cell);
-
-
-        cell = new PdfPCell(new Phrase("Name & Signature",normal));
-        cell.setBorder(PdfPCell.NO_BORDER);
-        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
-        table.addCell(cell);
-
-
-        cell = new PdfPCell(new Phrase("With Rubber Stamp",normal));
-        cell.setBorder(PdfPCell.NO_BORDER);
-        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-        table.addCell(cell);
 
         PdfPTable table2 = new PdfPTable(1);
         table2.setWidthPercentage(95);
 
-        cell = new PdfPCell(new Phrase("Note :",normal));cell.setBorder(PdfPCell.NO_BORDER);
-        cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
-        table2.addCell(cell);
 
-
-        cell = new PdfPCell(new Phrase("1. Submit to Board with Parctical Marksheet. 2. Mark ABSENT with Red Ink. 3. Write Extra No.s if any.",normal));cell.setBorder(PdfPCell.NO_BORDER);
+        cell = new PdfPCell(new Phrase("Note : To be kept by Center/School/College Conductor " +
+                "for one year after the declaration of the result.",normal));
+        cell.setBorder(PdfPCell.NO_BORDER);
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
 
