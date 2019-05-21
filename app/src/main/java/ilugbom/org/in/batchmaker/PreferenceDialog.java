@@ -16,6 +16,7 @@ public class PreferenceDialog
 {
 
     boolean modified=false,NewNow=false,selectall=false,end=false,OpenNow=false;
+    String Zone="Mumbai Divisional Board, Vashi,Navi Mumbai - 400703";
     String  BatchNo="01",Date="",BatchTime="",School="SIWS College",Index="J-31.04.005",
             Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",Type="Practical",
             Email1="",Email2="",BatchCreator="MO",BatchSession="";
@@ -32,6 +33,9 @@ public class PreferenceDialog
         myDialog.getWindow().getAttributes().width = LayoutParams.FILL_PARENT;
 
 
+
+        final EditText FZone = (EditText) myDialog.findViewById(R.id.EB_ZONE);
+        FZone.setText(Zone);
 
 
         final EditText FSchool = (EditText) myDialog.findViewById(R.id.EB_SCHOOL);
@@ -80,6 +84,7 @@ public class PreferenceDialog
             public void onClick(View v)
             {
 
+                tempstr=FZone.getText().toString(); Zone=tempstr;
                 tempstr=FSchool.getText().toString(); School=tempstr;
                 tempstr=FIndex.getText().toString();  Index=tempstr;
                 tempstr=FStrim.getText().toString();  Strim=tempstr;
@@ -93,6 +98,7 @@ public class PreferenceDialog
 
                 SharedPreferences settings = context.getSharedPreferences("BATCHMAKER-PREF", 0);
                 SharedPreferences.Editor editor = settings.edit();
+                editor.putString("Zone",Zone);
                 editor.putString("School",School);
                 editor.putString("Index", Index);
                 editor.putString("Strim", Strim);
@@ -114,8 +120,6 @@ public class PreferenceDialog
             }
         });
 
-
-
         myDialog.show();
 
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -128,6 +132,7 @@ void LoadPreferrences(final Context context)
 {
     ////load preferences
     SharedPreferences settings = context.getSharedPreferences("BATCHMAKER-PREF", 0);
+    Zone=settings.getString("Zone",Zone);
     School=settings.getString("School",School);
     Index=settings.getString("Index", Index);
     Strim=settings.getString("Strim", Strim);
@@ -138,13 +143,7 @@ void LoadPreferrences(final Context context)
     Email1=settings.getString("Email1", Email2);
     Email2=settings.getString("Email2", Email2);
     BatchCreator=settings.getString("BatchCreator", BatchCreator);
-
-
-
 }
-
-
-
 
 
 }

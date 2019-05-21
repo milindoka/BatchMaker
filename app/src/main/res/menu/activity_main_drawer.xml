@@ -8,10 +8,7 @@
             android:id="@+id/nav_edit_header"
             android:icon="@drawable/ic_header_edit"
             android:title="Edit Header" />
-        <item
-            android:id="@+id/nav_save_pdf"
-            android:icon="@drawable/ic_pdf_save"
-            android:title="Save as PDF" />
+
         <item
             android:id="@+id/nav_save_combined_pdf"
             android:icon="@drawable/ic_combined_pdf"

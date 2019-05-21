@@ -219,10 +219,8 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
 
    switch(id)
-    {case R.id.action_new : LO.GetNewRoll();
-
-                            return true;
-      case R.id.action_settings : EditSettings(); return true;
+    {case R.id.action_new : LO.GetNewRoll(); return true;
+     // case R.id.action_settings : EditSettings(); return true;
       case R.id.action_select_all : LO.SelectAll(); return true;
       case R.id.action_select_none : LO.SelectNone(); return true;
       case R.id.action_load : FSL.OpenFileDialog(); return true;
@@ -242,9 +240,8 @@ public class MainActivity extends AppCompatActivity
 
         switch(id)
         {   case R.id.nav_edit_header : FSL.ShowHeaderDlg(); break;
-            case R.id.nav_save_pdf : break;
             case R.id.nav_save_combined_pdf : break;
-            case R.id.nav_set_preferences : break;
+            case R.id.nav_set_preferences :  EditSettings();  break;
             case R.id.nav_share : break;
             case R.id.nav_send : break;
 
