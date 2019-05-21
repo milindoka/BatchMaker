@@ -38,6 +38,41 @@
             android:id="@+id/EB_ZONE"
             android:inputType="textVisiblePassword"
             android:singleLine="true"
+            android:nextFocusDown="@+id/EB_MONTHYEAR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:background="@drawable/edittext_background"
+            android:textColorHint="#aeaeae"
+            />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Month - Year :"
+            android:textColor="#000000" />
+
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" >
+
+
+        <EditText
+            android:id="@+id/EB_MONTHYEAR"
+            android:inputType="textVisiblePassword"
+            android:singleLine="true"
             android:nextFocusDown="@+id/EB_SCHOOL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,12 +81,8 @@
             android:textSize="18sp"
             android:background="@drawable/edittext_background"
             android:textColorHint="#aeaeae"
-
-
-
             />
     </TableRow>
-
 
 
 
@@ -208,11 +239,7 @@
 
             />
     </TableRow>
-    
-    
-    
-    
-    
+
     
     <TableRow
         android:layout_width="fill_parent"
@@ -252,14 +279,7 @@
 
             />
     </TableRow>
-    
 
-    
-    
-    
-    
-    
-    
     
     <TableRow
         android:layout_width="fill_parent"
@@ -281,10 +301,45 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp" >
 
-    
-        
         <EditText
             android:id="@+id/EB_SUBCODE"
+            android:capitalize="characters"
+            android:inputType="textVisiblePassword"
+            android:singleLine="true"
+            android:nextFocusDown="@+id/EB_MEDIUM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:background="@drawable/edittext_background"
+            android:textColorHint="#aeaeae"
+            />
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mediam :"
+            android:textColor="#000000" />
+
+
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" >
+
+        <EditText
+            android:id="@+id/EB_MEDIUM"
             android:capitalize="characters"
             android:inputType="textVisiblePassword"
             android:singleLine="true"
@@ -296,13 +351,12 @@
             android:textSize="18sp"
             android:background="@drawable/edittext_background"
             android:textColorHint="#aeaeae"
-
             />
     </TableRow>
-    
-    
-    
-<TableRow
+
+
+
+    <TableRow
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp" >

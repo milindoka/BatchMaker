@@ -20,7 +20,7 @@ public class PreferenceDialog
     String  BatchNo="01",Date="",BatchTime="",School="SIWS College",Index="J-31.04.005",
             Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",Type="Practical",
             Email1="",Email2="",BatchCreator="MO",BatchSession="";
-
+    String Medium="English",MonthYear="Feb-2020";
     String tempstr;
 
      void SetPreferrenceDlg(final Context context)
@@ -37,6 +37,8 @@ public class PreferenceDialog
         final EditText FZone = (EditText) myDialog.findViewById(R.id.EB_ZONE);
         FZone.setText(Zone);
 
+        final EditText FMonthyear = (EditText) myDialog.findViewById(R.id.EB_MONTHYEAR);
+        FMonthyear.setText(MonthYear);
 
         final EditText FSchool = (EditText) myDialog.findViewById(R.id.EB_SCHOOL);
         FSchool.setText(School);
@@ -56,6 +58,9 @@ public class PreferenceDialog
 
         final EditText FSubcode = (EditText) myDialog.findViewById(R.id.EB_SUBCODE);
         FSubcode.setText(SubjectCode);
+
+        final EditText FMedium = (EditText) myDialog.findViewById(R.id.EB_MEDIUM);
+        FMedium.setText(Medium);
 
         final EditText FType = (EditText) myDialog.findViewById(R.id.EB_TYPE);
         FType.setText(Type);
@@ -85,12 +90,14 @@ public class PreferenceDialog
             {
 
                 tempstr=FZone.getText().toString(); Zone=tempstr;
+                tempstr=FMonthyear.getText().toString(); MonthYear=tempstr;
                 tempstr=FSchool.getText().toString(); School=tempstr;
                 tempstr=FIndex.getText().toString();  Index=tempstr;
                 tempstr=FStrim.getText().toString();  Strim=tempstr;
                 tempstr=FStandard.getText().toString();  Standard=tempstr;
                 tempstr=FSubject.getText().toString();  Subject=tempstr;
                 tempstr=FSubcode.getText().toString(); SubjectCode=tempstr;
+                tempstr=FMedium.getText().toString(); Medium=tempstr;
                 tempstr=FType.getText().toString();  Type=tempstr;
                 tempstr=FEmail1.getText().toString();  Email1=tempstr;
                 tempstr=FEmail2.getText().toString();  Email2=tempstr;
@@ -99,12 +106,14 @@ public class PreferenceDialog
                 SharedPreferences settings = context.getSharedPreferences("BATCHMAKER-PREF", 0);
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putString("Zone",Zone);
+                editor.putString("MonthYear",MonthYear);
                 editor.putString("School",School);
                 editor.putString("Index", Index);
                 editor.putString("Strim", Strim);
                 editor.putString("Standard", Standard);
                 editor.putString("Subject", Subject);
                 editor.putString("SubjectCode", SubjectCode);
+                editor.putString("Medium",Medium);
                 editor.putString("Type", Type);
                 editor.putString("Email1", Email2);
                 editor.putString("Email2", Email2);
@@ -132,13 +141,16 @@ void LoadPreferrences(final Context context)
 {
     ////load preferences
     SharedPreferences settings = context.getSharedPreferences("BATCHMAKER-PREF", 0);
+
     Zone=settings.getString("Zone",Zone);
+    MonthYear=settings.getString("MonthYear",MonthYear);
     School=settings.getString("School",School);
     Index=settings.getString("Index", Index);
     Strim=settings.getString("Strim", Strim);
     Standard=settings.getString("Standard", Standard);
     Subject=settings.getString("Subject", Subject);
     SubjectCode=settings.getString("SubjectCode", SubjectCode);
+    Medium=settings.getString("Medium", Medium);
     Type=settings.getString("Type", Type);
     Email1=settings.getString("Email1", Email2);
     Email2=settings.getString("Email2", Email2);

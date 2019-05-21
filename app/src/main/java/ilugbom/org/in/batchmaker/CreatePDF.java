@@ -32,16 +32,18 @@ public class CreatePDF
             Font.NORMAL);
     ArrayList<String> CheckedNumbers=new ArrayList<String>();//creating new generic arraylist
     String Zone="Mumbai Divisional Board, Vashi,Navi Mumbai - 400703";
+    String MonthYear="Feb-2020";
     String  BatchNo="01",Date="",BatchTime="",School="SIWS College",Index="J-31.04.005",
             Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",Type="Practical",
             Email1="",Email2="",BatchCreator="MO",BatchSession="";
 
    int size;
-  public  void SetHeaderFileds(String zone,String school,String index,String strim,
+  public  void SetHeaderFileds(String zone,String monthyear,String school,String index,String strim,
                          String standard,String subject,String subjectcode,
                          String type,String batchno,String batchcreator,String email1,
                          String email2,String date,String batchtime,String batchsession)
     {   Zone=zone;
+        MonthYear=monthyear;
         BatchNo=batchno;
         Date=date;
         BatchTime=batchtime;
@@ -151,7 +153,7 @@ public class CreatePDF
         cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
         table.addCell(cell);
 
-        cell = new PdfPCell(new Phrase("HSC - Practical - Feb-2018",normal));
+        cell = new PdfPCell(new Phrase("HSC - Practical - "+MonthYear,normal));
         cell.setBorder(PdfPCell.NO_BORDER);
         cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
         table.addCell(cell);

@@ -134,7 +134,7 @@ public class FileSaveLoad
         //CreatePDF
 
         if(MA.PD.Type.toUpperCase().contains("PRACT"))
-        {   MA.CP.SetHeaderFileds(MA.PD.Zone, MA.PD.School, MA.PD.Index, MA.PD.Strim, MA.PD.Standard, MA.PD.Subject, MA.PD.SubjectCode, MA.PD.Type, BatchNo,
+        {   MA.CP.SetHeaderFileds(MA.PD.Zone,MA.PD.MonthYear,MA.PD.School, MA.PD.Index, MA.PD.Strim, MA.PD.Standard, MA.PD.Subject, MA.PD.SubjectCode, MA.PD.Type, BatchNo,
                 MA.PD.BatchCreator, Email1, Email2, Date, BatchTime, BatchSession);
             try {
                 MA.CP.SingleBatchPdf(PDFNameWithPath);
@@ -149,7 +149,7 @@ public class FileSaveLoad
         else
         {
 
-            MA.OPDF.SetHeaderFileds(MA.PD.Zone, MA.PD.School, MA.PD.Index, MA.PD.Strim, MA.PD.Standard, MA.PD.Subject, MA.PD.SubjectCode, MA.PD.Type, BatchNo,
+            MA.OPDF.SetHeaderFileds(MA.PD.Zone, MA.PD.MonthYear,MA.PD.School, MA.PD.Index, MA.PD.Strim, MA.PD.Standard, MA.PD.Subject, MA.PD.SubjectCode, MA.PD.Medium,MA.PD.Type, BatchNo,
                     MA.PD.BatchCreator, Email1, Email2, Date, BatchTime, BatchSession);
             try {
                 MA.OPDF.SingleBatchPdf(PDFNameWithPath);
