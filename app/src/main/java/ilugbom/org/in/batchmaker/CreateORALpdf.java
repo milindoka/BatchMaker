@@ -296,7 +296,7 @@ public class CreateORALpdf
             srno=String.format("%d",i+1);
             if(i<size)
             { seatno=MA.CP.CheckedNumbers.get(i);
-                session=BatchSession;
+                session=" "; ///No session for oral exam
             }
             else
             { seatno=" ";
@@ -318,7 +318,7 @@ public class CreateORALpdf
             cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
             table2.addCell(cell);
 
-            cell = new PdfPCell(new Phrase("",normal));
+            cell = new PdfPCell(new Phrase(" ",normal));
             cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
             table2.addCell(cell);
         }

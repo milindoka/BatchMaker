@@ -115,7 +115,7 @@ public class PreferenceDialog
                 editor.putString("SubjectCode", SubjectCode);
                 editor.putString("Medium",Medium);
                 editor.putString("Type", Type);
-                editor.putString("Email1", Email2);
+                editor.putString("Email1", Email1);
                 editor.putString("Email2", Email2);
                 editor.putString("BatchCreator", BatchCreator);
                 editor.commit();
@@ -152,7 +152,7 @@ void LoadPreferrences(final Context context)
     SubjectCode=settings.getString("SubjectCode", SubjectCode);
     Medium=settings.getString("Medium", Medium);
     Type=settings.getString("Type", Type);
-    Email1=settings.getString("Email1", Email2);
+    Email1=settings.getString("Email1", Email1);
     Email2=settings.getString("Email2", Email2);
     BatchCreator=settings.getString("BatchCreator", BatchCreator);
 }

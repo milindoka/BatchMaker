@@ -3,6 +3,8 @@ package ilugbom.org.in.batchmaker;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
@@ -135,7 +137,7 @@ public class FileSaveLoad
 
         if(MA.PD.Type.toUpperCase().contains("PRACT"))
         {   MA.CP.SetHeaderFileds(MA.PD.Zone,MA.PD.MonthYear,MA.PD.School, MA.PD.Index, MA.PD.Strim, MA.PD.Standard, MA.PD.Subject, MA.PD.SubjectCode, MA.PD.Type, BatchNo,
-                MA.PD.BatchCreator, Email1, Email2, Date, BatchTime, BatchSession);
+                MA.PD.BatchCreator, MA.PD.Email1, MA.PD.Email2, Date, BatchTime, BatchSession);
             try {
                 MA.CP.SingleBatchPdf(PDFNameWithPath);
             } catch (FileNotFoundException e) {
@@ -150,7 +152,7 @@ public class FileSaveLoad
         {
 
             MA.OPDF.SetHeaderFileds(MA.PD.Zone, MA.PD.MonthYear,MA.PD.School, MA.PD.Index, MA.PD.Strim, MA.PD.Standard, MA.PD.Subject, MA.PD.SubjectCode, MA.PD.Medium,MA.PD.Type, BatchNo,
-                    MA.PD.BatchCreator, Email1, Email2, Date, BatchTime, BatchSession);
+                    MA.PD.BatchCreator, MA.PD.Email1, MA.PD.Email2, Date, BatchTime, BatchSession);
             try {
                 MA.OPDF.SingleBatchPdf(PDFNameWithPath);
             } catch (FileNotFoundException e) {
@@ -540,6 +542,50 @@ String GetLastSeatNo()
     return temp;
 
 }
+
+
+
+     void SendList()
+    {
+       // String pdfname=FileNameWithPath.replaceAll(".mrk",".pdf");
+
+        ArrayList<Uri> uris = new ArrayList<Uri>();
+
+        String[] filePaths = new String[] {FileNameWithPath,PDFNameWithPath};
+        for (String file : filePaths)
+        {
+            File fileIn = new File(file);
+            Uri u = Uri.fromFile(fileIn);
+            uris.add(u);
+        }
+
+
+        String emailsubject=Subject.trim()+"-"+BatchNo.trim()+"-"+BatchCreator.trim();
+        Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        sendIntent.putExtra(Intent.EXTRA_SUBJECT,emailsubject);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Attached Batch ...");
+
+
+        sendIntent.putExtra(Intent.EXTRA_STREAM, uris);
+        //yntaxException.parse("file://" + FileNameWithPath),
+        //		Uri.parse("file://" + pdfname));
+        //sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + FileNameWithPath));
+
+        String E1=MA.PD.Email1.trim();
+        String E2=MA.PD.Email2.trim();
+        if(E1.length()==0 && E2.length()==0) {show("Specify Email(s) in Preferrences "); return; }
+        String[] emailList={"",""};
+        if(E1.length()!=0) emailList[0]=Email1;
+        if(E2.length()!=0) emailList[1]=Email2;
+        sendIntent.putExtra(Intent.EXTRA_EMAIL,emailList);
+        sendIntent.setType("text/plain");
+        MA.startActivity(Intent.createChooser(sendIntent, "Send Mail"));
+
+    }
+
+
+
+
 
 
 }

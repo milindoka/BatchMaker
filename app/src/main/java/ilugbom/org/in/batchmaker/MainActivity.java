@@ -245,7 +245,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_save_combined_pdf : break;
             case R.id.nav_set_preferences :  EditSettings();  break;
             case R.id.nav_share : break;
-            case R.id.nav_send : break;
+            case R.id.nav_send : FSL.SendList();break;
 
         }
 
@@ -302,6 +302,9 @@ void OnFloatingButton()
         LO.GetNewRoll();
 
 }
+
+
+
 
 
 }
