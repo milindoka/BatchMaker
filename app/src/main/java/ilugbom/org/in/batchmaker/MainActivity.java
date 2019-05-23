@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity
     ArrayList<String> tempRoll = new ArrayList<>();
     int checkmarkCount = 0;
     ArrayList<ListViewItemDTO> initItemList = new ArrayList<>();
+    ArrayList<ListViewItemDTO> backupItemList = new ArrayList<>();
     String froll="M058151",lroll="M058200",tempstr;
     ListViewItemCheckboxBaseAdapter listViewDataAdapter;
 
@@ -227,8 +228,7 @@ public class MainActivity extends AppCompatActivity
       case R.id.action_select_none : LO.SelectNone(); return true;
       case R.id.action_load : FSL.OpenFileDialog(); return true;
       case R.id.action_save : FSL.SaveListDialog(); return true;
-      case R.id.action_save_as : return true;
-      case R.id.action_pick_unpick : return true;
+      case R.id.action_pick_unpick : LO.PickRoutine();return true;
       case R.id.action_reverse : LO.SelectReverse();return true;
      }
         return super.onOptionsItemSelected(item);

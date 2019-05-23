@@ -21,6 +21,7 @@ public class ListOperations
 { private MainActivity MA;
   void SetMA(MainActivity MA){this.MA=MA;}
   int maxstrength=5000;
+    Boolean AlreadyPicked=false;
  // String froll,lroll;
     public void FillList(String FirstSeat,String LastSeat)
     {
@@ -235,7 +236,44 @@ void UpdateFabCounter()
 
 
 
+void PickRoutine()
+{
+    if(MA.checkmarkCount<=0) return;
 
+  if(AlreadyPicked)  ///// Selected Numbers are already on screen
+  {                 ///// then show all the numbers
+
+
+      MA.initItemList.removeAll(MA.initItemList);
+      for (int i = 0; i < MA.backupItemList.size(); i++) //copy all items from backup array
+          {
+            ListViewItemDTO dto = MA.backupItemList.get(i);
+            MA.initItemList.add(dto);
+           }
+      MA.listViewDataAdapter.notifyDataSetChanged();
+      AlreadyPicked=false;
+      return;   ///go back to avoid remaing routine which is show picked routine
+  }
+  /// otherwise show only ticked numbers
+  int size = MA.initItemList.size();
+   MA.backupItemList.removeAll(MA.backupItemList);
+   for(int i=0;i<size;i++)
+   {
+       MA.backupItemList.add(MA.initItemList.get(i));
+   }
+
+   MA.initItemList.removeAll(MA.initItemList);
+
+    for (int i = 0; i < size; i++) {
+        ListViewItemDTO dto = MA.backupItemList.get(i);
+
+        if (dto.isChecked()) {
+            MA.initItemList.add(dto);
+        }
+    }
+    MA.listViewDataAdapter.notifyDataSetChanged();
+    AlreadyPicked=true;
+}
 
 
 

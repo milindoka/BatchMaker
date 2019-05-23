@@ -24,12 +24,6 @@
 
 
     <item
-        android:id="@+id/action_save_as"
-        android:orderInCategory="300"
-        android:title="Save As"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_select_all"
         android:orderInCategory="400"
         android:title="Select All"
