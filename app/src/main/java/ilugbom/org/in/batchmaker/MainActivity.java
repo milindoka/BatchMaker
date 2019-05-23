@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity
     PreferenceDialog PD = new PreferenceDialog();
     CreatePDF CP=new CreatePDF();
     CreateORALpdf OPDF= new CreateORALpdf();
+    CreateCombinedPDF CCPDF= new CreateCombinedPDF();
     TextView FC;
     FloatingActionButton fab;
     boolean modified=false;
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity
         FSL.SetMA(this);
         CP.SetMA(this);
         OPDF.SetMA(this);
+        CCPDF.SetMA(this);
 
         FC= findViewById(R.id.FabCounter);
         /////////////////////////////////////Custom List Initialization///////////
@@ -242,7 +244,7 @@ public class MainActivity extends AppCompatActivity
 
         switch(id)
         {   case R.id.nav_edit_header : FSL.ShowHeaderDlg(); break;
-            case R.id.nav_save_combined_pdf : break;
+            case R.id.nav_save_combined_pdf : CCPDF.CreateCombined();break;
             case R.id.nav_set_preferences :  EditSettings();  break;
             case R.id.nav_share : break;
             case R.id.nav_send : FSL.SendList();break;

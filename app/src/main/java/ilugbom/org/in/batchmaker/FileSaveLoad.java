@@ -74,6 +74,7 @@ public class FileSaveLoad
         String tmpStr;
         String txtData = "\n";
 
+        txtData+="Zone          : ";txtData+=MA.PD.Zone;   txtData+='\n';
         txtData+="School        : ";txtData+=School;       txtData+='\n';
         txtData+="Index         : ";txtData+=Index;        txtData+='\n';
         txtData+="Stream        : ";txtData+=Strim;        txtData+='\n';
@@ -183,6 +184,11 @@ public class FileSaveLoad
             aDataRow=myReader.readLine(); /// blank line separator
 
             String temp[],stemp;
+
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            MA.PD.Zone=temp[1].trim();
 
             stemp= myReader.readLine();
             temp=stemp.split(":");
