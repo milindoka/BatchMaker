@@ -30,7 +30,7 @@ public class CreateORALpdf
 
     Font normal = new Font(Font.FontFamily.TIMES_ROMAN, 10,
             Font.NORMAL);
-   // ArrayList<String> CheckedNumbers=new ArrayList<String>();//creating new generic arraylist
+    // ArrayList<String> CheckedNumbers=new ArrayList<String>();//creating new generic arraylist
     String Zone="Mumbai Divisional Board, Vashi,Navi Mumbai - 400703",MonthYear="Feb-2021";
     String  BatchNo="01",Date="",BatchTime="",School="SIWS College",Index="J-31.04.005",
             Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",
@@ -378,5 +378,4 @@ public class CreateORALpdf
     }
 
 }
-
 
