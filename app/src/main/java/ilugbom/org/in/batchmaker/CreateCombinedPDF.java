@@ -67,24 +67,33 @@ public class CreateCombinedPDF
         int totalfiles=listfiles(rootDir);
         MA.show(totalfiles);
 
-
-        // CreateOnePDF();
-
         try {
-            Document document = new Document();
-            PdfWriter.getInstance(document, new FileOutputStream(pdfFileNameWithPath));
-            document.open();
 
-            LoadBatch(fileArray.get(0));
-         //   addMetaData(document);
-         //   addTitlePage(document);
-         //   addContent(document);
+        File myFile = new File(pdfFileNameWithPath);
+        OutputStream output = new FileOutputStream(myFile);
+        Document document = new Document();
+        document = new Document(PageSize.A4);
+        document.setMargins(50, 30, 15, 2);
+        PdfWriter.getInstance(document, output);
+        document.open();
+
+
+            for(int i=0;i<totalfiles;i++)
+            {
+                LoadBatch(fileArray.get(i));
+                MA.show(fileArray.get(i));
+                AddBoxedText(document);
+                document.newPage();
+            }
 
             document.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
+
 
 /////////////// Load Single Batch
 
@@ -195,7 +204,7 @@ public class CreateCombinedPDF
             froll=tempRoll.get(0);
             lroll=tempRoll.get(tot-1);
 
-            MA.show(froll);MA.show(lroll);
+         //   MA.show(froll);MA.show(lroll);
 
         //    CreateOnePDF();
             //show("Loaded From SD Card");
@@ -205,26 +214,6 @@ public class CreateCombinedPDF
         {
             Toast.makeText(MA,e.getMessage(),Toast.LENGTH_SHORT).show();
         }
-    }
-
-
-    void CreateOnePDFpage(String pdfFileNameWithPath) throws FileNotFoundException,DocumentException
-    {   String =rootDir+"/"+"Combined.pdf";
-        File myFile = new File(pdfFileNameWithPath);
-        OutputStream output = new FileOutputStream(myFile);
-        Document document = new Document();
-        document = new Document(PageSize.A4);
-        document.setMargins(50, 30, 15, 2);
-        PdfWriter.getInstance(document, output);
-        document.open();
-      //  size=MA.CP.CheckedNumbers.size();
-        AddBoxedText(document);
-     //   AddHeader(document);
-     //   AddBody(document);
-     //   AddFooter(document);
-        document.close();
-
-
     }
 
 
