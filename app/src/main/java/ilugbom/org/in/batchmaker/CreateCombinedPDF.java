@@ -103,8 +103,7 @@ public class CreateCombinedPDF
     String Zone="Mumbai Divisional Board, Vashi,Navi Mumbai - 400703",MonthYear="Feb-2021";
     String  BatchNo="01",Date="",BatchTime="",School="SIWS College",Index="J-31.04.005",
             Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",
-            Medium="English",Type="Practical",
-            Email1="",Email2="",BatchCreator="MO",BatchSession="";
+            Medium="English",Type="Practical",BatchCreator="MO",BatchSession="";
 
     String froll,lroll;
     ArrayList<String> tempRoll = new ArrayList<>();
@@ -128,6 +127,10 @@ public class CreateCombinedPDF
             stemp= myReader.readLine();
             temp=stemp.split(":");
             Zone=temp[1].trim();
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            MonthYear=temp[1].trim();
 
             stemp= myReader.readLine();
             temp=stemp.split(":");
@@ -172,14 +175,6 @@ public class CreateCombinedPDF
             stemp= myReader.readLine();
             temp=stemp.split(":");
             BatchCreator=temp[1].trim();
-
-            stemp= myReader.readLine();
-            temp=stemp.split(":");
-            Email1=temp[1].trim();
-
-            stemp= myReader.readLine();
-            temp=stemp.split(":");
-            Email2=temp[1].trim();
 
 
             stemp= myReader.readLine();

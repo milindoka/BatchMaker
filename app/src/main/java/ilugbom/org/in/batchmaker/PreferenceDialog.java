@@ -17,10 +17,12 @@ public class PreferenceDialog
 
     boolean modified=false,NewNow=false,selectall=false,end=false,OpenNow=false;
     String Zone="Mumbai Divisional Board, Vashi,Navi Mumbai - 400703";
-    String  BatchNo="01",Date="",BatchTime="",School="SIWS College",Index="J-31.04.005",
-            Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",Type="Practical",
-            Email1="",Email2="",BatchCreator="MO",BatchSession="";
-    String Medium="English",MonthYear="Feb-2020";
+    String  BatchNo="01",Date="",BatchTime="",School="SIWS College",
+            Index="J-31.04.005",MonthYear="Feb-2020",
+            Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",
+            Medium="English",Type="Practical",  Email1="",Email2="",
+            BatchCreator="MO",BatchSession="";
+    
     String tempstr;
 
      void SetPreferrenceDlg(final Context context)

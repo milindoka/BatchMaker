@@ -55,10 +55,12 @@ public class FileSaveLoad
     private MainActivity MA;
     void SetMA(MainActivity MA){this.MA=MA;}
 
-    boolean NewNow=false,selectall=false,end=false,OpenNow=false;
-    String  BatchNo="01",Date="",BatchTime="",School="SIWS College",Index="J-31.04.005",
-            Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",Medium="English",Type="Practical",
-            Email1="",Email2="",BatchCreator="MO",BatchSession="";
+  //  boolean NewNow=false,selectall=false,end=false,OpenNow=false;
+    String Zone="Mumbai Divisional Board, Vashi,Navi Mumbai - 400703",
+           MonthYear="Feb-2021", BatchNo="01",Date="",BatchTime="",
+           School="SIWS College",Index="J-31.04.005", Strim="Science",Standard="HSC",
+           Subject="Mathematics",SubjectCode="40",Medium="English",Type="Practical",
+           BatchCreator="MO",BatchSession="";
 
    String FileNameWithPath="";
    String PDFNameWithPath="";
@@ -74,22 +76,21 @@ public class FileSaveLoad
         String tmpStr;
         String txtData = "\n";
 
-        txtData+="Zone          : ";txtData+=MA.PD.Zone;   txtData+='\n';
-        txtData+="School        : ";txtData+=School;       txtData+='\n';
-        txtData+="Index         : ";txtData+=Index;        txtData+='\n';
-        txtData+="Stream        : ";txtData+=Strim;        txtData+='\n';
-        txtData+="Standard      : ";txtData+=Standard;     txtData+='\n';
-        txtData+="Subject       : ";txtData+=Subject;      txtData+='\n';
-        txtData+="Subject Code  : ";txtData+=SubjectCode;  txtData+='\n';
-        txtData+="Medium        : ";txtData+=SubjectCode;  txtData+='\n';
-        txtData+="Type          : ";txtData+=Type;         txtData+='\n';
-        txtData+="Batch Number  : ";txtData+=BatchNo;      txtData+='\n';
-        txtData+="Batch Creater : ";txtData+=BatchCreator; txtData+='\n';
-        txtData+="Email1        : ";txtData+=Email1;       txtData+='\n';
-        txtData+="Email2        : ";txtData+=Email2;       txtData+='\n';
-        txtData+="Date          : ";txtData+=Date;         txtData+="\n";
-        txtData+="Time          : ";txtData+=BatchTime;    txtData+='\n';
-        txtData+="Session       : ";txtData+=BatchSession; txtData+="\n";
+        txtData+="Zone          : ";txtData+=MA.PD.Zone;     txtData+='\n';
+        txtData+="Month & Year  : ";txtData+=MA.PD.MonthYear;txtData+='\n';
+        txtData+="School        : ";txtData+=School;         txtData+='\n';
+        txtData+="Index         : ";txtData+=Index;          txtData+='\n';
+        txtData+="Stream        : ";txtData+=Strim;          txtData+='\n';
+        txtData+="Standard      : ";txtData+=Standard;       txtData+='\n';
+        txtData+="Subject       : ";txtData+=Subject;        txtData+='\n';
+        txtData+="Subject Code  : ";txtData+=SubjectCode;    txtData+='\n';
+        txtData+="Medium        : ";txtData+=SubjectCode;    txtData+='\n';
+        txtData+="Type          : ";txtData+=Type;           txtData+='\n';
+        txtData+="Batch Number  : ";txtData+=BatchNo;        txtData+='\n';
+        txtData+="Batch Creater : ";txtData+=BatchCreator;   txtData+='\n';
+        txtData+="Date          : ";txtData+=Date;           txtData+="\n";
+        txtData+="Time          : ";txtData+=BatchTime;      txtData+='\n';
+        txtData+="Session       : ";txtData+=BatchSession;   txtData+="\n";
         txtData+="\n";
         txtData+="=== Reserved Line ====\n";
         txtData+="\n";
@@ -189,7 +190,11 @@ public class FileSaveLoad
 
             stemp= myReader.readLine();
             temp=stemp.split(":");
-            MA.PD.Zone=temp[1].trim();
+            Zone=temp[1].trim();
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            MonthYear=temp[1].trim();
 
             stemp= myReader.readLine();
             temp=stemp.split(":");
@@ -232,15 +237,6 @@ public class FileSaveLoad
             stemp= myReader.readLine();
             temp=stemp.split(":");
             BatchCreator=temp[1].trim();
-
-            stemp= myReader.readLine();
-            temp=stemp.split(":");
-            Email1=temp[1].trim();
-
-            stemp= myReader.readLine();
-            temp=stemp.split(":");
-            Email2=temp[1].trim();
-
 
             stemp= myReader.readLine();
             temp=stemp.split(":");
@@ -586,8 +582,8 @@ String GetLastSeatNo()
         String E2=MA.PD.Email2.trim();
         if(E1.length()==0 && E2.length()==0) {show("Specify Email(s) in Preferrences "); return; }
         String[] emailList={"",""};
-        if(E1.length()!=0) emailList[0]=Email1;
-        if(E2.length()!=0) emailList[1]=Email2;
+        if(E1.length()!=0) emailList[0]=MA.PD.Email1;
+        if(E2.length()!=0) emailList[1]=MA.PD.Email2;
         sendIntent.putExtra(Intent.EXTRA_EMAIL,emailList);
         sendIntent.setType("text/plain");
         MA.startActivity(Intent.createChooser(sendIntent, "Send Mail"));
