@@ -84,7 +84,7 @@ public class FileSaveLoad
         txtData+="Standard      : ";txtData+=Standard;       txtData+='\n';
         txtData+="Subject       : ";txtData+=Subject;        txtData+='\n';
         txtData+="Subject Code  : ";txtData+=SubjectCode;    txtData+='\n';
-        txtData+="Medium        : ";txtData+=SubjectCode;    txtData+='\n';
+        txtData+="Medium        : ";txtData+=Medium;         txtData+='\n';
         txtData+="Type          : ";txtData+=Type;           txtData+='\n';
         txtData+="Batch Number  : ";txtData+=BatchNo;        txtData+='\n';
         txtData+="Batch Creater : ";txtData+=BatchCreator;   txtData+='\n';
@@ -173,7 +173,7 @@ public class FileSaveLoad
 
 
     void LoadBatch(String fylenamewithpath)
-    {
+    {  MA.checkmarkCount=0;
         try
         {
 
@@ -285,7 +285,8 @@ public class FileSaveLoad
                 for(j=0;j<tot;j++)
                     if(MA.Roll.get(i).contains(MA.tempRoll.get(j)))
                     {
-                        dto.setChecked(true); break;
+                        dto.setChecked(true);
+                        MA.checkmarkCount++;break;
 
                     }
             }

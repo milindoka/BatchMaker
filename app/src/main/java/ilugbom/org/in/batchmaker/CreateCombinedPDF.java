@@ -331,7 +331,7 @@ public class CreateCombinedPDF
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
 
-        cell = new PdfPCell(new Phrase("Mediam : "+Medium,normal));
+        cell = new PdfPCell(new Phrase("Medium : "+Medium,normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
