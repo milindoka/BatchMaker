@@ -64,11 +64,7 @@ public class CreateORALpdf
     void SingleBatchPdf(String pdfFileNameWithPath) throws FileNotFoundException,DocumentException
     {
 
-
-        //  String rootDir= Environment.getExternalStorageDirectory().getPath();
-        //  String fnem=rootDir+"/"+pdffilename+".pdf";
         File myFile = new File(pdfFileNameWithPath);
-
         OutputStream output = new FileOutputStream(myFile);
         Document document = new Document();
         document = new Document(PageSize.A4);

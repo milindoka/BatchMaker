@@ -3,19 +3,34 @@ package ilugbom.org.in.batchmaker;
 import android.os.Environment;
 import android.widget.Toast;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.PageSize;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FilenameFilter;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 public class CreateCombinedPDF
 {
+    Font normal = new Font(Font.FontFamily.TIMES_ROMAN, 10,
+            Font.NORMAL);
 
     private MainActivity MA;
     void SetMA(MainActivity MA){this.MA=MA;}
 
+    String rootDir;
     public ArrayList<String> fileArray = new ArrayList<String>();
 
 
@@ -47,12 +62,28 @@ public class CreateCombinedPDF
 
     void CreateCombined()
     {
-        String rootDir= Environment.getExternalStorageDirectory().getPath();
+        rootDir= Environment.getExternalStorageDirectory().getPath();
+        String pdfFileNameWithPath=rootDir+"/"+"Combined.pdf";
         int totalfiles=listfiles(rootDir);
         MA.show(totalfiles);
 
-        LoadBatch(fileArray.get(0));
 
+        // CreateOnePDF();
+
+        try {
+            Document document = new Document();
+            PdfWriter.getInstance(document, new FileOutputStream(pdfFileNameWithPath));
+            document.open();
+
+            LoadBatch(fileArray.get(0));
+         //   addMetaData(document);
+         //   addTitlePage(document);
+         //   addContent(document);
+
+            document.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 /////////////// Load Single Batch
@@ -166,7 +197,7 @@ public class CreateCombinedPDF
 
             MA.show(froll);MA.show(lroll);
 
-
+        //    CreateOnePDF();
             //show("Loaded From SD Card");
 
         }
@@ -176,6 +207,77 @@ public class CreateCombinedPDF
         }
     }
 
+
+    void CreateOnePDFpage(String pdfFileNameWithPath) throws FileNotFoundException,DocumentException
+    {   String =rootDir+"/"+"Combined.pdf";
+        File myFile = new File(pdfFileNameWithPath);
+        OutputStream output = new FileOutputStream(myFile);
+        Document document = new Document();
+        document = new Document(PageSize.A4);
+        document.setMargins(50, 30, 15, 2);
+        PdfWriter.getInstance(document, output);
+        document.open();
+      //  size=MA.CP.CheckedNumbers.size();
+        AddBoxedText(document);
+     //   AddHeader(document);
+     //   AddBody(document);
+     //   AddFooter(document);
+        document.close();
+
+
+    }
+
+
+
+    void AddBoxedText(Document document) throws DocumentException
+    {
+        PdfPTable OuterTable5 = new PdfPTable(4);
+        OuterTable5.setWidthPercentage(95);
+        PdfPCell cell = new PdfPCell(new Phrase(" ",normal)); //create cell object
+        cell.setBorder(PdfPCell.NO_BORDER);
+        OuterTable5.addCell(cell);
+        // OuterTable5.addCell(cell); //first two empty
+
+        cell = new PdfPCell(new Phrase("College Index Number",normal));
+        cell.setBorder(PdfPCell.NO_BORDER);
+//		   cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+
+        OuterTable5.addCell(cell);
+
+        String indexno=Index;
+        int len=indexno.length();
+        PdfPTable table = new PdfPTable(len);
+        float totalwidth=12 * len;
+        table.setTotalWidth(totalwidth);
+        table.setLockedWidth(true);
+
+
+
+
+        for(int i=0;i<len;i++)
+        { String temp="";
+            temp+=indexno.charAt(i);
+            cell = new PdfPCell(new Phrase(temp,normal));
+            cell.setPaddingBottom(5f);
+            cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+            table.addCell(cell);
+        }
+
+        PdfPCell cellfortable = new PdfPCell();
+        cellfortable.setPadding(0);
+        cellfortable.setBorder(PdfPCell.NO_BORDER);
+        cellfortable.addElement(table);
+
+        OuterTable5.addCell(cellfortable);
+
+        cell = new PdfPCell(new Phrase(" ",normal)); //fourth object
+        cell.setBorder(PdfPCell.NO_BORDER);
+        OuterTable5.addCell(cell);
+
+        document.add(OuterTable5);
+
+
+    }
 
 
 }
