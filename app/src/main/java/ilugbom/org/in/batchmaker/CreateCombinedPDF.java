@@ -155,6 +155,12 @@ public class CreateCombinedPDF
             temp=stemp.split(":");
             SubjectCode=temp[1].trim();
 
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            Medium=temp[1].trim();
+
+
             stemp= myReader.readLine();
             temp=stemp.split(":");
             Type=temp[1].trim();

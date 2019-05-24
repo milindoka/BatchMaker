@@ -57,7 +57,7 @@ public class FileSaveLoad
 
     boolean NewNow=false,selectall=false,end=false,OpenNow=false;
     String  BatchNo="01",Date="",BatchTime="",School="SIWS College",Index="J-31.04.005",
-            Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",Type="Practical",
+            Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",Medium="English",Type="Practical",
             Email1="",Email2="",BatchCreator="MO",BatchSession="";
 
    String FileNameWithPath="";
@@ -81,6 +81,7 @@ public class FileSaveLoad
         txtData+="Standard      : ";txtData+=Standard;     txtData+='\n';
         txtData+="Subject       : ";txtData+=Subject;      txtData+='\n';
         txtData+="Subject Code  : ";txtData+=SubjectCode;  txtData+='\n';
+        txtData+="Medium        : ";txtData+=SubjectCode;  txtData+='\n';
         txtData+="Type          : ";txtData+=Type;         txtData+='\n';
         txtData+="Batch Number  : ";txtData+=BatchNo;      txtData+='\n';
         txtData+="Batch Creater : ";txtData+=BatchCreator; txtData+='\n';
@@ -215,6 +216,10 @@ public class FileSaveLoad
             stemp= myReader.readLine();
             temp=stemp.split(":");
             SubjectCode=temp[1].trim();
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            Medium=temp[1].trim();
 
             stemp= myReader.readLine();
             temp=stemp.split(":");
