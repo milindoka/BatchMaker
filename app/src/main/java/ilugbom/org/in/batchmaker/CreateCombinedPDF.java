@@ -84,6 +84,7 @@ public class CreateCombinedPDF
                 MA.show(fileArray.get(i));
                 AddBoxedText(document);
                 AddOralHeader(document);
+                AddORALBody(document);
                 document.newPage();
             }
 
@@ -372,6 +373,85 @@ public class CreateCombinedPDF
         table2.setSpacingAfter(8f);
 
         document.add(table);
+        document.add(table2);
+
+    }
+
+
+    void AddORALBody(Document document) throws DocumentException
+    {
+
+        float col[]={4,8,25,13};
+
+        //////////   TITLE ROW
+
+        PdfPTable table2 = new PdfPTable(col);
+        table2.setWidthPercentage(95);
+        PdfPCell cell = new PdfPCell(new Phrase("Sr No",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        cell.setPaddingBottom(5f);
+        table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Seat No",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        //cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Name of the Candidate",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        //cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+
+        cell = new PdfPCell(new Phrase("Student's Signature",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        //cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+
+//////////table rows
+        int size = tempRoll.size();
+
+
+        String srno;
+        String seatno;
+        String session;
+        for(int i=0;i<32;i++)
+
+        { // boolean temp=MA.initItemList.get(i).isChecked();
+            //  if(!temp) continue;
+            srno=String.format("%d",i+1);
+            if(i<size)
+            { seatno=tempRoll.get(i);
+                session=" "; ///No session for oral exam
+            }
+            else
+            { seatno=" ";
+                session=" ";
+                srno=" ";
+            }
+
+            cell = new PdfPCell(new Phrase(srno,normal));
+            cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+            cell.setPaddingBottom(5f);
+            table2.addCell(cell);
+
+            cell = new PdfPCell(new Phrase(seatno,normal));
+            cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+            //cell.setBorder(PdfPCell.NO_BORDER);
+            table2.addCell(cell);
+
+            cell = new PdfPCell(new Phrase(session,normal));
+            cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+            table2.addCell(cell);
+
+            cell = new PdfPCell(new Phrase(" ",normal));
+            cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+            table2.addCell(cell);
+        }
+
+
+
         document.add(table2);
 
     }
