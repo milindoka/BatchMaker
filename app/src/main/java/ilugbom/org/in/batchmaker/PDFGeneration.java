@@ -66,13 +66,15 @@ public class PDFGeneration
             document = new Document(PageSize.A4);
             document.setMargins(50, 30, 15, 2);
             PdfWriter.getInstance(document, output);
+
             document.open();
 
 
             for(int i=0;i<totalfiles;i++)
             {
-
-
+               // LoadBatch(fileArray.get(i));
+                MA.show(fileArray.get(i));
+                BoxedHeader.AddBoxedText(document,"31.04.005");
                 /*
                 LoadBatch(fileArray.get(i));
                 MA.show(fileArray.get(i));
