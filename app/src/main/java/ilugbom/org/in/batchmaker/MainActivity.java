@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity
     CurrentPDF CPDF=new CurrentPDF();
     FileSaveLoad FSL=new FileSaveLoad();
     PreferenceDialog PD = new PreferenceDialog();
-    CreatePDF CP=new CreatePDF();
-    CreateORALpdf OPDF= new CreateORALpdf();
+  //  CreatePDF CP=new CreatePDF();
+   // CreateORALpdf OPDF= new CreateORALpdf();
    // CreateCombinedPDF CCPDF= new CreateCombinedPDF();
     PDFGeneration PGEN=new PDFGeneration();
     TextView FC;
@@ -118,8 +118,8 @@ public class MainActivity extends AppCompatActivity
 
         LO.SetMA(this);
         FSL.SetMA(this);
-        CP.SetMA(this);
-        OPDF.SetMA(this);
+       // CP.SetMA(this);
+       // OPDF.SetMA(this);
         CPDF.SetMA(this);
       //  CCPDF.SetMA(this);
         PGEN.SetMA(this);
