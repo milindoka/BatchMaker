@@ -95,6 +95,9 @@ public class PDFGeneration
                     DiskInOut.froll,
                     DiskInOut.lroll);
 
+                OralBody.AddORALBody(document,DiskInOut.tempRoll);
+                OralFooter.AddORALFooter(document);
+
                 document.newPage();
 
                 /*
