@@ -77,64 +77,62 @@ public class PDFGeneration
                 DiskInOut.LoadBatch(fileArray.get(i));
                 BoxedHeader.AddBoxedText(document,DiskInOut.Index);
 
-                PracticalHeader.Add(document,
-                        DiskInOut.Zone,
-                        DiskInOut.MonthYear,
-                        DiskInOut.BatchNo,
-                        DiskInOut.Date,
-                        DiskInOut.BatchTime,
-                        DiskInOut.School,
-                        DiskInOut.Index,
-                        DiskInOut.Strim,
-                        DiskInOut.Standard,
-                        DiskInOut.Subject,
-                        DiskInOut.SubjectCode,
-                        DiskInOut.Medium,
-                        DiskInOut.Type,
-                        DiskInOut.BatchCreator,
-                        DiskInOut.BatchSession,
-                        DiskInOut.froll,
-                        DiskInOut.lroll);
+                if(DiskInOut.Type.toUpperCase().contains("PRAC")) {
+                    PracticalHeader.Add(document,
+                            DiskInOut.Zone,
+                            DiskInOut.MonthYear,
+                            DiskInOut.BatchNo,
+                            DiskInOut.Date,
+                            DiskInOut.BatchTime,
+                            DiskInOut.School,
+                            DiskInOut.Index,
+                            DiskInOut.Strim,
+                            DiskInOut.Standard,
+                            DiskInOut.Subject,
+                            DiskInOut.SubjectCode,
+                            DiskInOut.Medium,
+                            DiskInOut.Type,
+                            DiskInOut.BatchCreator,
+                            DiskInOut.BatchSession,
+                            DiskInOut.froll,
+                            DiskInOut.lroll);
+                    //
+                    PracticalBody.Add(document, DiskInOut.BatchSession, DiskInOut.tempRoll);
+                    //
+
+                    PracticalFooter.Add(document);
+
+                }
+
+                if(DiskInOut.Type.toUpperCase().contains("ORAL"))
+                {
 
 
+                    OralHeader.Add(document,
+                            DiskInOut.Zone,
+                            DiskInOut.MonthYear,
+                            DiskInOut.BatchNo,
+                            DiskInOut.Date,
+                            DiskInOut.BatchTime,
+                            DiskInOut.School,
+                            DiskInOut.Index,
+                            DiskInOut.Strim,
+                            DiskInOut.Standard,
+                            DiskInOut.Subject,
+                            DiskInOut.SubjectCode,
+                            DiskInOut.Medium,
+                            DiskInOut.Type,
+                            DiskInOut.BatchCreator,
+                            DiskInOut.BatchSession,
+                            DiskInOut.froll,
+                            DiskInOut.lroll);
 
+                    OralBody.AddORALBody(document,DiskInOut.tempRoll);
+                    OralFooter.AddORALFooter(document);
 
-                /*
-                Header.AddOralHeader(document,
-                    DiskInOut.Zone,
-                    DiskInOut.MonthYear,
-                    DiskInOut.BatchNo,
-                    DiskInOut.Date,
-                    DiskInOut.BatchTime,
-                    DiskInOut.School,
-                    DiskInOut.Index,
-                    DiskInOut.Strim,
-                    DiskInOut.Standard,
-                    DiskInOut.Subject,
-                    DiskInOut.SubjectCode,
-                    DiskInOut.Medium,
-                    DiskInOut.Type,
-                    DiskInOut.BatchCreator,
-                    DiskInOut.BatchSession,
-                    DiskInOut.froll,
-                    DiskInOut.lroll);
-*/
-              //  OralBody.AddORALBody(document,DiskInOut.tempRoll);
-                PracticalBody.Add(document,DiskInOut.BatchSession,DiskInOut.tempRoll);
-             //   OralFooter.AddORALFooter(document);
-
-                PracticalFooter.Add(document);
+                }
                 document.newPage();
 
-                /*
-                LoadBatch(fileArray.get(i));
-                MA.show(fileArray.get(i));
-                AddBoxedText(document);
-                AddOralHeader(document);
-                AddORALBody(document);
-                AddORALFooter(document);
-                document.newPage();
-                */
             }
 
             document.close();

@@ -7,33 +7,34 @@ import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 
-public class Header
+public class OralHeader
 {
+
     static Font normal = new Font(Font.FontFamily.TIMES_ROMAN, 10,
             Font.NORMAL);
 
 
 
-  static  void AddOralHeader(Document document,
-                       String Zone,
-                       String MonthYear,
-                       String BatchNo,
-                       String Date,
-                       String BatchTime,
-                       String School,
-                       String Index,
-                       String Strim,
-                       String Standard,
-                       String Subject,
-                       String SubjectCode,
-                       String Medium,
-                       String Type,
-                       String BatchCreator,
-                       String BatchSession,
-                       String froll,
-                       String lroll
+    static  void Add(Document document,
+                               String Zone,
+                               String MonthYear,
+                               String BatchNo,
+                               String Date,
+                               String BatchTime,
+                               String School,
+                               String Index,
+                               String Strim,
+                               String Standard,
+                               String Subject,
+                               String SubjectCode,
+                               String Medium,
+                               String Type,
+                               String BatchCreator,
+                               String BatchSession,
+                               String froll,
+                               String lroll
 
-                       ) throws DocumentException
+    ) throws DocumentException
     {
         PdfPTable table = new PdfPTable(1);
 
