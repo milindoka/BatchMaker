@@ -97,18 +97,12 @@ public class PDFGeneration
                             DiskInOut.BatchSession,
                             DiskInOut.froll,
                             DiskInOut.lroll);
-                    //
                     PracticalBody.Add(document, DiskInOut.BatchSession, DiskInOut.tempRoll);
-                    //
-
                     PracticalFooter.Add(document);
-
                 }
 
                 if(DiskInOut.Type.toUpperCase().contains("ORAL"))
                 {
-
-
                     OralHeader.Add(document,
                             DiskInOut.Zone,
                             DiskInOut.MonthYear,
@@ -127,9 +121,8 @@ public class PDFGeneration
                             DiskInOut.BatchSession,
                             DiskInOut.froll,
                             DiskInOut.lroll);
-
-                    OralBody.AddORALBody(document,DiskInOut.tempRoll);
-                    OralFooter.AddORALFooter(document);
+                    OralBody.Add(document,DiskInOut.tempRoll);
+                    OralFooter.Add(document);
 
                 }
                 document.newPage();

@@ -15,7 +15,7 @@ public class OralBody
             Font.NORMAL);
 
 
-    static  void AddORALBody(Document document, ArrayList<String> seatNos) throws DocumentException
+    static  void Add(Document document, ArrayList<String> seatNos) throws DocumentException
     {
 
         float col[]={4,8,25,13};

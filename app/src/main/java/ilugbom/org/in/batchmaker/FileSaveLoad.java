@@ -97,13 +97,13 @@ public class FileSaveLoad
         txtData+="Seat Nos :\n";
         txtData+="\n";
 
-        MA.CP.CheckedNumbers.removeAll(MA.CP.CheckedNumbers);
+        MA.CPDF.CheckedNumbers.removeAll(MA.CPDF.CheckedNumbers);
         for(i=0;i<MA.initItemList.size();i++)
         { boolean temp=MA.initItemList.get(i).isChecked();
             if(temp)
             { //show(Roll.get(i));
                 txtData+=MA.initItemList.get(i).getItemText();
-                MA.CP.CheckedNumbers.add(MA.initItemList.get(i).getItemText());
+                MA.CPDF.CheckedNumbers.add(MA.initItemList.get(i).getItemText());
                 txtData+='\n';
             }
         }
@@ -130,7 +130,7 @@ public class FileSaveLoad
 
 
         //CreatePDF
-
+/*
         if(MA.PD.Type.toUpperCase().contains("PRACT"))
         {
 
@@ -160,6 +160,19 @@ public class FileSaveLoad
             }
 
         }
+*/
+
+        try
+          {
+            MA.CPDF.Save(PDFNameWithPath);
+           }
+           catch (FileNotFoundException e)
+           { e.printStackTrace(); }
+           catch (DocumentException e)
+           {
+            e.printStackTrace();
+            }
+
 
         show("PDF Sheet Created");
 

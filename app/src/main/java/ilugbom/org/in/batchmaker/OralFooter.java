@@ -12,7 +12,7 @@ public class OralFooter
     static Font normal = new Font(Font.FontFamily.TIMES_ROMAN, 10,
             Font.NORMAL);
 
-    static void AddORALFooter(Document document) throws DocumentException
+    static void Add(Document document) throws DocumentException
     {  float footcolwid[]= {8,6};
         PdfPTable table = new PdfPTable(footcolwid);
         table.setWidthPercentage(95);
