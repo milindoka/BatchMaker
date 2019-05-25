@@ -76,6 +76,30 @@ public class PDFGeneration
                 MA.show(fileArray.get(i));
                 DiskInOut.LoadBatch(fileArray.get(i));
                 BoxedHeader.AddBoxedText(document,DiskInOut.Index);
+
+                PracticalHeader.Add(document,
+                        DiskInOut.Zone,
+                        DiskInOut.MonthYear,
+                        DiskInOut.BatchNo,
+                        DiskInOut.Date,
+                        DiskInOut.BatchTime,
+                        DiskInOut.School,
+                        DiskInOut.Index,
+                        DiskInOut.Strim,
+                        DiskInOut.Standard,
+                        DiskInOut.Subject,
+                        DiskInOut.SubjectCode,
+                        DiskInOut.Medium,
+                        DiskInOut.Type,
+                        DiskInOut.BatchCreator,
+                        DiskInOut.BatchSession,
+                        DiskInOut.froll,
+                        DiskInOut.lroll);
+
+
+
+
+                /*
                 Header.AddOralHeader(document,
                     DiskInOut.Zone,
                     DiskInOut.MonthYear,
@@ -94,10 +118,12 @@ public class PDFGeneration
                     DiskInOut.BatchSession,
                     DiskInOut.froll,
                     DiskInOut.lroll);
+*/
+              //  OralBody.AddORALBody(document,DiskInOut.tempRoll);
+                PracticalBody.Add(document,DiskInOut.BatchSession,DiskInOut.tempRoll);
+             //   OralFooter.AddORALFooter(document);
 
-                OralBody.AddORALBody(document,DiskInOut.tempRoll);
-                OralFooter.AddORALFooter(document);
-
+                PracticalFooter.Add(document);
                 document.newPage();
 
                 /*
