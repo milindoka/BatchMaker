@@ -109,10 +109,6 @@ public class FileSaveLoad
         }
 
 
-//        String ShortSubject="";
-//        if(Subject.length()>3) ShortSubject=Subject.toUpperCase().substring(0,3);
-//        String fnem=Subject.toUpperCase().substring(0,3)+"-"+BatchNo+"-"+BatchCreator+".bch";
-//        FileNameWithPath=FileNameWithPath+fnem;
         try {
             File myFile = new File(FileNameWithPath);
             myFile.createNewFile();
@@ -126,9 +122,6 @@ public class FileSaveLoad
 
             MA.fab.setBackgroundTintList(MA.getResources().getColorStateList(R.color.colorGreen));
             MA.FC.setText("");
-      //      if(end) finish();
-      //      end=false;OpenNow=false;
-      //      if(NewNow) GetNewRoll();
 
         } catch (Exception e) {
             Toast.makeText(MA, e.getMessage(),
@@ -139,7 +132,9 @@ public class FileSaveLoad
         //CreatePDF
 
         if(MA.PD.Type.toUpperCase().contains("PRACT"))
-        {   MA.CP.SetHeaderFileds(MA.PD.Zone,MA.PD.MonthYear,MA.PD.School, MA.PD.Index, MA.PD.Strim, MA.PD.Standard, MA.PD.Subject, MA.PD.SubjectCode, MA.PD.Type, BatchNo,
+        {
+
+            MA.CP.SetHeaderFileds(MA.PD.Zone,MA.PD.MonthYear,MA.PD.School, MA.PD.Index, MA.PD.Strim, MA.PD.Standard, MA.PD.Subject, MA.PD.SubjectCode, MA.PD.Type, BatchNo,
                 MA.PD.BatchCreator, MA.PD.Email1, MA.PD.Email2, Date, BatchTime, BatchSession);
             try {
                 MA.CP.SingleBatchPdf(PDFNameWithPath);

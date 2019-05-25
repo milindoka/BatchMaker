@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 public class PDFGeneration
 {
-    Font normal = new Font(Font.FontFamily.TIMES_ROMAN, 10,
-            Font.NORMAL);
+  //  Font normal = new Font(Font.FontFamily.TIMES_ROMAN, 10,
+    //        Font.NORMAL);
 
     private MainActivity MA;
     void SetMA(MainActivity MA){this.MA=MA;}
@@ -144,5 +144,10 @@ public class PDFGeneration
 
     }
 
+
+    void CreateSingleOralPDF()
+    {
+
+    }
 
 }
