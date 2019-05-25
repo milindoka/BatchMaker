@@ -73,7 +73,8 @@ public class PDFGeneration
             for(int i=0;i<totalfiles;i++)
             {
                // LoadBatch(fileArray.get(i));
-                MA.show(fileArray.get(i));
+               // MA.show(fileArray.get(i));
+                MA.show(DiskInOut.Type);
                 DiskInOut.LoadBatch(fileArray.get(i));
                 BoxedHeader.AddBoxedText(document,DiskInOut.Index);
 

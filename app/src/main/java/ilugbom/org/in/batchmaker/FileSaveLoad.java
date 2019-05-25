@@ -85,7 +85,7 @@ public class FileSaveLoad
         txtData+="Subject       : ";txtData+=Subject;        txtData+='\n';
         txtData+="Subject Code  : ";txtData+=SubjectCode;    txtData+='\n';
         txtData+="Medium        : ";txtData+=Medium;         txtData+='\n';
-        txtData+="Type          : ";txtData+=Type;           txtData+='\n';
+        txtData+="Type          : ";txtData+=MA.PD.Type;     txtData+='\n';
         txtData+="Batch Number  : ";txtData+=BatchNo;        txtData+='\n';
         txtData+="Batch Creater : ";txtData+=BatchCreator;   txtData+='\n';
         txtData+="Date          : ";txtData+=Date;           txtData+="\n";
