@@ -74,7 +74,29 @@ public class PDFGeneration
             {
                // LoadBatch(fileArray.get(i));
                 MA.show(fileArray.get(i));
-                BoxedHeader.AddBoxedText(document,"31.04.005");
+                DiskInOut.LoadBatch(fileArray.get(i));
+                BoxedHeader.AddBoxedText(document,DiskInOut.Index);
+                Header.AddOralHeader(document,
+                    DiskInOut.Zone,
+                    DiskInOut.MonthYear,
+                    DiskInOut.BatchNo,
+                    DiskInOut.Date,
+                    DiskInOut.BatchTime,
+                    DiskInOut.School,
+                    DiskInOut.Index,
+                    DiskInOut.Strim,
+                    DiskInOut.Standard,
+                    DiskInOut.Subject,
+                    DiskInOut.SubjectCode,
+                    DiskInOut.Medium,
+                    DiskInOut.Type,
+                    DiskInOut.BatchCreator,
+                    DiskInOut.BatchSession,
+                    DiskInOut.froll,
+                    DiskInOut.lroll);
+
+                document.newPage();
+
                 /*
                 LoadBatch(fileArray.get(i));
                 MA.show(fileArray.get(i));
