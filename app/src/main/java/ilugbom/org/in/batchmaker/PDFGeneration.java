@@ -177,6 +177,23 @@ public class PDFGeneration {
         PracticalFooter.Add(document);
     }
 
+    void CreateSingleEngChartPDF  (Document document, String Zone, String MonthYear, String BatchNo,
+                                    String Date, String BatchTime, String School, String Index,
+                                    String Strim, String Standard, String Subject, String SubjectCode,
+                                    String Medium, String Type, String BatchCreator,
+                                    String BatchSession, String froll,
+                                    String lroll, ArrayList<String> seatNos) throws DocumentException
+    {
+        OralHeader.Add(document, Zone, MonthYear, BatchNo, Date, BatchTime,
+                School, Index, Strim, Standard, Subject,
+                SubjectCode, Medium, Type, BatchCreator, BatchSession,
+                froll, lroll);
+        EngChartBody.Add(document, BatchSession, seatNos);
+        OralFooter.Add(document);
+    }
+
+
+
 
     void CreateCurrentPDF(String pdfFileNameWithPath) throws FileNotFoundException, DocumentException
     {
@@ -212,12 +229,25 @@ public class PDFGeneration {
         PdfWriter.getInstance(document, output);
         document.open();
 
+        if (MA.PD.Subject.toUpperCase().contains("CHEMISTRY"))
+
         CreateSingleChemChartPDF(document,MA.PD.Zone,MA.PD.MonthYear,MA.FSL.BatchNo,
                 MA.PD.Date,MA.PD.BatchTime,MA.PD.School,MA.PD.Index,MA.PD.Strim,
                 MA.PD.Standard,MA.PD.Subject,MA.PD.SubjectCode,MA.PD.Medium,
                 MA.PD.Type,MA.PD.BatchCreator,MA.PD.BatchSession,MA.froll,
                 MA.lroll,CheckedNumbers);
+
+        if (MA.PD.Subject.toUpperCase().contains("ENGLISH"))
+        CreateSingleEngChartPDF(document,MA.PD.Zone,MA.PD.MonthYear,MA.FSL.BatchNo,
+                MA.PD.Date,MA.PD.BatchTime,MA.PD.School,MA.PD.Index,MA.PD.Strim,
+                MA.PD.Standard,MA.PD.Subject,MA.PD.SubjectCode,MA.PD.Medium,
+                MA.PD.Type,MA.PD.BatchCreator,MA.PD.BatchSession,MA.froll,
+                MA.lroll,CheckedNumbers);
+
         document.close();
+
+
+
     }
 
 

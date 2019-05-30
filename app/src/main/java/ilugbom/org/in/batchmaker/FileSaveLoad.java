@@ -144,6 +144,19 @@ public class FileSaveLoad
         show("PDF Sheet Created");
         if (MA.PD.Subject.toUpperCase().contains("CHEMISTRY")) {
 
+            try {
+                MA.PGEN.CreateCurrentChart(PDFChartNameWithPath);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (DocumentException e) {
+                e.printStackTrace();
+            }
+
+            show("PDF Chem Chart Created");
+
+        }
+
+        if (MA.PD.Subject.toUpperCase().contains("ENGLISH")) {
 
             try {
                 MA.PGEN.CreateCurrentChart(PDFChartNameWithPath);
@@ -153,7 +166,7 @@ public class FileSaveLoad
                 e.printStackTrace();
             }
 
-            show("PDF Chart Created");
+            show("PDF Eng Chart Created");
 
         }
     }
@@ -304,9 +317,9 @@ public class FileSaveLoad
         input.setSingleLine();
         input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
         String ShortSubject="";
-        if(Subject.length()>3) ShortSubject=Subject.toUpperCase().substring(0,3);
-        else ShortSubject=Subject;
-        String fylenem=ShortSubject+"-"+BatchNo+"-"+BatchCreator.toUpperCase();
+        if(MA.PD.Subject.length()>3) ShortSubject=MA.PD.Subject.toUpperCase().substring(0,3);
+        else ShortSubject=MA.PD.Subject;
+        String fylenem=ShortSubject+"-"+BatchNo+"-"+MA.PD.BatchCreator.toUpperCase();
         input.setText(fylenem);
 
         alert.setView(input);
@@ -470,8 +483,8 @@ void SaveDirect()
     int len=0;
 
     String ShortSubject="";
-    if(Subject.length()>3) ShortSubject=Subject.toUpperCase().substring(0,3);
-    else ShortSubject=Subject.toUpperCase();
+    if(MA.PD.Subject.length()>3) ShortSubject=MA.PD.Subject.toUpperCase().substring(0,3);
+    else ShortSubject=MA.PD.Subject.toUpperCase();
 
     String ShortBatchCreator="";
     if(BatchCreator.length()>2) ShortBatchCreator=BatchCreator.toUpperCase().substring(0,2);
