@@ -78,16 +78,16 @@ public class FileSaveLoad
 
         txtData+="Zone          : ";txtData+=MA.PD.Zone;     txtData+='\n';
         txtData+="Month & Year  : ";txtData+=MA.PD.MonthYear;txtData+='\n';
-        txtData+="School        : ";txtData+=School;         txtData+='\n';
-        txtData+="Index         : ";txtData+=Index;          txtData+='\n';
-        txtData+="Stream        : ";txtData+=Strim;          txtData+='\n';
-        txtData+="Standard      : ";txtData+=Standard;       txtData+='\n';
-        txtData+="Subject       : ";txtData+=Subject;        txtData+='\n';
-        txtData+="Subject Code  : ";txtData+=SubjectCode;    txtData+='\n';
-        txtData+="Medium        : ";txtData+=Medium;         txtData+='\n';
+        txtData+="School        : ";txtData+=MA.PD.School;   txtData+='\n';
+        txtData+="Index         : ";txtData+=MA.PD.Index;    txtData+='\n';
+        txtData+="Stream        : ";txtData+=MA.PD.Strim;    txtData+='\n';
+        txtData+="Standard      : ";txtData+=MA.PD.Standard; txtData+='\n';
+        txtData+="Subject       : ";txtData+=MA.PD.Subject;  txtData+='\n';
+        txtData+="Subject Code  : ";txtData+=MA.PD.SubjectCode;    txtData+='\n';
+        txtData+="Medium        : ";txtData+=MA.PD.Medium;   txtData+='\n';
         txtData+="Type          : ";txtData+=MA.PD.Type;     txtData+='\n';
         txtData+="Batch Number  : ";txtData+=BatchNo;        txtData+='\n';
-        txtData+="Batch Creater : ";txtData+=BatchCreator;   txtData+='\n';
+        txtData+="Batch Creater : ";txtData+=MA.PD.BatchCreator;   txtData+='\n';
         txtData+="Date          : ";txtData+=Date;           txtData+="\n";
         txtData+="Time          : ";txtData+=BatchTime;      txtData+='\n';
         txtData+="Session       : ";txtData+=BatchSession;   txtData+="\n";
@@ -142,20 +142,20 @@ public class FileSaveLoad
 
 
         show("PDF Sheet Created");
+        if (MA.PD.Subject.toUpperCase().contains("CHEMISTRY")) {
 
-        try
-        {
-            MA.PGEN.CreateCurrentChart(PDFChartNameWithPath);
+
+            try {
+                MA.PGEN.CreateCurrentChart(PDFChartNameWithPath);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (DocumentException e) {
+                e.printStackTrace();
+            }
+
+            show("PDF Chart Created");
+
         }
-        catch (FileNotFoundException e)
-        { e.printStackTrace(); }
-        catch (DocumentException e)
-        {
-            e.printStackTrace();
-        }
-
-        show("PDF Chart Created");
-
     }
 
 
