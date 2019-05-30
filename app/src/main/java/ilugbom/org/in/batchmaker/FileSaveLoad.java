@@ -129,39 +129,6 @@ public class FileSaveLoad
         }
 
 
-        //CreatePDF
-/*
-        if(MA.PD.Type.toUpperCase().contains("PRACT"))
-        {
-
-            MA.CP.SetHeaderFileds(MA.PD.Zone,MA.PD.MonthYear,MA.PD.School, MA.PD.Index, MA.PD.Strim, MA.PD.Standard, MA.PD.Subject, MA.PD.SubjectCode, MA.PD.Type, BatchNo,
-                MA.PD.BatchCreator, MA.PD.Email1, MA.PD.Email2, Date, BatchTime, BatchSession);
-            try {
-                MA.CP.SingleBatchPdf(PDFNameWithPath);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (DocumentException e) {
-                e.printStackTrace();
-            }
-
-        }
-
-        else
-        {
-
-            MA.OPDF.SetHeaderFileds(MA.PD.Zone, MA.PD.MonthYear,MA.PD.School, MA.PD.Index, MA.PD.Strim, MA.PD.Standard, MA.PD.Subject, MA.PD.SubjectCode, MA.PD.Medium,MA.PD.Type, BatchNo,
-                    MA.PD.BatchCreator, MA.PD.Email1, MA.PD.Email2, Date, BatchTime, BatchSession);
-            try {
-                MA.OPDF.SingleBatchPdf(PDFNameWithPath);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (DocumentException e) {
-                e.printStackTrace();
-            }
-
-        }
-*/
-
         try
           {
             MA.CPDF.Save(PDFNameWithPath);
@@ -300,18 +267,6 @@ public class FileSaveLoad
             }
             //AlreadyPicked=false;
             MA.listViewDataAdapter.notifyDataSetChanged();
-
-       //     FileNameWithPath=fylenamewithpath;
-       //     int start=fylenamewithpath.lastIndexOf("/");
-
-           // FileName=fylenamewithpath.substring(start+1);
-
-            //	 PickRoutine();
-
-
-           // mainListView.setSelection(0);
-           // UpdateTitle(); ///To reset filename and counter display
-           // ((BaseAdapter) mainListView.getAdapter()).notifyDataSetChanged();
             show("Loaded From SD Card");
            // modified=false;
         }
