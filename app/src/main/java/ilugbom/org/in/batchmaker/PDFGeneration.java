@@ -98,8 +98,30 @@ public class PDFGeneration {
                         DiskInOut.lroll, DiskInOut.tempRoll);
 
                 if (DiskInOut.Subject.toUpperCase().contains("CHEMISTRY"))
-                {
+                {   document.newPage();
                     CreateSingleChemChartPDF(document,
+                            DiskInOut.Zone,
+                            DiskInOut.MonthYear,
+                            DiskInOut.BatchNo,
+                            DiskInOut.Date,
+                            DiskInOut.BatchTime,
+                            DiskInOut.School,
+                            DiskInOut.Index,
+                            DiskInOut.Strim,
+                            DiskInOut.Standard,
+                            DiskInOut.Subject,
+                            DiskInOut.SubjectCode,
+                            DiskInOut.Medium,
+                            DiskInOut.Type,
+                            DiskInOut.BatchCreator,
+                            DiskInOut.BatchSession,
+                            DiskInOut.froll,
+                            DiskInOut.lroll, DiskInOut.tempRoll);
+                }
+
+                if (DiskInOut.Subject.toUpperCase().contains("ENGLISH"))
+                {   document.newPage();
+                    CreateSingleEngChartPDF(document,
                             DiskInOut.Zone,
                             DiskInOut.MonthYear,
                             DiskInOut.BatchNo,

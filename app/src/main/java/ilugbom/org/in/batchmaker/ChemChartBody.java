@@ -66,7 +66,6 @@ public class ChemChartBody
 
         String srno;
         String seatno;
-        String session;
         for(int i=0;i<32;i++)
 
         { // boolean temp=MA.initItemList.get(i).isChecked();
@@ -74,11 +73,9 @@ public class ChemChartBody
             srno=String.format("%d",i+1);
             if(i<size)
             { seatno=seatNos.get(i);
-                session=BatchSession;
             }
             else
             { seatno=" ";
-                session=" ";
                 srno=" ";
             }
 
@@ -92,7 +89,7 @@ public class ChemChartBody
             //cell.setBorder(PdfPCell.NO_BORDER);
             table2.addCell(cell);
 
-            cell = new PdfPCell(new Phrase(session,normal));
+            cell = new PdfPCell(new Phrase(" ",normal));
             cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
             table2.addCell(cell);
 
