@@ -64,7 +64,7 @@ public class FileSaveLoad
 
    String FileNameWithPath="";
    String PDFNameWithPath="";
-
+   String PDFChartNameWithPath="";
 
     void SaveList()
     {
@@ -142,6 +142,19 @@ public class FileSaveLoad
 
 
         show("PDF Sheet Created");
+
+        try
+        {
+            MA.PGEN.CreateCurrentChart(PDFChartNameWithPath);
+        }
+        catch (FileNotFoundException e)
+        { e.printStackTrace(); }
+        catch (DocumentException e)
+        {
+            e.printStackTrace();
+        }
+
+        show("PDF Chart Created");
 
     }
 
@@ -303,13 +316,16 @@ public class FileSaveLoad
             {
                 String fnem = input.getText().toString();
                 String pnem = fnem;
+                String cnem = fnem;
                 fnem+=".bch";
                 pnem+=".pdf";
+                cnem+="-Chart.pdf";
              //   FileName=fnem;
                 FileNameWithPath=Environment.getExternalStorageDirectory().getPath();
 
                 FileNameWithPath+="/"+fnem;
                 PDFNameWithPath+="/"+pnem;
+                PDFChartNameWithPath+="/"+cnem;
 
                 InputMethodManager imm = (InputMethodManager) MA.getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(input.getWindowToken(),0);
@@ -349,7 +365,7 @@ public class FileSaveLoad
     {
         final Dialog myDialog;
         myDialog =  new Dialog(MA);
-        //myDialog.requestWindowFeature(myDialog.getWindow().FEATURE_NO_TITLE);
+
         myDialog.setTitle("Batch Details");
         myDialog.setContentView(R.layout.headerdlg);
         myDialog.setCancelable(true);
@@ -476,10 +492,12 @@ void SaveDirect()
 
     FileNameWithPath=Environment.getExternalStorageDirectory().getPath();
     PDFNameWithPath=FileNameWithPath;
+    PDFChartNameWithPath=FileNameWithPath;
     String fylenem=ShortSubject+"-"+BatchNo+"-"+ShortBatchCreator+"-"+FirstSeat4+"--"+LastSeat4;
 
     FileNameWithPath+="/"+fylenem+".bch";
     PDFNameWithPath+="/"+fylenem+".pdf";
+    PDFChartNameWithPath+="/"+fylenem+"-Chart.pdf";
     SaveList();
 }
 

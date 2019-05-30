@@ -96,10 +96,7 @@ public class PDFGeneration {
                         DiskInOut.BatchSession,
                         DiskInOut.froll,
                         DiskInOut.lroll, DiskInOut.tempRoll);
-
-
                 document.newPage();
-
             }
 
             document.close();
@@ -135,6 +132,23 @@ public class PDFGeneration {
             PracticalBody.Add(document, BatchSession, seatNos);
             PracticalFooter.Add(document);
         }
+
+
+    }
+
+    void CreateSingleChemChartPDF  (Document document, String Zone, String MonthYear, String BatchNo,
+    String Date, String BatchTime, String School, String Index,
+    String Strim, String Standard, String Subject, String SubjectCode,
+    String Medium, String Type, String BatchCreator,
+    String BatchSession, String froll,
+    String lroll, ArrayList<String> seatNos) throws DocumentException
+    {
+        PracticalHeader.Add(document, Zone, MonthYear, BatchNo, Date, BatchTime,
+                School, Index, Strim, Standard, Subject,
+                SubjectCode, Medium, Type, BatchCreator, BatchSession,
+                froll, lroll);
+        ChemChartBody.Add(document, BatchSession, seatNos);
+        PracticalFooter.Add(document);
     }
 
 
@@ -158,4 +172,27 @@ public class PDFGeneration {
                 MA.lroll,CheckedNumbers);
         document.close();
     }
+
+    void CreateCurrentChart(String pdfFileNameWithPath) throws FileNotFoundException, DocumentException
+    {
+        int tot=CheckedNumbers.size();
+        MA.froll=CheckedNumbers.get(0);
+        MA.lroll=CheckedNumbers.get(tot-1);
+        File myFile = new File(pdfFileNameWithPath);
+        OutputStream output = new FileOutputStream(myFile);
+        Document document = new Document();
+        document = new Document(PageSize.A4);
+        document.setMargins(50, 30, 15, 2);
+        PdfWriter.getInstance(document, output);
+        document.open();
+
+        CreateSingleChemChartPDF(document,MA.PD.Zone,MA.PD.MonthYear,MA.FSL.BatchNo,
+                MA.PD.Date,MA.PD.BatchTime,MA.PD.School,MA.PD.Index,MA.PD.Strim,
+                MA.PD.Standard,MA.PD.Subject,MA.PD.SubjectCode,MA.PD.Medium,
+                MA.PD.Type,MA.PD.BatchCreator,MA.PD.BatchSession,MA.froll,
+                MA.lroll,CheckedNumbers);
+        document.close();
+    }
+
+
 }
