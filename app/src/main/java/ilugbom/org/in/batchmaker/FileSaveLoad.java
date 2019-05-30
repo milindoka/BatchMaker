@@ -97,13 +97,13 @@ public class FileSaveLoad
         txtData+="Seat Nos :\n";
         txtData+="\n";
 
-        MA.CPDF.CheckedNumbers.removeAll(MA.CPDF.CheckedNumbers);
+        MA.PGEN.CheckedNumbers.removeAll(MA.PGEN.CheckedNumbers);
         for(i=0;i<MA.initItemList.size();i++)
         { boolean temp=MA.initItemList.get(i).isChecked();
             if(temp)
             { //show(Roll.get(i));
                 txtData+=MA.initItemList.get(i).getItemText();
-                MA.CPDF.CheckedNumbers.add(MA.initItemList.get(i).getItemText());
+                MA.PGEN.CheckedNumbers.add(MA.initItemList.get(i).getItemText());
                 txtData+='\n';
             }
         }
@@ -131,7 +131,7 @@ public class FileSaveLoad
 
         try
           {
-            MA.CPDF.Save(PDFNameWithPath);
+            MA.PGEN.CreateCurrentPDF(PDFNameWithPath);
            }
            catch (FileNotFoundException e)
            { e.printStackTrace(); }
