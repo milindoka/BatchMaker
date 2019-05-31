@@ -29,7 +29,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
     ArrayList<String> Roll = new ArrayList<String>();
     ArrayList<String> tempRoll = new ArrayList<>();
     int checkmarkCount = 0;
@@ -63,6 +62,20 @@ public class MainActivity extends AppCompatActivity
 
 //////////////////////////////////////////////////////////////////
 
+    @Override
+    public void onBackPressed() {
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else
+
+        if(modified)  {  show("Modified"); }
+        else
+        {
+            super.onBackPressed();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -169,7 +182,6 @@ public class MainActivity extends AppCompatActivity
                 }else
                 {   if(checkmarkCount<32)
                     {
-                   // show("Batch Full");
                     itemCheckbox.setChecked(true);
                     itemDto.setChecked(true);
                     checkmarkCount++;
@@ -199,16 +211,6 @@ public class MainActivity extends AppCompatActivity
 
         fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorGreen));
 
-    }
-
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @Override

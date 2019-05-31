@@ -68,7 +68,9 @@ public class FileSaveLoad
 
     void SaveList()
     {
-
+if(MA.checkmarkCount>32) { MA.show("Batch Strength > 32");
+                           MA.show("Reduce Strength");
+                           return;}
     //    if(!AlreadyPicked) { PickRoutine();  }
 
         int i;
