@@ -587,6 +587,46 @@ String GetLastSeatNo()
 
 
 
+    void SendCombinedList()
+    {
+
+        ArrayList<Uri> uris = new ArrayList<Uri>();
+
+        String rootDir=Environment.getExternalStorageDirectory().getPath();
+        String combinedpath=rootDir+"/Combined.pdf";
+        String[] filePaths = new String[] {combinedpath};
+        for (String file : filePaths)
+        {
+            File fileIn = new File(file);
+            Uri u = Uri.fromFile(fileIn);
+            uris.add(u);
+        }
+
+
+        String emailsubject=Subject.trim()+"-"+BatchNo.trim()+"-"+BatchCreator.trim();
+        Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        sendIntent.putExtra(Intent.EXTRA_SUBJECT,emailsubject);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "Attached Batch ...");
+
+
+        sendIntent.putExtra(Intent.EXTRA_STREAM, uris);
+        //yntaxException.parse("file://" + FileNameWithPath),
+        //		Uri.parse("file://" + pdfname));
+        //sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + FileNameWithPath));
+
+        String E1=MA.PD.Email1.trim();
+        String E2=MA.PD.Email2.trim();
+        if(E1.length()==0 && E2.length()==0) {show("Specify Email(s) in Preferrences "); return; }
+        String[] emailList={"",""};
+        if(E1.length()!=0) emailList[0]=MA.PD.Email1;
+        if(E2.length()!=0) emailList[1]=MA.PD.Email2;
+        sendIntent.putExtra(Intent.EXTRA_EMAIL,emailList);
+        sendIntent.setType("text/plain");
+        MA.startActivity(Intent.createChooser(sendIntent, "Send Mail"));
+
+    }
+
+
 
 
 

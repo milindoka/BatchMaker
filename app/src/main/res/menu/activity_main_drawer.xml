@@ -21,14 +21,17 @@
 
     <item android:title="Communicate">
         <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+
             <item
                 android:id="@+id/nav_send"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:title="Send Current PDF" />
+
+            <item
+                android:id="@+id/nav_send_combined"
+                android:icon="@drawable/ic_sendcombined"
+                android:title="Send Combined PDF" />
+
         </menu>
     </item>
 
