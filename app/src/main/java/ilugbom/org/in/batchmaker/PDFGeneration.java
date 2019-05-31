@@ -58,7 +58,7 @@ public class PDFGeneration {
         rootDir = Environment.getExternalStorageDirectory().getPath();
         String pdfFileNameWithPath = rootDir + "/" + "Combined.pdf";
         int totalfiles = listfiles(rootDir);
-        MA.show(totalfiles);
+        MA.show(String.format("Total Batches %d",totalfiles));
 
         try {
 
@@ -75,8 +75,9 @@ public class PDFGeneration {
             for (int i = 0; i < totalfiles; i++) {
                 // LoadBatch(fileArray.get(i));
                 // MA.show(fileArray.get(i));
-                MA.show(DiskInOut.Type);
+
                 DiskInOut.LoadBatch(fileArray.get(i));
+
 
                 CreateSinglePDF(document,
                         DiskInOut.Zone,
@@ -141,6 +142,8 @@ public class PDFGeneration {
                             DiskInOut.lroll, DiskInOut.tempRoll);
                 }
                 document.newPage();
+                String progress=String.format("Added %d",i+1);
+                MA.show(progress);
             }
 
             document.close();
