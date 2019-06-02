@@ -98,7 +98,8 @@ public class PDFGeneration {
                         DiskInOut.froll,
                         DiskInOut.lroll, DiskInOut.tempRoll);
 
-                if (DiskInOut.Subject.toUpperCase().contains("CHEMISTRY"))
+                if (DiskInOut.Subject.toUpperCase().contains("CHEMISTRY")
+                        && DiskInOut.Type.toUpperCase().contains("PRACTICAL"))
                 {   document.newPage();
                     CreateSingleChemChartPDF(document,
                             DiskInOut.Zone,
@@ -120,7 +121,8 @@ public class PDFGeneration {
                             DiskInOut.lroll, DiskInOut.tempRoll);
                 }
 
-                if (DiskInOut.Subject.toUpperCase().contains("ENGLISH"))
+                if (DiskInOut.Subject.toUpperCase().contains("ENGLISH")
+                        && DiskInOut.Type.toUpperCase().contains("ORAL"))
                 {   document.newPage();
                     CreateSingleEngChartPDF(document,
                             DiskInOut.Zone,
@@ -171,7 +173,8 @@ public class PDFGeneration {
             OralBody.Add(document, seatNos);
             OralFooter.Add(document);
         }
-      else
+
+        if (Type.toUpperCase().contains("PRACTICAL"))
         {
 
             PracticalHeader.Add(document, Zone, MonthYear, BatchNo, Date, BatchTime,
@@ -182,9 +185,14 @@ public class PDFGeneration {
             PracticalFooter.Add(document);
         }
 
-
-
-
+        if (Type.toUpperCase().contains("THEORY")) {
+            OralHeader.Add(document, Zone, MonthYear, BatchNo, Date, BatchTime,
+                    School, Index, Strim, Standard, Subject,
+                    SubjectCode, Medium, Type, BatchCreator, BatchSession,
+                    froll, lroll);
+            TheoryBody.Add(document, seatNos);
+            OralFooter.Add(document);
+        }
     }
 
     void CreateSingleChemChartPDF  (Document document, String Zone, String MonthYear, String BatchNo,
@@ -216,7 +224,6 @@ public class PDFGeneration {
         EngChartBody.Add(document, BatchSession, seatNos);
         OralFooter.Add(document);
     }
-
 
 
 
@@ -270,8 +277,6 @@ public class PDFGeneration {
                 MA.lroll,CheckedNumbers);
 
         document.close();
-
-
 
     }
 

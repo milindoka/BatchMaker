@@ -144,7 +144,8 @@ if(MA.checkmarkCount>32) { MA.show("Batch Strength > 32");
 
 
         show("PDF Sheet Created");
-        if (MA.PD.Subject.toUpperCase().contains("CHEMISTRY")) {
+        if (MA.PD.Subject.toUpperCase().contains("CHEMISTRY")
+        && MA.PD.Type.toUpperCase().contains("PRACTICAL")) {
 
             try {
                 MA.PGEN.CreateCurrentChart(PDFChartNameWithPath);
@@ -158,7 +159,8 @@ if(MA.checkmarkCount>32) { MA.show("Batch Strength > 32");
 
         }
 
-        if (MA.PD.Subject.toUpperCase().contains("ENGLISH")) {
+        if (MA.PD.Subject.toUpperCase().contains("ENGLISH")
+                && MA.PD.Type.toUpperCase().contains("ORAL")) {
 
             try {
                 MA.PGEN.CreateCurrentChart(PDFChartNameWithPath);
@@ -171,6 +173,9 @@ if(MA.checkmarkCount>32) { MA.show("Batch Strength > 32");
             show("PDF Eng Chart Created");
 
         }
+
+
+
     }
 
 
