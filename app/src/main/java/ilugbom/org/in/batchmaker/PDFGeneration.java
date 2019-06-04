@@ -163,9 +163,10 @@ public class PDFGeneration {
              String BatchSession, String froll,
              String lroll, ArrayList<String> seatNos) throws DocumentException {
 
-        BoxedHeader.AddBoxedText(document, Index);
+
 
         if (Type.toUpperCase().contains("ORAL")) {
+            BoxedHeader.AddBoxedText(document, Index);
             OralHeader.Add(document, Zone, MonthYear, BatchNo, Date, BatchTime,
                     School, Index, Strim, Standard, Subject,
                     SubjectCode, Medium, Type, BatchCreator, BatchSession,
@@ -176,7 +177,7 @@ public class PDFGeneration {
 
         if (Type.toUpperCase().contains("PRACTICAL"))
         {
-
+            BoxedHeader.AddBoxedText(document, Index);
             PracticalHeader.Add(document, Zone, MonthYear, BatchNo, Date, BatchTime,
                     School, Index, Strim, Standard, Subject,
                     SubjectCode, Medium, Type, BatchCreator, BatchSession,
@@ -186,12 +187,12 @@ public class PDFGeneration {
         }
 
         if (Type.toUpperCase().contains("THEORY")) {
-            OralHeader.Add(document, Zone, MonthYear, BatchNo, Date, BatchTime,
+            TheoryHeader.Add(document, Zone, MonthYear, BatchNo, Date, BatchTime,
                     School, Index, Strim, Standard, Subject,
                     SubjectCode, Medium, Type, BatchCreator, BatchSession,
                     froll, lroll);
             TheoryBody.Add(document, seatNos);
-            OralFooter.Add(document);
+            TheoryFooter.Add(document);
         }
     }
 

@@ -19,7 +19,7 @@ public class TheoryBody
     static  void Add(Document document, ArrayList<String> seatNos) throws DocumentException
     {
 
-        float col[]={4,8,8,8};
+        float col[]={2,8,8,8};
 
         //////////   TITLE ROW
 
