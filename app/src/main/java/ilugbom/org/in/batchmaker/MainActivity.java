@@ -1,11 +1,13 @@
 package ilugbom.org.in.batchmaker;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -29,6 +31,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    boolean endnow=false;
     ArrayList<String> Roll = new ArrayList<String>();
     ArrayList<String> tempRoll = new ArrayList<>();
     int checkmarkCount = 0;
@@ -70,7 +73,7 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else
 
-        if(modified)  {  show("Modified"); }
+        if(modified)  {  Bye(); }
         else
         {
             super.onBackPressed();
@@ -312,6 +315,33 @@ void OnFloatingButton()
 }
 
 
+    public void Bye()
+    {
+        AlertDialog.Builder myAlertDialog = new AlertDialog.Builder(this);
+        myAlertDialog.setTitle("Modified !");
+        myAlertDialog.setMessage("Save Batch Before Exit ?");
+        myAlertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener()
+        {
+            public void onClick(DialogInterface arg0, int arg1) {
+                // do something when the OK button is clicked
+                endnow=true;
+                FSL.SaveDirect();
+
+            }});
+
+        myAlertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                /////do nothing and continue
+            }});
+
+        myAlertDialog.setNeutralButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface arg0, int arg1) {
+                // do something when the Cancel button is clicked
+                finish();
+            }});
+
+        myAlertDialog.show();
+    }
 
 
 

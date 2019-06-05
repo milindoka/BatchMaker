@@ -175,7 +175,7 @@ if(MA.checkmarkCount>32) { MA.show("Batch Strength > 32");
             show("PDF Eng Chart Created");
 
         }
-
+if(MA.endnow) MA.finish();
 
 
     }
