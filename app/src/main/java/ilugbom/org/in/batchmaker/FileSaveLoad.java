@@ -58,8 +58,9 @@ public class FileSaveLoad
   //  boolean NewNow=false,selectall=false,end=false,OpenNow=false;
     String Zone="Mumbai Divisional Board, Vashi,Navi Mumbai - 400703",
            MonthYear="Feb-2021", BatchNo="01",Date="",BatchTime="",
-           School="SIWS College",Index="J-31.04.005", Strim="Science",Standard="HSC",
-           Subject="Mathematics",SubjectCode="40",Medium="English",Type="Practical",
+           School="SIWS College",Index="J-31.04.005", CenterNo="3207",
+           Strim="Science",Standard="HSC", Subject="Mathematics",
+           SubjectCode="40",Medium="English",Type="Practical",
            BatchCreator="MO",BatchSession="";
 
    String FileNameWithPath="";
@@ -82,6 +83,7 @@ if(MA.checkmarkCount>32) { MA.show("Batch Strength > 32");
         txtData+="Month & Year  : ";txtData+=MA.PD.MonthYear;txtData+='\n';
         txtData+="School        : ";txtData+=MA.PD.School;   txtData+='\n';
         txtData+="Index         : ";txtData+=MA.PD.Index;    txtData+='\n';
+        txtData+="Center No     : ";txtData+=MA.PD.CenterNo; txtData+='\n';
         txtData+="Stream        : ";txtData+=MA.PD.Strim;    txtData+='\n';
         txtData+="Standard      : ";txtData+=MA.PD.Standard; txtData+='\n';
         txtData+="Subject       : ";txtData+=MA.PD.Subject;  txtData+='\n';
@@ -212,6 +214,11 @@ if(MA.checkmarkCount>32) { MA.show("Batch Strength > 32");
             stemp= myReader.readLine();
             temp=stemp.split(":");
             Index=temp[1].trim();
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            CenterNo=temp[1].trim();
+
 
 
             stemp= myReader.readLine();

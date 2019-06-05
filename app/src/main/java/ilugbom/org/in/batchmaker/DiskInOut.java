@@ -10,8 +10,10 @@ import java.util.ArrayList;
 
 public class DiskInOut
 {
-    static String Zone="Mumbai Divisional Board, Vashi,Navi Mumbai - 400703",MonthYear="Feb-2021";
-    static String  BatchNo="01",Date="",BatchTime="",School="SIWS College",Index="J-31.04.005",
+    static String Zone="Mumbai Divisional Board, Vashi,Navi Mumbai - 400703",
+            MonthYear="Feb-2021";
+    static String  BatchNo="01",Date="",BatchTime="",School="SIWS College",
+            Index="J-31.04.005",CenterNo="3207",
             Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",
             Medium="English",Type="Practical",BatchCreator="MO",BatchSession="";
 
@@ -51,6 +53,10 @@ public class DiskInOut
             temp=stemp.split(":");
             Index=temp[1].trim();
 
+
+            stemp= myReader.readLine();
+            temp=stemp.split(":");
+            CenterNo=temp[1].trim();
 
             stemp= myReader.readLine();
             temp=stemp.split(":");

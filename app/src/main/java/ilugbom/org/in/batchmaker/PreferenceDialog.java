@@ -18,7 +18,7 @@ public class PreferenceDialog
     boolean modified=false,NewNow=false,selectall=false,end=false,OpenNow=false;
     String Zone="Mumbai Divisional Board, Vashi,Navi Mumbai - 400703";
     String  Date="",BatchTime="",School="SIWS College",
-            Index="J-31.04.005",MonthYear="Feb-2020",
+            Index="J-31.04.005",CenterNo="3207",MonthYear="Feb-2020",
             Strim="Science", Standard="HSC",Subject="Mathematics",SubjectCode="40",
             Medium="English",Type="Practical",  Email1="",Email2="",
             BatchCreator="MO",BatchSession="";
@@ -48,6 +48,10 @@ public class PreferenceDialog
 
         final EditText FIndex = (EditText) myDialog.findViewById(R.id.EB_INDEX);
         FIndex.setText(Index);
+
+        final EditText FCenterNo = (EditText) myDialog.findViewById(R.id.EB_CENTERNO);
+        FCenterNo.setText(CenterNo);
+
 
         final EditText FStrim = (EditText) myDialog.findViewById(R.id.EB_STRIM);
         FStrim.setText(Strim);
@@ -95,6 +99,7 @@ public class PreferenceDialog
                 tempstr=FMonthyear.getText().toString(); MonthYear=tempstr;
                 tempstr=FSchool.getText().toString(); School=tempstr;
                 tempstr=FIndex.getText().toString();  Index=tempstr;
+                tempstr=FCenterNo.getText().toString();  CenterNo=tempstr;
                 tempstr=FStrim.getText().toString();  Strim=tempstr;
                 tempstr=FStandard.getText().toString();  Standard=tempstr;
                 tempstr=FSubject.getText().toString();  Subject=tempstr;
@@ -111,6 +116,7 @@ public class PreferenceDialog
                 editor.putString("MonthYear",MonthYear);
                 editor.putString("School",School);
                 editor.putString("Index", Index);
+                editor.putString("CenterNo",CenterNo);
                 editor.putString("Strim", Strim);
                 editor.putString("Standard", Standard);
                 editor.putString("Subject", Subject);
@@ -148,6 +154,7 @@ void LoadPreferrences(final Context context)
     MonthYear=settings.getString("MonthYear",MonthYear);
     School=settings.getString("School",School);
     Index=settings.getString("Index", Index);
+    CenterNo=settings.getString("CenterNO", CenterNo);
     Strim=settings.getString("Strim", Strim);
     Standard=settings.getString("Standard", Standard);
     Subject=settings.getString("Subject", Subject);

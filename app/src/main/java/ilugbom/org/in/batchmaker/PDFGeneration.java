@@ -87,6 +87,7 @@ public class PDFGeneration {
                         DiskInOut.BatchTime,
                         DiskInOut.School,
                         DiskInOut.Index,
+                        DiskInOut.CenterNo,
                         DiskInOut.Strim,
                         DiskInOut.Standard,
                         DiskInOut.Subject,
@@ -157,7 +158,7 @@ public class PDFGeneration {
 
     void CreateSinglePDF
             (Document document, String Zone, String MonthYear, String BatchNo,
-             String Date, String BatchTime, String School, String Index,
+             String Date, String BatchTime, String School, String Index, String CenterNo,
              String Strim, String Standard, String Subject, String SubjectCode,
              String Medium, String Type, String BatchCreator,
              String BatchSession, String froll,
@@ -168,7 +169,7 @@ public class PDFGeneration {
         if (Type.toUpperCase().contains("ORAL")) {
             BoxedHeader.AddBoxedText(document, Index);
             OralHeader.Add(document, Zone, MonthYear, BatchNo, Date, BatchTime,
-                    School, Index, Strim, Standard, Subject,
+                    School, Index,Strim, Standard, Subject,
                     SubjectCode, Medium, Type, BatchCreator, BatchSession,
                     froll, lroll);
             OralBody.Add(document, seatNos);
@@ -188,7 +189,7 @@ public class PDFGeneration {
 
         if (Type.toUpperCase().contains("THEORY")) {
             TheoryHeader.Add(document, Zone, MonthYear, BatchNo, Date, BatchTime,
-                    School, Index, Strim, Standard, Subject,
+                    School, Index,CenterNo, Strim, Standard, Subject,
                     SubjectCode, Medium, Type, BatchCreator, BatchSession,
                     froll, lroll);
             TheoryBody.Add(document, seatNos);
@@ -211,9 +212,10 @@ public class PDFGeneration {
         PracticalFooter.Add(document);
     }
 
-    void CreateSingleEngChartPDF  (Document document, String Zone, String MonthYear, String BatchNo,
-                                    String Date, String BatchTime, String School, String Index,
-                                    String Strim, String Standard, String Subject, String SubjectCode,
+    void CreateSingleEngChartPDF (Document document, String Zone, String MonthYear,
+                                  String BatchNo, String Date, String BatchTime,
+                                   String School, String Index, String Strim,
+                                   String Standard, String Subject, String SubjectCode,
                                     String Medium, String Type, String BatchCreator,
                                     String BatchSession, String froll,
                                     String lroll, ArrayList<String> seatNos) throws DocumentException
@@ -242,7 +244,7 @@ public class PDFGeneration {
         document.open();
 
         CreateSinglePDF(document,MA.PD.Zone,MA.PD.MonthYear,MA.FSL.BatchNo,
-                MA.PD.Date,MA.PD.BatchTime,MA.PD.School,MA.PD.Index,MA.PD.Strim,
+                MA.PD.Date,MA.PD.BatchTime,MA.PD.School,MA.PD.Index,MA.PD.CenterNo,MA.PD.Strim,
                 MA.PD.Standard,MA.PD.Subject,MA.PD.SubjectCode,MA.PD.Medium,
                 MA.PD.Type,MA.PD.BatchCreator,MA.PD.BatchSession,MA.froll,
                 MA.lroll,CheckedNumbers);

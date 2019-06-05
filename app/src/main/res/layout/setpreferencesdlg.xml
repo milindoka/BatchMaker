@@ -150,6 +150,44 @@
             android:id="@+id/EB_INDEX"
            android:inputType="textVisiblePassword|textCapWords"
             android:singleLine="true"
+            android:nextFocusDown="@+id/EB_CENTERNO"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:background="@drawable/edittext_background"
+            android:textColorHint="#aeaeae"
+            />
+    </TableRow>
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Center No)"
+            android:textColor="#000000" />
+
+    </TableRow>
+
+
+
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp" >
+
+
+        <EditText
+            android:id="@+id/EB_CENTERNO"
+            android:inputType="textVisiblePassword|textCapWords"
+            android:singleLine="true"
             android:nextFocusDown="@+id/EB_STRIM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -160,7 +198,13 @@
             android:textColorHint="#aeaeae"
             />
     </TableRow>
-    
+
+
+
+
+
+
+
 
     <TableRow
         android:layout_width="fill_parent"

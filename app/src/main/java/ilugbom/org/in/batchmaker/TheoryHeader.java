@@ -23,6 +23,7 @@ public class TheoryHeader
                      String BatchTime,
                      String School,
                      String Index,
+                     String CenterNo,
                      String Strim,
                      String Standard,
                      String Subject,
@@ -68,7 +69,7 @@ public class TheoryHeader
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
 
-        cell = new PdfPCell(new Phrase("Centre No",normal));
+        cell = new PdfPCell(new Phrase("Centre No : "+CenterNo,normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_LEFT);
         cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
