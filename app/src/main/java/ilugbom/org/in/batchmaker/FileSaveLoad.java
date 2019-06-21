@@ -317,7 +317,7 @@ if(MA.endnow) MA.finish();
     }
 
 
-
+/*
     void SaveListDialog()
     {
         // if (OpenNow) { OpenFileDialog(); return;}
@@ -387,7 +387,7 @@ if(MA.endnow) MA.finish();
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
     }
 
-
+*/
      void ShowHeaderDlg()
     {
         final Dialog myDialog;
@@ -501,8 +501,8 @@ void SaveDirect()
     else ShortSubject=MA.PD.Subject.toUpperCase();
 
     String ShortBatchCreator="";
-    if(BatchCreator.length()>2) ShortBatchCreator=BatchCreator.toUpperCase().substring(0,2);
-    else ShortBatchCreator=BatchCreator.toUpperCase();
+    if(BatchCreator.length()>2) ShortBatchCreator=MA.PD.BatchCreator.toUpperCase().substring(0,2);
+    else ShortBatchCreator=MA.PD.BatchCreator.toUpperCase();
 
     String FirstSeat=GetFirstSeatNo();
     String FirstSeat4="";

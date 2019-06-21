@@ -81,13 +81,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+      {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("BatchMaker - 1.4");
+        getSupportActionBar().setTitle("BatchMaker - 1.5");
 
         fab =  findViewById(R.id.fab);
 
@@ -130,9 +131,9 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        if(!StoragePermissionGranted()) ;
 
-        if(!StoragePermissionGranted()) finish();
+
+       // if(!StoragePermissionGranted()) finish();
 
         LO.SetMA(this);
         FSL.SetMA(this);
@@ -218,6 +219,8 @@ public class MainActivity extends AppCompatActivity
         fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorGreen));
 
 
+
+          if(!StoragePermissionGranted()) ;
     }
 
     @Override
@@ -242,7 +245,7 @@ public class MainActivity extends AppCompatActivity
       case R.id.action_select_all : LO.SelectAll(); return true;
       case R.id.action_select_none : LO.SelectNone(); return true;
       case R.id.action_load : FSL.OpenFileDialog(); return true;
-      case R.id.action_save : FSL.SaveListDialog(); return true;
+      case R.id.action_save : FSL.SaveDirect(); return true;
       case R.id.action_pick_unpick : LO.PickRoutine();return true;
       case R.id.action_reverse : LO.SelectReverse();return true;
      }
