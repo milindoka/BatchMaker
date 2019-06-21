@@ -170,7 +170,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Center No)"
+            android:text="Center No :"
             android:textColor="#000000" />
 
     </TableRow>
@@ -370,7 +370,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mediam :"
+            android:text="Medium :"
             android:textColor="#000000" />
 
 
@@ -408,7 +408,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Exam Type (Oral, Pract, Project etc):"
+            android:text="Exam Type (Oral/Practical/Project/Theory):"
             android:textColor="#000000" />
 
     

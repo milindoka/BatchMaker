@@ -6,8 +6,8 @@ android {
         applicationId "ilugbom.org.in.batchmaker"
         minSdkVersion 14
         targetSdkVersion 26
-        versionCode 3
-        versionName "1.3"
+        versionCode 4
+        versionName "1.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

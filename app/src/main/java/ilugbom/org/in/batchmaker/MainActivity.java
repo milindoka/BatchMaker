@@ -84,8 +84,10 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("BatchMaker - 1.4");
 
         fab =  findViewById(R.id.fab);
 
@@ -142,6 +144,7 @@ public class MainActivity extends AppCompatActivity
 
         FC= findViewById(R.id.FabCounter);
         /////////////////////////////////////Custom List Initialization///////////
+
 
         // Get listview checkbox.
         final ListView listViewWithCheckbox = (ListView)findViewById(R.id.list_view_with_checkbox);
@@ -213,6 +216,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setItemIconTintList(null);
 
         fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorGreen));
+
 
     }
 

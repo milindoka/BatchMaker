@@ -166,7 +166,7 @@ public class PDFGeneration {
 
 
 
-        if (Type.toUpperCase().contains("ORAL")) {
+        if (Type.toUpperCase().contains("ORAL") || Type.toUpperCase().contains("PROJECT")) {
             BoxedHeader.AddBoxedText(document, Index);
             OralHeader.Add(document, Zone, MonthYear, BatchNo, Date, BatchTime,
                     School, Index,Strim, Standard, Subject,
