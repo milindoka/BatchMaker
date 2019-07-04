@@ -240,12 +240,22 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
 
    switch(id)
-    {case R.id.action_new : LO.GetNewRoll(); return true;
-     // case R.id.action_settings : EditSettings(); return true;
+    {case R.id.action_new :
+        if(modified) Msg.Show("Please Save Current Batch",this);
+        else
+            LO.GetNewRoll();
+        return true;
+
       case R.id.action_select_all : LO.SelectAll(); return true;
       case R.id.action_select_none : LO.SelectNone(); return true;
       case R.id.action_load : FSL.OpenFileDialog(); return true;
-      case R.id.action_save : FSL.SaveDirect(); return true;
+      case R.id.action_save :
+      { if(!StoragePermissionGranted())
+         Msg.Show("No Permission",this);
+      else
+          FSL.SaveDirect();
+      }
+      return true;
       case R.id.action_pick_unpick : LO.PickRoutine();return true;
       case R.id.action_reverse : LO.SelectReverse();return true;
      }
@@ -272,37 +282,6 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    /////////////////// Storage Permission //////////////////////////////////////
-
-    public  boolean StoragePermissionGranted() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_GRANTED) {
-                //Log.v(TAG,"Permission is granted");
-                return true;
-            } else {
-
-                //Log.v(TAG,"Permission is revoked");
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-                return false;
-            }
-        }
-        else { //permission is automatically granted on sdk<23 upon installation
-          //  Log.v(TAG,"Permission is granted");
-            return true;
-        }
-    }
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(grantResults[0]== PackageManager.PERMISSION_GRANTED)
-        {
-        //    Log.v(TAG,"Permission: "+permissions[0]+ "was "+grantResults[0]);
-            //resume tasks needing this permission
-        }
-    }
 
 
 void EditSettings()
@@ -350,6 +329,40 @@ void OnFloatingButton()
         myAlertDialog.show();
     }
 
+
+
+
+
+    public  boolean StoragePermissionGranted()
+    {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                //Log.v(TAG,"Permission is granted");
+                return true;
+            } else {
+
+                //Log.v(TAG,"Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            //  Log.v(TAG,"Permission is granted");
+            return true;
+        }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults[0]== PackageManager.PERMISSION_GRANTED)
+        {
+            Msg.Show("Permission Granted",this);
+
+        }
+    }
 
 
 }
