@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.view.View;
@@ -571,13 +572,22 @@ String GetLastSeatNo()
         for (String file : filePaths)
         {
             File fileIn = new File(file);
-            Uri u = Uri.fromFile(fileIn);
+         //   Uri u = Uri.fromFile(fileIn);
+
+            Uri u = FileProvider.getUriForFile(MA,
+                    BuildConfig.APPLICATION_ID + ".provider",
+                    fileIn);
+
+
+
+
             uris.add(u);
         }
 
 
         String emailsubject=Subject.trim()+"-"+BatchNo.trim()+"-"+BatchCreator.trim();
         Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+        sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         sendIntent.putExtra(Intent.EXTRA_SUBJECT,emailsubject);
         sendIntent.putExtra(Intent.EXTRA_TEXT, "Attached Batch ...");
 
@@ -609,6 +619,7 @@ String GetLastSeatNo()
         String rootDir=Environment.getExternalStorageDirectory().getPath();
         String combinedpath=rootDir+"/Combined.pdf";
         String[] filePaths = new String[] {combinedpath};
+        Msg.Show(combinedpath,MA);
         for (String file : filePaths)
         {
             File fileIn = new File(file);
