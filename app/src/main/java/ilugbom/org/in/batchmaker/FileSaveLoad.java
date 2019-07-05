@@ -318,77 +318,6 @@ if(MA.endnow) MA.finish();
     }
 
 
-/*
-    void SaveListDialog()
-    {
-        // if (OpenNow) { OpenFileDialog(); return;}
-        // if(NewNow) { GetNewRoll();return; }
-
-        if(BatchNo.length()==0)  {show("Cannot Save. Fill Batch No. In Header");return;}
-
-        AlertDialog.Builder alert = new AlertDialog.Builder(MA);
-        alert.setTitle("File Name To Save Batch :");
-        final EditText input = new EditText(MA);
-        input.setSingleLine();
-        input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
-        String ShortSubject="";
-        if(MA.PD.Subject.length()>3) ShortSubject=MA.PD.Subject.toUpperCase().substring(0,3);
-        else ShortSubject=MA.PD.Subject;
-        String fylenem=ShortSubject+"-"+BatchNo+"-"+MA.PD.BatchCreator.toUpperCase();
-        input.setText(fylenem);
-
-        alert.setView(input);
-        alert.setPositiveButton("Ok", new DialogInterface.OnClickListener()
-        {
-            public void onClick(DialogInterface dialog, int whichButton)
-            {
-                String fnem = input.getText().toString();
-                String pnem = fnem;
-                String cnem = fnem;
-                fnem+=".bch";
-                pnem+=".pdf";
-                cnem+="-Chart.pdf";
-             //   FileName=fnem;
-                FileNameWithPath=Environment.getExternalStorageDirectory().getPath();
-
-                FileNameWithPath+="/"+fnem;
-                PDFNameWithPath+="/"+pnem;
-                PDFChartNameWithPath+="/"+cnem;
-
-                InputMethodManager imm = (InputMethodManager) MA.getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(input.getWindowToken(),0);
-
-
-                if(fnem.length()==0) { show("Blank File Name"); return;}
-
-                show(fnem);
-                File file = new File(FileNameWithPath);
-                if(!file.exists()) { SaveList();
-                                    // modified=false;  FileName=fnem;  UpdateTitle(); return;
-                                     }
-
-               // else
-               // {  OverWriteCase(); }
-
-            }
-
-        });
-
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int whichButton) {
-                InputMethodManager imm = (InputMethodManager) MA.getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(input.getWindowToken(),0);
-                //	if (OpenNow)OpenFile();
-                //	if(NewNow) GetNewRoll();
-                return;
-            }
-        });
-        alert.show();
-        InputMethodManager imm = (InputMethodManager) MA.getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
-    }
-
-*/
      void ShowHeaderDlg()
     {
         final Dialog myDialog;
@@ -564,38 +493,25 @@ String GetLastSeatNo()
 
      void SendList()
     {
-       // String pdfname=FileNameWithPath.replaceAll(".mrk",".pdf");
 
         ArrayList<Uri> uris = new ArrayList<Uri>();
-
         String[] filePaths = new String[] {FileNameWithPath,PDFNameWithPath};
+
         for (String file : filePaths)
         {
             File fileIn = new File(file);
-         //   Uri u = Uri.fromFile(fileIn);
-
+            if(!fileIn.exists()) { Msg.Show("Missing Batch File",MA); return;}
+         // Uri u = Uri.fromFile(fileIn);  Before Orio bug fix
             Uri u = FileProvider.getUriForFile(MA,
-                    BuildConfig.APPLICATION_ID + ".provider",
-                    fileIn);
-
-
-
-
+                    BuildConfig.APPLICATION_ID + ".provider", fileIn);
             uris.add(u);
         }
 
-
         String emailsubject=Subject.trim()+"-"+BatchNo.trim()+"-"+BatchCreator.trim();
         Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
-        sendIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         sendIntent.putExtra(Intent.EXTRA_SUBJECT,emailsubject);
         sendIntent.putExtra(Intent.EXTRA_TEXT, "Attached Batch ...");
-
-
         sendIntent.putExtra(Intent.EXTRA_STREAM, uris);
-        //yntaxException.parse("file://" + FileNameWithPath),
-        //		Uri.parse("file://" + pdfname));
-        //sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + FileNameWithPath));
 
         String E1=MA.PD.Email1.trim();
         String E2=MA.PD.Email2.trim();
@@ -619,25 +535,22 @@ String GetLastSeatNo()
         String rootDir=Environment.getExternalStorageDirectory().getPath();
         String combinedpath=rootDir+"/Combined.pdf";
         String[] filePaths = new String[] {combinedpath};
-        Msg.Show(combinedpath,MA);
+
         for (String file : filePaths)
         {
             File fileIn = new File(file);
-            Uri u = Uri.fromFile(fileIn);
+         //   Uri u = Uri.fromFile(fileIn); // old  before Orio 8.1.0 bug fix
+            if(!fileIn.exists()) { Msg.Show("Missing Combined.pdf",MA); return;}
+            Uri u = FileProvider.getUriForFile(MA,
+                    BuildConfig.APPLICATION_ID + ".provider", fileIn);
             uris.add(u);
         }
-
 
         String emailsubject=Subject.trim()+"-"+BatchNo.trim()+"-"+BatchCreator.trim();
         Intent sendIntent = new Intent(Intent.ACTION_SEND_MULTIPLE);
         sendIntent.putExtra(Intent.EXTRA_SUBJECT,emailsubject);
         sendIntent.putExtra(Intent.EXTRA_TEXT, "Attached Batch ...");
-
-
         sendIntent.putExtra(Intent.EXTRA_STREAM, uris);
-        //yntaxException.parse("file://" + FileNameWithPath),
-        //		Uri.parse("file://" + pdfname));
-        //sendIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + FileNameWithPath));
 
         String E1=MA.PD.Email1.trim();
         String E2=MA.PD.Email2.trim();
@@ -648,11 +561,6 @@ String GetLastSeatNo()
         sendIntent.putExtra(Intent.EXTRA_EMAIL,emailList);
         sendIntent.setType("text/plain");
         MA.startActivity(Intent.createChooser(sendIntent, "Send Mail"));
-
     }
-
-
-
-
 
 }
