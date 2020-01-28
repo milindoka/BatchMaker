@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("BatchMaker - 1.7");
+        getSupportActionBar().setTitle("BatchMaker - 1.8");
 
         fab =  findViewById(R.id.fab);
 

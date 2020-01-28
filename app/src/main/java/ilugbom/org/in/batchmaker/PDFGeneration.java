@@ -244,11 +244,12 @@ public class PDFGeneration {
         document.open();
 
         CreateSinglePDF(document,MA.PD.Zone,MA.PD.MonthYear,MA.FSL.BatchNo,
-                MA.PD.Date,MA.PD.BatchTime,MA.PD.School,MA.PD.Index,MA.PD.CenterNo,MA.PD.Strim,
+                MA.FSL.Date,MA.FSL.BatchTime,MA.PD.School,MA.PD.Index,MA.PD.CenterNo,MA.PD.Strim,
                 MA.PD.Standard,MA.PD.Subject,MA.PD.SubjectCode,MA.PD.Medium,
-                MA.PD.Type,MA.PD.BatchCreator,MA.PD.BatchSession,MA.froll,
+                MA.PD.Type,MA.PD.BatchCreator,MA.FSL.BatchSession,MA.froll,
                 MA.lroll,CheckedNumbers);
         document.close();
+       // MA.show(MA.FSL.Date);
     }
 
     void CreateCurrentChart(String pdfFileNameWithPath) throws FileNotFoundException, DocumentException
