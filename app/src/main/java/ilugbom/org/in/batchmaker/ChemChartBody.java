@@ -17,7 +17,7 @@ public class ChemChartBody
 
     static  void Add(Document document, String BatchSession, ArrayList<String> seatNos) throws DocumentException
     {
-        float col[]={40,85,70,70, 70, 70, 70};
+        float col[]={40,85,70,70,70,70, 70, 70, 70};
         //float col[]={4,8,8,30};
 
         //////////   TITLE ROW
@@ -54,6 +54,17 @@ public class ChemChartBody
         cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
         //cell.setBorder(PdfPCell.NO_BORDER);
         table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Volmetry",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        //cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Expt",normal));
+        cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+        //cell.setBorder(PdfPCell.NO_BORDER);
+        table2.addCell(cell);
+
 
         cell = new PdfPCell(new Phrase("Total",normal));
         cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
@@ -108,6 +119,18 @@ public class ChemChartBody
             cell = new PdfPCell(new Phrase(" ",normal));
             cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
             table2.addCell(cell);
+
+            cell = new PdfPCell(new Phrase(" ",normal));
+            cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+            table2.addCell(cell);
+
+            cell = new PdfPCell(new Phrase(" ",normal));
+            cell.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+            table2.addCell(cell);
+
+
+
+
         }
 
 

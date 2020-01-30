@@ -268,14 +268,14 @@ public class PDFGeneration {
         if (MA.PD.Subject.toUpperCase().contains("CHEMISTRY"))
 
         CreateSingleChemChartPDF(document,MA.PD.Zone,MA.PD.MonthYear,MA.FSL.BatchNo,
-                MA.PD.Date,MA.PD.BatchTime,MA.PD.School,MA.PD.Index,MA.PD.Strim,
+                MA.FSL.Date,MA.FSL.BatchTime,MA.PD.School,MA.PD.Index,MA.PD.Strim,
                 MA.PD.Standard,MA.PD.Subject,MA.PD.SubjectCode,MA.PD.Medium,
                 MA.PD.Type,MA.PD.BatchCreator,MA.PD.BatchSession,MA.froll,
                 MA.lroll,CheckedNumbers);
 
         if (MA.PD.Subject.toUpperCase().contains("ENGLISH"))
         CreateSingleEngChartPDF(document,MA.PD.Zone,MA.PD.MonthYear,MA.FSL.BatchNo,
-                MA.PD.Date,MA.PD.BatchTime,MA.PD.School,MA.PD.Index,MA.PD.Strim,
+                MA.FSL.Date,MA.FSL.BatchTime,MA.PD.School,MA.PD.Index,MA.PD.Strim,
                 MA.PD.Standard,MA.PD.Subject,MA.PD.SubjectCode,MA.PD.Medium,
                 MA.PD.Type,MA.PD.BatchCreator,MA.PD.BatchSession,MA.froll,
                 MA.lroll,CheckedNumbers);
