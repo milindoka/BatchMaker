@@ -184,6 +184,7 @@ public void SelectAll()
              //   FileNameWithPath=""; ///fresh file created
 
                 MA.listViewDataAdapter.notifyDataSetChanged();
+                MA.listViewWithCheckbox.setSelection(0);
 
                 MA.FSL.ShowHeaderDlg();
                 InputMethodManager imm = (InputMethodManager) MA.getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);

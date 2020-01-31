@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity
     ArrayList<ListViewItemDTO> initItemList = new ArrayList<>();
     ArrayList<ListViewItemDTO> backupItemList = new ArrayList<>();
     String froll="M058151",lroll="M058200",tempstr;
+    ListView listViewWithCheckbox;
     ListViewItemCheckboxBaseAdapter listViewDataAdapter;
 
     ListOperations LO=new ListOperations();
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("BatchMaker - 1.8");
+        getSupportActionBar().setTitle("BatchMaker - 2.0");
 
         fab =  findViewById(R.id.fab);
 
@@ -148,7 +149,7 @@ public class MainActivity extends AppCompatActivity
 
 
         // Get listview checkbox.
-        final ListView listViewWithCheckbox = (ListView)findViewById(R.id.list_view_with_checkbox);
+        listViewWithCheckbox = (ListView)findViewById(R.id.list_view_with_checkbox);
 
         // Initiate listview data.
       //  final List<ListViewItemDTO> initItemList = this.getInitViewItemDtoList();
