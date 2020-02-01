@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("BatchMaker - 2.0");
+        getSupportActionBar().setTitle(PD.Subject);
 
         fab =  findViewById(R.id.fab);
 
@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity
 
         LO.SetMA(this);
         FSL.SetMA(this);
-       // CP.SetMA(this);
+        PD.SetMA(this);
        // OPDF.SetMA(this);
         //CPDF.SetMA(this);
       //  CCPDF.SetMA(this);

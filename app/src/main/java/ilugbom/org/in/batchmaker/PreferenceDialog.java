@@ -14,6 +14,9 @@ import android.view.ViewGroup.LayoutParams;
 
 public class PreferenceDialog
 {
+    private MainActivity MA;
+    void SetMA(MainActivity MA){this.MA=MA;}
+
 
     boolean modified=false,NewNow=false,selectall=false,end=false,OpenNow=false;
     String Zone="Mumbai Divisional Board, Vashi,Navi Mumbai - 400703";
@@ -133,6 +136,7 @@ public class PreferenceDialog
                 imm.hideSoftInputFromWindow(FSchool.getWindowToken(),0);
 
                 myDialog.dismiss();
+                MA.getSupportActionBar().setTitle(Subject);
 
             }
         });
