@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.itextpdf.text.DocumentException;
@@ -89,7 +90,7 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(PD.Subject);
+
 
         fab =  findViewById(R.id.fab);
 
@@ -218,7 +219,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setItemIconTintList(null);
 
         fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorGreen));
-
+        getSupportActionBar().setTitle(PD.Subject);
 
 
           if(!StoragePermissionGranted()) ;
@@ -285,6 +286,45 @@ public class MainActivity extends AppCompatActivity
 
 
 
+
+
+
+    void ShowPopupMenu()
+    {
+        //Creating the instance of PopupMenu
+        PopupMenu popup = new PopupMenu(MainActivity.this, fab);
+        //Inflating the Popup using xml file
+        popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
+
+        //registering popup with OnMenuItemClickListener
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item)
+            {
+                //               Toast.makeText(MainActivity.this,"You Clicked : " + item.getTitle(), Toast.LENGTH_SHORT).show();
+                //    Msg.show("Test");
+                int option=item.getItemId();
+                switch(option)
+                { case R.id.one : show("one"); break;
+                    case R.id.two :show("two"); break;
+                    case R.id.three :
+                        fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorGreen));
+                        show("Attendance Discarded");
+                      //  TA.selectedPositions.clear();
+                        modified=false;
+
+                        break;
+                }
+                return true;
+            }
+        });
+
+        popup.show();//showing popup menu
+    }
+
+
+
+
+
 void EditSettings()
 {
    PD.SetPreferrenceDlg(this);
@@ -294,7 +334,8 @@ void EditSettings()
 void OnFloatingButton()
 {
     if(modified) {
-        FSL.SaveDirect();
+        //FSL.SaveDirect();
+        ShowPopupMenu();
     }
     else
         LO.GetNewRoll();
