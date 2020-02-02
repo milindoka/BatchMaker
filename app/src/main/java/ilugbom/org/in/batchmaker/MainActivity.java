@@ -304,13 +304,16 @@ public class MainActivity extends AppCompatActivity
                 //    Msg.show("Test");
                 int option=item.getItemId();
                 switch(option)
-                { case R.id.one : show("one"); break;
-                    case R.id.two :show("two"); break;
+                { case R.id.one : FSL.SaveDirect(); break;
+                    case R.id.two : show("Contined Batch ..."); break;
                     case R.id.three :
                         fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorGreen));
-                        show("Attendance Discarded");
-                      //  TA.selectedPositions.clear();
+                        show("Batch Discarded ..");
+                        LO.SelectNone();
+                        FC.setText("");
                         modified=false;
+
+
 
                         break;
                 }
