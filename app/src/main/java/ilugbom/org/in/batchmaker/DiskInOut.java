@@ -37,79 +37,79 @@ public class DiskInOut
 
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Zone=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             MonthYear=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             School=temp[1].trim();
 
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Index=temp[1].trim();
 
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             CenterNo=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Strim=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Standard=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Subject=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             SubjectCode=temp[1].trim();
 
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Medium=temp[1].trim();
 
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Type=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             BatchNo=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             BatchCreator=temp[1].trim();
 
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Date=temp[1].trim();
 
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             BatchTime=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             BatchSession=temp[1].trim();
 
             aDataRow=myReader.readLine(); /// blank line separator
             aDataRow=myReader.readLine(); /// ==== Reserved line ===
             aDataRow=myReader.readLine(); /// blank line separator
-            aDataRow=myReader.readLine(); /// Seat Nos: Tag
+            aDataRow=myReader.readLine(); /// Seat Nos§ Tag
             aDataRow=myReader.readLine(); /// blank line separator
 
             tempRoll.removeAll(tempRoll);

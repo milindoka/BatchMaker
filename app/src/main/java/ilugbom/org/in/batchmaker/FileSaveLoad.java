@@ -80,26 +80,26 @@ if(MA.checkmarkCount>32) { MA.show("Batch Strength > 32");
         String tmpStr;
         String txtData = "\n";
 
-        txtData+="Zone          : ";txtData+=MA.PD.Zone;     txtData+='\n';
-        txtData+="Month & Year  : ";txtData+=MA.PD.MonthYear;txtData+='\n';
-        txtData+="School        : ";txtData+=MA.PD.School;   txtData+='\n';
-        txtData+="Index         : ";txtData+=MA.PD.Index;    txtData+='\n';
-        txtData+="Center No     : ";txtData+=MA.PD.CenterNo; txtData+='\n';
-        txtData+="Stream        : ";txtData+=MA.PD.Strim;    txtData+='\n';
-        txtData+="Standard      : ";txtData+=MA.PD.Standard; txtData+='\n';
-        txtData+="Subject       : ";txtData+=MA.PD.Subject;  txtData+='\n';
-        txtData+="Subject Code  : ";txtData+=MA.PD.SubjectCode;    txtData+='\n';
-        txtData+="Medium        : ";txtData+=MA.PD.Medium;   txtData+='\n';
-        txtData+="Type          : ";txtData+=MA.PD.Type;     txtData+='\n';
-        txtData+="Batch Number  : ";txtData+=BatchNo;        txtData+='\n';
-        txtData+="Batch Creater : ";txtData+=MA.PD.BatchCreator;   txtData+='\n';
-        txtData+="Date          : ";txtData+=Date;           txtData+="\n";
-        txtData+="Time          : ";txtData+=BatchTime;      txtData+='\n';
-        txtData+="Session       : ";txtData+=BatchSession;   txtData+="\n";
+        txtData+="Zone          § ";txtData+=MA.PD.Zone;     txtData+='\n';
+        txtData+="Month & Year  § ";txtData+=MA.PD.MonthYear;txtData+='\n';
+        txtData+="School        § ";txtData+=MA.PD.School;   txtData+='\n';
+        txtData+="Index         § ";txtData+=MA.PD.Index;    txtData+='\n';
+        txtData+="Center No     § ";txtData+=MA.PD.CenterNo; txtData+='\n';
+        txtData+="Stream        § ";txtData+=MA.PD.Strim;    txtData+='\n';
+        txtData+="Standard      § ";txtData+=MA.PD.Standard; txtData+='\n';
+        txtData+="Subject       § ";txtData+=MA.PD.Subject;  txtData+='\n';
+        txtData+="Subject Code  § ";txtData+=MA.PD.SubjectCode;    txtData+='\n';
+        txtData+="Medium        § ";txtData+=MA.PD.Medium;   txtData+='\n';
+        txtData+="Type          § ";txtData+=MA.PD.Type;     txtData+='\n';
+        txtData+="Batch Number  § ";txtData+=BatchNo;        txtData+='\n';
+        txtData+="Batch Creater § ";txtData+=MA.PD.BatchCreator;   txtData+='\n';
+        txtData+="Date          § ";txtData+=Date;           txtData+="\n";
+        txtData+="Time          § ";txtData+=BatchTime;      txtData+='\n';
+        txtData+="Session       § ";txtData+=BatchSession;   txtData+="\n";
         txtData+="\n";
         txtData+="=== Reserved Line ====\n";
         txtData+="\n";
-        txtData+="Seat Nos :\n";
+        txtData+="Seat Nos §\n";
         txtData+="\n";
 
         MA.PGEN.CheckedNumbers.removeAll(MA.PGEN.CheckedNumbers);
@@ -147,8 +147,8 @@ if(MA.checkmarkCount>32) { MA.show("Batch Strength > 32");
 
 
         show("PDF Sheet Created");
-        if (MA.PD.Subject.toUpperCase().contains("CHEMISTRY")
-        && MA.PD.Type.toUpperCase().contains("PRACTICAL")) {
+        if (MA.PD.Subject.toUpperCase().contains("CHEMISTRY"))
+        {
 
             try {
                 MA.PGEN.CreateCurrentChart(PDFChartNameWithPath);
@@ -162,8 +162,12 @@ if(MA.checkmarkCount>32) { MA.show("Batch Strength > 32");
 
         }
 
-        if (MA.PD.Subject.toUpperCase().contains("ENGLISH")
-                && MA.PD.Type.toUpperCase().contains("ORAL")) {
+        if (    MA.PD.Subject.toUpperCase().contains("ENGLISH") ||
+                MA.PD.Subject.toUpperCase().contains("MARATHI") ||
+                MA.PD.Subject.toUpperCase().contains("HINDI") ||
+                MA.PD.Subject.toUpperCase().contains("TAMIL")
+           )
+        {
 
             try {
                 MA.PGEN.CreateCurrentChart(PDFChartNameWithPath);
@@ -173,7 +177,7 @@ if(MA.checkmarkCount>32) { MA.show("Batch Strength > 32");
                 e.printStackTrace();
             }
 
-            show("PDF Eng Chart Created");
+            show("PDF Oral Chart Created");
 
         }
 if(MA.endnow) MA.finish();
@@ -200,77 +204,77 @@ if(MA.endnow) MA.finish();
 
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Zone=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             MonthYear=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             School=temp[1].trim();
 
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Index=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             CenterNo=temp[1].trim();
 
 
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Strim=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Standard=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Subject=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             SubjectCode=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Medium=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Type=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             BatchNo=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             BatchCreator=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             Date=temp[1].trim();
 
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             BatchTime=temp[1].trim();
 
             stemp= myReader.readLine();
-            temp=stemp.split(":");
+            temp=stemp.split("§");
             BatchSession=temp[1].trim();
 
             aDataRow=myReader.readLine(); /// blank line separator
             aDataRow=myReader.readLine(); /// ==== Reserved line ===
             aDataRow=myReader.readLine(); /// blank line separator
-            aDataRow=myReader.readLine(); /// Seat Nos: Tag
+            aDataRow=myReader.readLine(); /// Seat Nos§ Tag
             aDataRow=myReader.readLine(); /// blank line separator
 
             MA.tempRoll.removeAll(MA.tempRoll);

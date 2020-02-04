@@ -122,8 +122,14 @@ public class PDFGeneration {
                             DiskInOut.lroll, DiskInOut.tempRoll);
                 }
 
-                if (DiskInOut.Subject.toUpperCase().contains("ENGLISH")
-                        && DiskInOut.Type.toUpperCase().contains("ORAL"))
+                if (
+
+                DiskInOut.Subject.toUpperCase().contains("ENGLISH") ||
+                DiskInOut.Subject.toUpperCase().contains("MARATHI") ||
+                DiskInOut.Subject.toUpperCase().contains("HINDI") ||
+                DiskInOut.Subject.toUpperCase().contains("TAMIL")
+
+                )
                 {   document.newPage();
                     CreateSingleEngChartPDF(document,
                             DiskInOut.Zone,
@@ -273,7 +279,12 @@ public class PDFGeneration {
                 MA.PD.Type,MA.PD.BatchCreator,MA.PD.BatchSession,MA.froll,
                 MA.lroll,CheckedNumbers);
 
-        if (MA.PD.Subject.toUpperCase().contains("ENGLISH"))
+        if (
+                MA.PD.Subject.toUpperCase().contains("ENGLISH") ||
+                MA.PD.Subject.toUpperCase().contains("MARATHI") ||
+                MA.PD.Subject.toUpperCase().contains("HINDI") ||
+                MA.PD.Subject.toUpperCase().contains("TAMIL")
+        )
         CreateSingleEngChartPDF(document,MA.PD.Zone,MA.PD.MonthYear,MA.FSL.BatchNo,
                 MA.FSL.Date,MA.FSL.BatchTime,MA.PD.School,MA.PD.Index,MA.PD.Strim,
                 MA.PD.Standard,MA.PD.Subject,MA.PD.SubjectCode,MA.PD.Medium,
