@@ -221,6 +221,8 @@ public class MainActivity extends AppCompatActivity
 
         fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorGreen));
         getSupportActionBar().setTitle(PD.Subject);
+        getSupportActionBar().setSubtitle("Click to set your subject");
+
 
 
           if(!StoragePermissionGranted()) ;
@@ -238,6 +240,13 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
+        // User chose the "Favorite" action, mark the current item
+        // as a favorite...
+
+
+
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -271,6 +280,10 @@ public class MainActivity extends AppCompatActivity
     }
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
