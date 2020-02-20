@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity
     ListViewItemCheckboxBaseAdapter listViewDataAdapter;
 
     ListOperations LO=new ListOperations();
-    //CurrentPDF CPDF=new CurrentPDF();
+    DeleteBatchesDialog DBD=new DeleteBatchesDialog();
     FileSaveLoad FSL=new FileSaveLoad();
     PreferenceDialog PD = new PreferenceDialog();
   //  CreatePDF CP=new CreatePDF();
@@ -139,6 +139,7 @@ public class MainActivity extends AppCompatActivity
 
         LO.SetMA(this);
         FSL.SetMA(this);
+        DBD.SetMA(this);
         PD.SetMA(this);
        // OPDF.SetMA(this);
         //CPDF.SetMA(this);
@@ -258,9 +259,16 @@ public class MainActivity extends AppCompatActivity
           FSL.SaveDirect();
       }
       return true;
-      case R.id.action_pick_unpick : LO.PickRoutine();return true;
+
       case R.id.action_reverse : LO.SelectReverse();return true;
-     }
+
+      case R.id.action_pick_unpick : LO.PickRoutine();return true;
+
+      case R.id.action_delete_batches : DBD.ShowBatchesDeleteDialog();return true;
+
+
+
+    }
         return super.onOptionsItemSelected(item);
     }
 
