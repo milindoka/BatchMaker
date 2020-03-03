@@ -396,7 +396,10 @@ if(MA.endnow) MA.finish();
     {	String tempstr;
         //OpenNow=false;
         String rootDir=Environment.getExternalStorageDirectory().getPath();
+
         List<String> listItems = new ArrayList<String>();
+        final  ArrayList<String> filepath = new ArrayList<String>();
+
         File mfile=new File(rootDir);
         File[] list=mfile.listFiles();
         String tempupper;
@@ -404,8 +407,13 @@ if(MA.endnow) MA.finish();
         {
             tempstr=list[i].getAbsolutePath();
             tempupper=tempstr.toUpperCase();
-            if(tempupper.endsWith(".BCH") )
-                listItems.add(list[i].getAbsolutePath());
+            if(tempupper.endsWith(".BCH") ) {
+
+                filepath.add(list[i].getAbsolutePath());
+                listItems.add(list[i].getName());
+
+               // listItems.add(list[i].getAbsolutePath());
+            }
         }
 
         final CharSequence[] items = listItems.toArray(new CharSequence[listItems.size()]);
@@ -415,7 +423,7 @@ if(MA.endnow) MA.finish();
         builder.setItems(items, new DialogInterface.OnClickListener()
         {
             public void onClick(DialogInterface dialog, int item)
-            {String ttt= (String) items[item];
+            {String ttt= (String) filepath.get(item);
                 LoadBatch(ttt);
             }
         });

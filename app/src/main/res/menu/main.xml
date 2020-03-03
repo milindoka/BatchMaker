@@ -2,6 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item
+        android:id="@+id/action_pref"
+        android:icon="@mipmap/ic_pref_40"
+        android:title="Set Preferences"
+        app:showAsAction="ifRoom"/>
+
 
     <item
         android:id="@+id/action_new"

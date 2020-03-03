@@ -92,6 +92,11 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
+
+
+
+
+
         fab =  findViewById(R.id.fab);
 
         fab.setOnTouchListener(new View.OnTouchListener() {
@@ -221,7 +226,7 @@ public class MainActivity extends AppCompatActivity
 
         fab.setBackgroundTintList(getResources().getColorStateList(R.color.colorGreen));
         getSupportActionBar().setTitle(PD.Subject);
-        getSupportActionBar().setSubtitle("Click to set your subject");
+        getSupportActionBar().setSubtitle("Tap plus to set subject");
 
 
 
@@ -252,7 +257,8 @@ public class MainActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
 
    switch(id)
-    {case R.id.action_new :
+    { case R.id.action_pref : EditSettings(); break;
+        case R.id.action_new :
         if(modified) Msg.Show("Please Save Current Batch",this);
         else
             LO.GetNewRoll();
